@@ -1,0 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Dominio;
+
+/**
+ *
+ * @author luizp
+ */
+public class Mecanico extends Funcionario{
+    private String especialidade;
+    
+    public Mecanico(String nome, String cargo, String login, String senha) {
+        super(nome, cargo, login, senha);
+        this.especialidade = especialidade;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+    
+}
