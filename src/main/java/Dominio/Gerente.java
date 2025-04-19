@@ -10,8 +10,9 @@ package Dominio;
  */
 public class Gerente extends Mecanico{
     
-    public Gerente(String nome, String cargo, String login, String senha){
-        super(nome, "Gerente", login, senha);
+    public Gerente(String nome, Cargo cargo, String login, String senha){
+        super(nome, Cargo.Gerente, login, senha);
+        setCargo(Cargo.Gerente);
     }
                                        
 }

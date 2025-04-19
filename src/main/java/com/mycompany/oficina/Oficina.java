@@ -4,7 +4,9 @@
 
 package com.mycompany.oficina;
 
+import Dominio.Cargo;
 import Dominio.Funcionario;
+import Dominio.Gerente;
 
 /**
  *
@@ -13,7 +15,7 @@ import Dominio.Funcionario;
 public class Oficina {
 
     public static void main(String[] args) {
-        Funcionario funcionario = new Funcionario("Luiz", "Gerente", "luizpkk", "L12345");
-        System.out.println(funcionario.validaDados("luizpkk", "L12345"));
+        Gerente gerente = new Gerente("Luiz", Cargo.Gerente, "luizpkk", "L12345");
+        System.out.println(gerente.getNome());
     }
 }

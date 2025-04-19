@@ -1,4 +1,5 @@
 Dominio\Funcionario.class
 Dominio\Mecanico.class
+Dominio\Cargo.class
 com\mycompany\oficina\Oficina.class
 Dominio\Gerente.class

@@ -11,8 +11,8 @@ package Dominio;
 public class Mecanico extends Funcionario{
     private String especialidade;
     
-    public Mecanico(String nome, String cargo, String login, String senha) {
-        super(nome, cargo, login, senha);
+    public Mecanico(String nome, Cargo cargo, String login, String senha) {
+        super(nome, Cargo.Mecanico, login, senha);
         this.especialidade = especialidade;
     }
 

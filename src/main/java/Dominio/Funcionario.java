@@ -10,11 +10,11 @@ package Dominio;
  */
 public class Funcionario {
     private String nome;
-    private String cargo;
+    private Cargo cargo;
     private String login;
     private String senha;
     
-    public Funcionario(String nome, String cargo, String login, String senha){
+    public Funcionario(String nome, Cargo cargo, String login, String senha){
         this.nome = nome;
         this.cargo = cargo;
         this. login = login;
@@ -37,13 +37,15 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public String getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
+
+
 
     public String getLogin() {
         return login;
