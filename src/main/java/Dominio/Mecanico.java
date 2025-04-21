@@ -11,6 +11,13 @@ package Dominio;
 public class Mecanico extends Funcionario{
     private String especialidade;
     
+    /**
+     * Construtor da classe mecanico
+     * @param nome
+     * @param cargo
+     * @param login
+     * @param senha 
+     */
     public Mecanico(String nome, Cargo cargo, String login, String senha) {
         super(nome, Cargo.Mecanico, login, senha);
         this.especialidade = especialidade;

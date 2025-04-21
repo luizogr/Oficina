@@ -14,6 +14,13 @@ public class Funcionario {
     private String login;
     private String senha;
     
+    /**
+     * Construtor da classe funcionario
+     * @param nome 
+     * @param cargo
+     * @param login
+     * @param senha 
+     */
     public Funcionario(String nome, Cargo cargo, String login, String senha){
         this.nome = nome;
         this.cargo = cargo;
@@ -21,6 +28,12 @@ public class Funcionario {
         this.senha = senha;
     }
     
+    /**
+     * Metodo para validar os dados do funcionario
+     * @param login
+     * @param senha
+     * @return Rtorna true se senha e login forem iguais ao do funcionario
+     */
     public boolean validaDados(String login, String senha){
         if (this.login == login && this.senha == senha){
             return true;
