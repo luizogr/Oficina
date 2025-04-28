@@ -23,6 +23,10 @@ public class Mecanico extends Funcionario{
         this.especialidade = especialidade;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getEspecialidade() {
         return especialidade;
     }

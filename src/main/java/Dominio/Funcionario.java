@@ -9,6 +9,8 @@ package Dominio;
  * @author luizp
  */
 public class Funcionario {
+    private static int contadorId = 0;
+    private int idFuncionario;
     private String nome;
     private Cargo cargo;
     private String login;
@@ -22,6 +24,8 @@ public class Funcionario {
      * @param senha 
      */
     public Funcionario(String nome, Cargo cargo, String login, String senha){
+        this.contadorId += 1;
+        this.idFuncionario = contadorId;
         this.nome = nome;
         this.cargo = cargo;
         this. login = login;
@@ -58,7 +62,21 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
+    public static int getContadorId() {
+        return contadorId;
+    }
 
+    public static void setContadorId(int contadorId) {
+        Funcionario.contadorId = contadorId;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
     public String getLogin() {
         return login;

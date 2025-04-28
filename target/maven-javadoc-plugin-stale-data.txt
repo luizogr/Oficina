@@ -1,0 +1,44 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+--release
+22
+-sourcepath
+'C:/Users/luizp/Documents/NetBeansProjects/Oficina/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/luizp/Documents/NetBeansProjects/Oficina/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Oficina 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Oficina 1.0-SNAPSHOT API'
+com.mycompany.oficina
+Dominio
+Servicos
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java = 1744322692507
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\allclasses-index.html = 1745862056379
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\allpackages-index.html = 1745862056385
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\element-list = 1745862056103
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\help-doc.html = 1745862056466
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\index-all.html = 1745862056445
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\index.html = 1745862056345
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\member-search-index.js = 1745862056403
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\module-search-index.js = 1745862056390
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\overview-summary.html = 1745862056454
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\overview-tree.html = 1745862056329
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\package-search-index.js = 1745862056394
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\search.html = 1745862056449
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\tag-search-index.js = 1745862056405
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\target\reports\apidocs\type-search-index.js = 1745862056399
