@@ -35,5 +35,9 @@ public class Oficina {
         System.out.println(funcionario1.getIdFuncionario());
         funcionarios.removerFuncionario(2);
         System.out.println(funcionarios.getFuncionarios());
+        funcionarios.editarNome(3, "João");
+        System.out.println(funcionario3.getNome());
+        System.out.println(funcionario3.getLogin());
+        System.out.println(funcionarios);
     }
 }
