@@ -56,11 +56,15 @@ public class Cliente {
     }
     
     public void setCpf(int cpf) {
-        this.cpf =  cpf;
+        this.cpf = cpf;
     }
     
     public int getCpf() {
         return cpf;
     }
-        
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + '}';
+    }    
 }

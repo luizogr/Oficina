@@ -1,6 +1,11 @@
+Dominio\Cliente.class
+Dominio\Servico.class
 Dominio\Funcionario.class
 Dominio\Mecanico.class
-Dominio\Cargo.class
+Dominio\Estoque.class
 com\mycompany\oficina\Oficina.class
 Dominio\Gerente.class
+Dominio\Peca.class
 Servicos\FuncionarioService.class
+Dominio\Veiculo.class
+Dominio\Cargo.class

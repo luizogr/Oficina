@@ -4,10 +4,16 @@
  */
 package Dominio;
 
+import Dominio.Peca;
+import java.util.ArrayList;
+
 /**
  *
  * @author luizp
  */
 public class Estoque {
-    
+    private ArrayList<Peca> pecas;
+
+    public Estoque() {
+    }
 }

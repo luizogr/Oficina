@@ -26,6 +26,13 @@ public class Veiculo {
         this.ano = ano;
     }
     
+    /**
+     * Construtor classe veiculo
+     * @param cliente
+     * @param modelo
+     * @param placa
+     * @param ano 
+     */
     public Veiculo(Cliente cliente, String modelo, String placa, int ano){
         this.cliente = cliente;
         this.modelo = modelo;
@@ -33,10 +40,18 @@ public class Veiculo {
         this.placa = placa;
     }
     
+    /**
+     * get cliente
+     * @return cliente
+     */
     public Cliente getCliente() {
         return cliente;
     }
 
+    /**
+     * Set cliente
+     * @param cliente 
+     */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -63,5 +78,10 @@ public class Veiculo {
     
     public int getAno() {
         return ano;
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + cliente + '}';
     }
 }

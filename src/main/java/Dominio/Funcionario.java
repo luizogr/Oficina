@@ -93,6 +93,13 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
+    /**
+     * Sobrescreve o metodo toString
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "Funcionario{" + "idFuncionario=" + idFuncionario + ", nome=" + nome + ", cargo=" + cargo + ", login=" + login + ", senha=" + senha + '}';
+    }
 }
