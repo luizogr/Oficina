@@ -9,18 +9,26 @@ package Dominio;
  * @author Hudson
  */
 public class Cliente {
+    private static int contadorClientes = 0;
+    private int idCliente;
     private String nome;
     private String endereco;
     private String telefone;
     private String email;
-    private int cpf;
+    private long cpf;
     
     public Cliente(String nome, String endereco, String telefone, String email, int cpf) {
+        this.contadorClientes += 1;
+        this.idCliente = this.contadorClientes;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
+    }
+    
+    public static String quantidadeDeInstanciasCliente(){
+        return "A quantidade de clientes instânciados no sistema é: " + contadorClientes;
     }
     
     public void setNome(String nome){
@@ -55,13 +63,31 @@ public class Cliente {
         return email;
     }
     
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
     
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
+
+    public int getContadorClientes() {
+        return contadorClientes;
+    }
+
+    public void setContadorClientes(int contadorClientes) {
+        this.contadorClientes = contadorClientes;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    
 
     @Override
     public String toString() {

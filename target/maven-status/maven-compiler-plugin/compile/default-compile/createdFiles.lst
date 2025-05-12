@@ -1,11 +1,13 @@
-Dominio\Cliente.class
 Dominio\Servico.class
 Dominio\Funcionario.class
+Dominio\Peca.class
+Dominio\Veiculo.class
+Dominio\Cliente.class
 Dominio\Mecanico.class
 Dominio\Estoque.class
 com\mycompany\oficina\Oficina.class
 Dominio\Gerente.class
-Dominio\Peca.class
 Servicos\FuncionarioService.class
-Dominio\Veiculo.class
+Servicos\GestaoClientes.class
+Servicos\JasonUtil.class
 Dominio\Cargo.class

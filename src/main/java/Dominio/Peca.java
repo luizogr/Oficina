@@ -9,12 +9,15 @@ package Dominio;
  * @author luizp
  */
 public class Peca {
-    //preciso estudar como colocar o id
+    private static int contadorPeca = 0;
+    private int idPeca;
     private String nome;
     private double preco;
     private int quantide;
 
     public Peca(String nome, double preco, int quantide) {
+        this.contadorPeca += 1;
+        this.idPeca = this.contadorPeca;
         this.nome = nome;
         this.preco = preco;
         this.quantide = quantide;
@@ -43,6 +46,16 @@ public class Peca {
     public void setQuantide(int quantide) {
         this.quantide = quantide;
     }
+
+    public static int getContadorPeca() {
+        return contadorPeca;
+    }
+
+    public int getIdPeca() {
+        return idPeca;
+    }
+    
+    
 
     @Override
     public String toString() {
