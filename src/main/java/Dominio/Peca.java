@@ -54,8 +54,6 @@ public class Peca {
     public int getIdPeca() {
         return idPeca;
     }
-    
-    
 
     @Override
     public String toString() {

@@ -84,19 +84,30 @@ public class Oficina {
         
         Estoque estoque = new Estoque();
 
-        // Criando peças
-        Peca p1 = new Peca("Filtro de Óleo", 25.00, 10);
-        Peca p2 = new Peca("Pastilha de Freio", 90.00, 5);
-        Peca p3 = new Peca("Óleo 5W30", 45.50, 8);
+        // Criando duas peças com nome, preço e quantidade inicial (apenas para exibição, o estoque controla separadamente)
+        Peca p1 = new Peca("Filtro de óleo", 29.90, 0);
+        Peca p2 = new Peca("Pastilha de freio", 89.90, 0);
 
-        // Adicionando peças ao estoque
-        estoque.adicionarPeca(p1, 10);  // Deve adicionar
-        estoque.adicionarPeca(p2, 5);   // Deve adicionar
-        estoque.adicionarPeca(p3, 8);   // Deve adicionar
-        estoque.adicionarPeca(p2, 3);   // Deve somar à quantidade da peça 2
+        // Adicionando ao estoque com as quantidades reais
+        estoque.adicionarPeca(p1, 10);
+        estoque.adicionarPeca(p2, 5);
 
-        // Imprimir estoque
-        System.out.println("\nEstoque atual:");
+        System.out.println("\nEstoque após adições:");
+        estoque.imprimirEstoque();
+
+        // Removendo parte da quantidade
+        estoque.removerPeca(p1.getIdPeca(), 4);
+        
+        System.out.println("\nEstoque após remoções:");
+        estoque.imprimirEstoque();
+
+        // Tentando remover mais do que o disponível
+        estoque.removerPeca(p2.getIdPeca(), 6);
+
+        // Removendo o restante da peça 1
+        estoque.removerPeca(p1.getIdPeca(), 6);
+
+        System.out.println("\nEstoque após remoções:");
         estoque.imprimirEstoque();
         
     }

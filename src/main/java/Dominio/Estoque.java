@@ -39,6 +39,32 @@ public class Estoque {
         }
     }
     
+    public boolean removerPeca(int id, int quantidade){
+        if(quantidade <= 0){
+            throw new IllegalArgumentException("A quantidade deve ser positiva");
+        }
+        
+        if(contemPeca(id) == false){
+            throw new IllegalArgumentException("A peça não existe no estoque");
+        }
+        
+        int quantidadeAtual = estoqueQuantidades.get(id);
+        
+        if(quantidade > quantidadeAtual){
+            System.out.println("Impossivel remover, pois quantidade a ser removida " + quantidade + " é maior que a quantidade em estoque: " + quantidadeAtual);
+            return false;
+        } else if(quantidade == quantidadeAtual){
+            estoqueQuantidades.remove(id);
+            pecasPorId.remove(id);
+            System.out.println("Peça removida do estoque");
+            return true;
+        } else {
+            estoqueQuantidades.put(id, quantidadeAtual - quantidade);
+            System.out.println("Removido " + quantidade + " peças do estoque");
+            return true;
+        }
+    }
+    
     public void imprimirEstoque(){
         for(Map.Entry<Integer, Integer> entry : estoqueQuantidades.entrySet()){
             Peca peca = pecasPorId.get(entry.getKey());
