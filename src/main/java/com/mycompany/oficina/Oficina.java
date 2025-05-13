@@ -84,31 +84,38 @@ public class Oficina {
         
         Estoque estoque = new Estoque();
 
-        // Criando duas peças com nome, preço e quantidade inicial (apenas para exibição, o estoque controla separadamente)
-        Peca p1 = new Peca("Filtro de óleo", 29.90, 0);
-        Peca p2 = new Peca("Pastilha de freio", 89.90, 0);
+        // Adicionando peças novas
+        Peca p1 = new Peca("Filtro de óleo", 29.90);
+        Peca p2 = new Peca("Pastilha de freio", 89.90);
 
-        // Adicionando ao estoque com as quantidades reais
-        estoque.adicionarPeca(p1, 10);
-        estoque.adicionarPeca(p2, 5);
+        boolean novaPeca1 = estoque.adicionarPeca(p1, 10);
+        boolean novaPeca2 = estoque.adicionarPeca(p2, 5);
 
-        System.out.println("\nEstoque após adições:");
+        System.out.println(novaPeca1 ? "Nova peça adicionada: " + p1.getNome() : "Quantidade atualizada de: " + p1.getNome());
+        System.out.println(novaPeca2 ? "Nova peça adicionada: " + p2.getNome() : "Quantidade atualizada de: " + p2.getNome());
+
+        // Imprimindo estoque inicial
+        System.out.println("\nEstoque atual:");
         estoque.imprimirEstoque();
 
-        // Removendo parte da quantidade
-        estoque.removerPeca(p1.getIdPeca(), 4);
-        
-        System.out.println("\nEstoque após remoções:");
+        // Remover parcialmente uma peça
+        estoque.removerPeca(p1.getIdPeca(), 3); // Remove 3 do filtro de óleo
+
+        // Tentar remover mais do que há em estoque (deve falhar)
+        estoque.removerPeca(p2.getIdPeca(), 10);
+
+        // Remover o restante da peça
+        estoque.removerPeca(p1.getIdPeca(), 7); // Remove os 7 restantes
+
+        // Editar nome e preço da peça 2
+        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio (Premium)");
+        estoque.editarPreço(p2.getIdPeca(), 109.90);
+
+        // Re-adicionar mais da peça 2
+        estoque.adicionarPeca(p2, 2);
+
+        // Mostrar estoque final
+        System.out.println("\nEstoque após alterações:");
         estoque.imprimirEstoque();
-
-        // Tentando remover mais do que o disponível
-        estoque.removerPeca(p2.getIdPeca(), 6);
-
-        // Removendo o restante da peça 1
-        estoque.removerPeca(p1.getIdPeca(), 6);
-
-        System.out.println("\nEstoque após remoções:");
-        estoque.imprimirEstoque();
-        
     }
 }

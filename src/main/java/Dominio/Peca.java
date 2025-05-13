@@ -13,14 +13,14 @@ public class Peca {
     private int idPeca;
     private String nome;
     private double preco;
-    private int quantide;
+    //private int quantide; // Tirar quantidade, pois está na lista
 
-    public Peca(String nome, double preco, int quantide) {
+    public Peca(String nome, double preco) {
         this.contadorPeca += 1;
         this.idPeca = this.contadorPeca;
         this.nome = nome;
         this.preco = preco;
-        this.quantide = quantide;
+        //this.quantide = quantide;
     }
 
     public String getNome() {
@@ -39,13 +39,13 @@ public class Peca {
         this.preco = preco;
     }
 
-    public int getQuantide() {
-        return quantide;
-    }
-
-    public void setQuantide(int quantide) {
-        this.quantide = quantide;
-    }
+//    public int getQuantide() {
+//        return quantide;
+//    }
+//
+//    public void setQuantide(int quantide) {
+//        this.quantide = quantide;
+//    }
 
     public static int getContadorPeca() {
         return contadorPeca;
@@ -57,6 +57,6 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "Peca{" + "nome=" + nome + ", preco=" + preco + ", quantide=" + quantide + '}';
+        return "Peca{" + "nome=" + nome + ", preco=" + preco + ", quantide=" + '}';
     }
 }

@@ -12,7 +12,7 @@ public class Veiculo {
     private String modelo;
     private String placa;
     private int ano;
-    private Cliente cliente;
+    private Cliente proprietario;
     
     /**
      * Construtor da Classe Veiculo
@@ -34,7 +34,7 @@ public class Veiculo {
      * @param ano 
      */
     public Veiculo(Cliente cliente, String modelo, String placa, int ano){
-        this.cliente = cliente;
+        this.proprietario = cliente;
         this.modelo = modelo;
         this.ano = ano;
         this.placa = placa;
@@ -45,7 +45,7 @@ public class Veiculo {
      * @return cliente
      */
     public Cliente getCliente() {
-        return cliente;
+        return proprietario;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Veiculo {
      * @param cliente 
      */
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+        this.proprietario = cliente;
     }
     
     public void setModelo(String modelo) {
@@ -82,6 +82,6 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + cliente + '}';
+        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + proprietario + '}';
     }
 }

@@ -26,6 +26,10 @@ public class Estoque {
         return estoqueQuantidades.containsKey(id);
     }
     
+    public Peca buscarPecaPorId(int id){
+        return pecasPorId.get(id);
+    }
+    
     public boolean adicionarPeca(Peca peca, int quantidade){
         boolean pecaExiste = contemPeca(peca.getIdPeca());
         if(pecaExiste == false){
@@ -65,10 +69,34 @@ public class Estoque {
         }
     }
     
+    public boolean editarNome(int id, String nome){
+        boolean pecaExiste = contemPeca(id);
+        if(pecaExiste == false){
+            System.out.println("Peça não está em estoque");
+            return false;
+        } else {
+            Peca p = buscarPecaPorId(id);
+            p.setNome(nome);
+            return true;
+        }  
+    }
+    
+        public boolean editarPreço(int id, double preco){
+        boolean pecaExiste = contemPeca(id);
+        if(pecaExiste == false){
+            System.out.println("Peça não está em estoque");
+            return false;
+        } else {
+            Peca p = buscarPecaPorId(id);
+            p.setPreco(preco);
+            return true;
+        }  
+    }
+    
     public void imprimirEstoque(){
         for(Map.Entry<Integer, Integer> entry : estoqueQuantidades.entrySet()){
             Peca peca = pecasPorId.get(entry.getKey());
-            System.out.println("ID: " + peca.getIdPeca() + " | Nome: " + peca.getNome() + " | Quantidade: " + entry.getValue());
+            System.out.println("ID: " + peca.getIdPeca() + " | Nome: " + peca.getNome() + " | Preço: " + peca.getPreco()+ " | Quantidade: " + entry.getValue());
         }
     }
 }
