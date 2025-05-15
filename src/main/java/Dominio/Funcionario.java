@@ -28,7 +28,7 @@ public class Funcionario {
         this.idFuncionario = contadorId;
         this.nome = nome;
         this.cargo = cargo;
-        this. login = login;
+        this.login = login;
         this.senha = senha;
     }
     

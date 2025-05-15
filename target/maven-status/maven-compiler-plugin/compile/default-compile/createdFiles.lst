@@ -5,6 +5,7 @@ Dominio\Veiculo.class
 Dominio\Cliente.class
 Dominio\Mecanico.class
 Dominio\Estoque.class
+Dominio\Elevador.class
 com\mycompany\oficina\Oficina.class
 Dominio\Gerente.class
 Servicos\FuncionarioService.class

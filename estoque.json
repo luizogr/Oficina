@@ -1,0 +1,12 @@
+{
+  "estoqueQuantidades" : {
+    "2" : 7
+  },
+  "pecasPorId" : {
+    "2" : {
+      "idPeca" : 2,
+      "nome" : "Pastilha de freio",
+      "preco" : 100.9
+    }
+  }
+}

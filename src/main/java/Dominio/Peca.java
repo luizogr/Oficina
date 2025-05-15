@@ -14,6 +14,9 @@ public class Peca {
     private String nome;
     private double preco;
     //private int quantide; // Tirar quantidade, pois está na lista
+    
+    public Peca(){
+    }
 
     public Peca(String nome, double preco) {
         this.contadorPeca += 1;

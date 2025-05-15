@@ -6,6 +6,7 @@ package com.mycompany.oficina;
 
 import Dominio.Cargo;
 import Dominio.Cliente;
+import Dominio.Elevador;
 import Dominio.Estoque;
 import Dominio.Funcionario;
 import Dominio.Gerente;
@@ -82,40 +83,48 @@ public class Oficina {
 //        System.out.println(Cliente.quantidadeDeInstanciasCliente());
         
         
-        Estoque estoque = new Estoque();
+        Estoque estoque = Estoque.carregarDoArquivo();
 
-        // Adicionando peças novas
-        Peca p1 = new Peca("Filtro de óleo", 29.90);
-        Peca p2 = new Peca("Pastilha de freio", 89.90);
+//        // Adicionando peças novas
+//        Peca p1 = new Peca("Filtro de óleo", 29.90);
+//        Peca p2 = new Peca("Pastilha de freio", 89.90);
+//
+//        boolean novaPeca1 = estoque.adicionarPeca(p1, 10);
+//        boolean novaPeca2 = estoque.adicionarPeca(p2, 5);
+//
+//        System.out.println(novaPeca1 ? "Nova peça adicionada: " + p1.getNome() : "Quantidade atualizada de: " + p1.getNome());
+//        System.out.println(novaPeca2 ? "Nova peça adicionada: " + p2.getNome() : "Quantidade atualizada de: " + p2.getNome());
+//
+//        // Imprimindo estoque inicial
+//        System.out.println("\nEstoque atual:");
+//        estoque.imprimirEstoque();
+//
+//        // Remover parcialmente uma peça
+//        estoque.removerPeca(p1.getIdPeca(), 3); // Remove 3 do filtro de óleo
+//
+//        // Tentar remover mais do que há em estoque (deve falhar)
+//        estoque.removerPeca(p2.getIdPeca(), 10);
+//
+//        // Remover o restante da peça
+//        estoque.removerPeca(p1.getIdPeca(), 7); // Remove os 7 restantes
+//
+//        // Editar nome e preço da peça 2
+//        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio (Premium)");
+//        estoque.editarPreço(p2.getIdPeca(), 109.90);
+//
+//        // Re-adicionar mais da peça 2
+//        estoque.adicionarPeca(p2, 2);
 
-        boolean novaPeca1 = estoque.adicionarPeca(p1, 10);
-        boolean novaPeca2 = estoque.adicionarPeca(p2, 5);
 
-        System.out.println(novaPeca1 ? "Nova peça adicionada: " + p1.getNome() : "Quantidade atualizada de: " + p1.getNome());
-        System.out.println(novaPeca2 ? "Nova peça adicionada: " + p2.getNome() : "Quantidade atualizada de: " + p2.getNome());
-
-        // Imprimindo estoque inicial
-        System.out.println("\nEstoque atual:");
-        estoque.imprimirEstoque();
-
-        // Remover parcialmente uma peça
-        estoque.removerPeca(p1.getIdPeca(), 3); // Remove 3 do filtro de óleo
-
-        // Tentar remover mais do que há em estoque (deve falhar)
-        estoque.removerPeca(p2.getIdPeca(), 10);
-
-        // Remover o restante da peça
-        estoque.removerPeca(p1.getIdPeca(), 7); // Remove os 7 restantes
-
-        // Editar nome e preço da peça 2
-        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio (Premium)");
-        estoque.editarPreço(p2.getIdPeca(), 109.90);
-
-        // Re-adicionar mais da peça 2
-        estoque.adicionarPeca(p2, 2);
-
+        //Editar nome e preço da peça 2
+        Peca p2 = estoque.buscarPecaPorId(2);
+        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio");
+        estoque.editarPreço(p2.getIdPeca(), 100.90);
         // Mostrar estoque final
         System.out.println("\nEstoque após alterações:");
         estoque.imprimirEstoque();
+        
+        Elevador elevador1 = new Elevador(1, "balanceamento");
+        System.out.println("Elevador: " + elevador1);
     }
 }
