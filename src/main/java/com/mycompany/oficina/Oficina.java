@@ -12,8 +12,11 @@ import Dominio.Funcionario;
 import Dominio.Gerente;
 import Dominio.Mecanico;
 import Dominio.Peca;
+import Dominio.Veiculo;
 import Servicos.FuncionarioService;
 import Servicos.GestaoClientes;
+import Servicos.GestaoDeVeiculos;
+import java.util.ArrayList;
 
 /**
  *
@@ -116,15 +119,87 @@ public class Oficina {
 //        estoque.adicionarPeca(p2, 2);
 
 
-        //Editar nome e preço da peça 2
-        Peca p2 = estoque.buscarPecaPorId(2);
-        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio");
-        estoque.editarPreço(p2.getIdPeca(), 100.90);
+//        //Editar nome e preço da peça 2
+//        Peca p2 = estoque.buscarPecaPorId(2);
+//        estoque.editarNome(p2.getIdPeca(), "Pastilha de freio");
+//        estoque.editarPreço(p2.getIdPeca(), 100.90);
         // Mostrar estoque final
         System.out.println("\nEstoque após alterações:");
         estoque.imprimirEstoque();
         
         Elevador elevador1 = new Elevador(1, "balanceamento");
         System.out.println("Elevador: " + elevador1);
+        
+        
+        
+        // Criando instâncias de gerenciamento
+        GestaoClientes gestaoClientes = new GestaoClientes();
+        GestaoDeVeiculos gestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+
+        // Criando clientes
+        Cliente cliente1 = new Cliente("João", "Rua A", "123456789", "joao@email.com", 123456789);
+        Cliente cliente2 = new Cliente("Maria", "Rua B", "987654321", "maria@email.com", 987654321);
+        gestaoClientes.adicionaCliente(cliente1);
+        gestaoClientes.adicionaCliente(cliente2);
+
+        System.out.println("Clientes adicionados:");
+        for (Cliente c : gestaoClientes.getClientes()) {
+            System.out.println(c);
+        }
+
+        // Criando veículos
+        Veiculo veiculo1 = new Veiculo("Fiat Uno", "ABC1234", 2010);
+        Veiculo veiculo2 = new Veiculo("Ford Ka", "XYZ9876", 2015);
+        Veiculo veiculo3 = new Veiculo("Chevrolet Onix", "DEF5678", 2020);
+
+        // Associando veículos aos clientes
+        gestaoVeiculos.adicionarVeiculo(cliente1.getIdCliente(), veiculo1);
+        gestaoVeiculos.adicionarVeiculo(cliente1.getIdCliente(), veiculo2);
+        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo3);
+
+        // Buscar veículo por placa
+        System.out.println("\nBuscar veículo com placa ABC1234:");
+        System.out.println(gestaoVeiculos.buscarVeiculoPorPlaca("ABC1234"));
+
+        // Buscar veículos de um cliente
+        System.out.println("\nVeículos do cliente João:");
+        ArrayList<Veiculo> veiculosJoao = gestaoVeiculos.buscarVeiculosDoProprietario(cliente1.getIdCliente());
+        for (Veiculo v : veiculosJoao) {
+            System.out.println(v);
+        }
+
+        // Editar dados
+        gestaoClientes.editarEmail(cliente1.getIdCliente(), "joao_novo@email.com");
+        gestaoVeiculos.editarModelo("XYZ9876", "Ford Fiesta");
+        gestaoVeiculos.editarAno("XYZ9876", 2017);
+
+        System.out.println("\nDados atualizados:");
+        System.out.println("Cliente João: " + gestaoClientes.buscarCliente(cliente1.getIdCliente()));
+        System.out.println("Veículo atualizado: " + gestaoVeiculos.buscarVeiculoPorPlaca("XYZ9876"));
+
+        // Remover veículo
+        gestaoVeiculos.removerVeiculo("DEF5678");
+        System.out.println("\nVeículos de Maria após remoção:");
+        ArrayList<Veiculo> veiculosMaria = gestaoVeiculos.buscarVeiculosDoProprietario(cliente2.getIdCliente());
+        for (Veiculo v : veiculosMaria) {
+            System.out.println(v);
+        }
+
+        // Remover cliente
+        gestaoClientes.removerCliente(cliente1.getIdCliente());
+        System.out.println("\nClientes após remoção de João:");
+        for (Cliente c : gestaoClientes.getClientes()) {
+            System.out.println(c);
+        }
+        
+        gestaoVeiculos.salvar();
+        
+        System.out.println(Cliente.getContadorDeVeiculos());
+        
+        
+        
+        
+        
+
     }
 }

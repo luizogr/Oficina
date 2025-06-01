@@ -1,0 +1,11 @@
+{
+  "clientes" : [ {
+    "idCliente" : 2,
+    "nome" : "Maria",
+    "endereco" : "Rua B",
+    "telefone" : "987654321",
+    "email" : "maria@email.com",
+    "cpf" : 987654321,
+    "contadorClientes" : 2
+  } ]
+}

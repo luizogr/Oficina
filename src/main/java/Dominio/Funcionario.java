@@ -15,6 +15,7 @@ public class Funcionario {
     private Cargo cargo;
     private String login;
     private String senha;
+    private double salario;
     
     /**
      * Construtor da classe funcionario
@@ -30,6 +31,24 @@ public class Funcionario {
         this.cargo = cargo;
         this.login = login;
         this.senha = senha;
+    }
+
+    /**
+     * Construtor da classe funcionario
+     * @param idFuncionario
+     * @param nome
+     * @param cargo
+     * @param login
+     * @param senha
+     * @param salario 
+     */
+    public Funcionario(int idFuncionario, String nome, Cargo cargo, String login, String senha, double salario) {
+        this.idFuncionario = idFuncionario;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.login = login;
+        this.senha = senha;
+        this.salario = salario;
     }
     
     /**
@@ -92,6 +111,14 @@ public class Funcionario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
     /**

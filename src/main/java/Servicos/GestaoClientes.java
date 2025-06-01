@@ -5,6 +5,10 @@
 package Servicos;
 
 import Dominio.Cliente;
+import Dominio.Estoque;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +17,8 @@ import java.util.ArrayList;
  */
 public class GestaoClientes {
     private ArrayList<Cliente> clientes;
+    private static final String CAMINHO_ARQUIVO = "gestaoclientes.json";
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     /**
      * Construtor da classe que inicia o ArrayList
@@ -21,12 +27,33 @@ public class GestaoClientes {
         this.clientes = new ArrayList<>();
     }
     
+    public static GestaoClientes carregarDoArquivo() {
+        try {
+            File arquivo = new File(CAMINHO_ARQUIVO);
+            if (arquivo.exists()) {
+                return mapper.readValue(arquivo, GestaoClientes.class);
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar gestaoClientes: " + e.getMessage());
+        }
+        return new GestaoClientes();
+    }
+
+    private void salvarNoArquivo() {
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar gestaoClientes: " + e.getMessage());
+        }
+    }
+    
     /**
      * Adiciona clinte a ArrayList
      * @param cliente 
      */
     public void adicionaCliente(Cliente cliente){
         clientes.add(cliente);
+        salvarNoArquivo();
     }
     
     /**
@@ -52,6 +79,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             clientes.remove(cliente);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -67,6 +95,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setNome(nome);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -82,6 +111,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setEndereco(endereco);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -97,6 +127,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setTelefone(telefone);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -112,6 +143,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setEmail(email);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -127,6 +159,7 @@ public class GestaoClientes {
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setCpf(cpf);
+            salvarNoArquivo();
             return true;
         }
         return false;

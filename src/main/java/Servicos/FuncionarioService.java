@@ -125,6 +125,15 @@ public class FuncionarioService {
         }
         return false;
     }
+    
+    public boolean editarSalario(int id, double salario){
+        Funcionario f = buscaFuncionario(id);
+        if (f != null) {
+            f.setSalario(salario);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * função get para retornar a lista de funcionários

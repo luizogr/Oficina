@@ -12,7 +12,6 @@ public class Veiculo {
     private String modelo;
     private String placa;
     private int ano;
-    private Cliente proprietario;
     
     /**
      * Construtor da Classe Veiculo
@@ -24,42 +23,21 @@ public class Veiculo {
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;
+        Cliente.incrementaContadorDeVeiculos();
     }
     
     /**
-     * Construtor classe veiculo
-     * @param cliente
-     * @param modelo
-     * @param placa
-     * @param ano 
+     * Set para alterar o modelo
+     * @param modelo 
      */
-    public Veiculo(Cliente cliente, String modelo, String placa, int ano){
-        this.proprietario = cliente;
-        this.modelo = modelo;
-        this.ano = ano;
-        this.placa = placa;
-    }
-    
-    /**
-     * get cliente
-     * @return cliente
-     */
-    public Cliente getCliente() {
-        return proprietario;
-    }
-
-    /**
-     * Set cliente
-     * @param cliente 
-     */
-    public void setCliente(Cliente cliente) {
-        this.proprietario = cliente;
-    }
-    
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
     
+    /**
+     * Get para retorar o modelo
+     * @return 
+     */
     public String getModelo() {
         return modelo;
     }
@@ -82,6 +60,6 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + proprietario + '}';
+        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + '}';
     }
 }

@@ -1,14 +1,14 @@
 Dominio\Servico.class
 Dominio\Funcionario.class
+Servicos\GestaoDeVeiculos.class
 Dominio\Peca.class
 Dominio\Veiculo.class
+Dominio\Servicos.class
 Dominio\Cliente.class
 Dominio\Mecanico.class
 Dominio\Estoque.class
 Dominio\Elevador.class
-com\mycompany\oficina\Oficina.class
 Dominio\Gerente.class
 Servicos\FuncionarioService.class
 Servicos\GestaoClientes.class
-Servicos\JasonUtil.class
 Dominio\Cargo.class

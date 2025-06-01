@@ -4,11 +4,14 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Hudson
  */
 public class Cliente {
+    private static int contadorDeVeiculos = 0;
     private static int contadorClientes = 0;
     private int idCliente;
     private String nome;
@@ -30,7 +33,7 @@ public class Cliente {
     public static String quantidadeDeInstanciasCliente(){
         return "A quantidade de clientes instânciados no sistema é: " + contadorClientes;
     }
-    
+     
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -86,8 +89,14 @@ public class Cliente {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
+
+    public static void incrementaContadorDeVeiculos(){
+        contadorDeVeiculos += 1;
+    }
     
-    
+    public static int getContadorDeVeiculos(){
+        return contadorDeVeiculos;
+    }
 
     @Override
     public String toString() {
