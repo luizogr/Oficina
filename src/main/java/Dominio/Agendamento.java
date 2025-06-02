@@ -41,6 +41,10 @@ public class Agendamento {
         this.status = StatusAgendamento.Agendado;
         this.data = data;
     }
+    
+    public boolean conflita(Agendamento agendamento2){
+        return this.data.equals(agendamento2.getData()) && this.idElevador == agendamento2.getIdElevador();
+    }
 
     public int getIdVeiculo() {
         return idVeiculo;
