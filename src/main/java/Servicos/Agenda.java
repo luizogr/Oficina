@@ -25,6 +25,9 @@ public class Agenda {
         this.agendamentosPorElevador = new HashMap<>();
     }
     
-    
+    public boolean agendar(Agendamento a){
+        LocalDateTime data = a.getData();
+        return false;
+    }
     
 }
