@@ -126,6 +126,9 @@ public class GestaoDeVeiculos {
     public void setPlacasPorCliente(Map<String, Integer> placasPorCliente) {
         this.placasPorCliente = placasPorCliente;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "GestaoDeVeiculos{" + "placasPorVeiculos=" + placasPorVeiculos + ", placasPorCliente=" + placasPorCliente + '}';
+    }
 }

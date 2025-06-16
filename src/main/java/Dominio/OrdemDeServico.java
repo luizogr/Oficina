@@ -6,13 +6,15 @@ package Dominio;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author luizp
  */
-public class OrdemDeServico {
+public class OrdemDeServico implements Subject{
     private static int contadorOS = 0;
     private int idOS;
     private int idVeiculo;
@@ -22,11 +24,14 @@ public class OrdemDeServico {
     private LocalDateTime dataInicio;
     private LocalDateTime dataTermino;
     private int idMecanico;
-    private List<Peca> pecasUtilizadas;
-    private List<Servicos> servicosRealizados
-            ;
+    private StatusOS statusOS;
+    private Map<Integer, Integer> pecasUtilizadas;
+    private List<Servicos> servicosRealizados;
+    
+    private List<Observer> observers = new ArrayList<>();
+    private String ultimaAtualizacao;
 
-    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, LocalDateTime dataTermino, int idMecanico, List<Peca> pecasUtilizadas, List<Servicos> servicosRealizados) {
+    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, LocalDateTime dataTermino, int idMecanico, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
         OrdemDeServico.contadorOS += 1;
         this.idOS = contadorOS;
         this.idVeiculo = idVeiculo;
@@ -36,21 +41,81 @@ public class OrdemDeServico {
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
         this.idMecanico = idMecanico;
-        this.pecasUtilizadas = new ArrayList<>();
+        this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
     }
+
+    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
+        this.idVeiculo = idVeiculo;
+        this.idCliente = idCliente;
+        this.descricao = descricao;
+        this.idElevador = idElevador;
+        this.dataInicio = dataInicio;
+        this.idMecanico = idMecanico;
+        this.statusOS = statusOS;
+        this.pecasUtilizadas = pecasUtilizadas;
+        this.servicosRealizados = servicosRealizados;
+    }
+    
+    
 
     public OrdemDeServico() {
         OrdemDeServico.contadorOS += 1;
         this.idOS = contadorOS;
-        this.pecasUtilizadas = new ArrayList<>();
+        this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
+    }
+    
+    public void adicionarPeca(int idPeca, int quantidade) {
+        int qtdAtual = pecasUtilizadas.getOrDefault(idPeca, 0);
+        pecasUtilizadas.put(idPeca, qtdAtual + quantidade);
+    }
+    
+    public void removerPeca(int idPeca, int quantidade) {
+        int qtdAtual = pecasUtilizadas.getOrDefault(idPeca, 0);
+        if(quantidade > qtdAtual){
+            throw new RuntimeException("Quantidade a ser removida maior que aquantidade utilizada");
+        } else{
+           pecasUtilizadas.put(idPeca, qtdAtual - quantidade); 
+        }
+    }
+
+    @Override
+    public void adicionarObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removerObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notificarObserver() {
+        for(Observer o: observers){
+            try{
+                o.atualizar(ultimaAtualizacao);
+            } catch (Exception e){
+                System.err.println("Falha ao notificar observadores");
+            }
+        }
+    }
+    
+    public StatusOS getStatusOS() {
+        return statusOS;
+    }
+
+    public void setStatusOS(StatusOS statusOS) {
+        this.statusOS = statusOS;
+        this.ultimaAtualizacao = "A OS #" + idOS + " (" + descricao + ") mudou para: " + statusOS;
+        notificarObserver();
     }
 
     public int getIdOS() {
         return idOS;
     }
 
+    //acho que devemos tirar esse
     public void setIdOS(int idOS) {
         this.idOS = idOS;
     }
@@ -115,12 +180,30 @@ public class OrdemDeServico {
         return servicosRealizados;
     }
 
-    public List<Peca> getPecasUtilizadas() {
+    public Map<Integer, Integer> getPecasUtilizadas() {
         return pecasUtilizadas;
+    }
+
+    
+
+    public List<Observer> getObservers() {
+        return observers;
+    }
+
+    public void setObservers(List<Observer> observers) {
+        this.observers = observers;
+    }
+
+    public String getUltimaAtualizacao() {
+        return ultimaAtualizacao;
+    }
+
+    public void setUltimaAtualizacao(String ultimaAtualizacao) {
+        this.ultimaAtualizacao = ultimaAtualizacao;
     }
     
     //verificar se vamos deixar o set
-    public void setPecasUtilizadas(List<Peca> pecasUtilizadas) {
+    public void setPecasUtilizadas(Map<Integer, Integer> pecasUtilizadas) {
         this.pecasUtilizadas = pecasUtilizadas;
     }
 

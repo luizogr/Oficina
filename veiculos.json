@@ -1,0 +1,18 @@
+{
+  "placasPorVeiculos" : {
+    "XYZ9876" : {
+      "modelo" : "Ford Fiesta",
+      "placa" : "XYZ9876",
+      "ano" : 2017
+    },
+    "ABC1234" : {
+      "modelo" : "Fiat Uno",
+      "placa" : "ABC1234",
+      "ano" : 2010
+    }
+  },
+  "placasPorCliente" : {
+    "XYZ9876" : 1,
+    "ABC1234" : 1
+  }
+}

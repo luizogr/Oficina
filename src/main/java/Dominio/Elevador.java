@@ -13,6 +13,11 @@ public class Elevador {
     private String tipo;
     private boolean ocupado;
     
+    /**
+     * Construtor de elevador
+     * @param id
+     * @param tipo 
+     */
     public Elevador(int id, String tipo) {
         this.id = id;
         this.tipo = tipo;

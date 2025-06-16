@@ -8,7 +8,7 @@ package Dominio;
  *
  * @author luizp
  */
-public class Funcionario {
+public class Funcionario{
     private static int contadorId = 0;
     private int idFuncionario;
     private String nome;
@@ -43,6 +43,7 @@ public class Funcionario {
      * @param salario 
      */
     public Funcionario(int idFuncionario, String nome, Cargo cargo, String login, String senha, double salario) {
+        this.contadorId += 1;
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.cargo = cargo;
@@ -50,20 +51,32 @@ public class Funcionario {
         this.senha = senha;
         this.salario = salario;
     }
+
+    public Funcionario(String nome, String login, String senha) {
+        this.contadorId += 1;
+        this.idFuncionario = idFuncionario;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+    
+    
     
     /**
      * Metodo para validar os dados do funcionario
      * @param login
      * @param senha
-     * @return Rtorna true se senha e login forem iguais ao do funcionario
+     * @return Retorna true se senha e login forem iguais ao do funcionario
      */
-    public boolean validaDados(String login, String senha){
-        if (this.login == login && this.senha == senha){
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public boolean validaDados(String login, String senha){
+//        if (this.login == login && this.senha == senha){
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+    
+    //public abstract void atualizar(String mensagem);
 
     public String getNome() {
         return nome;

@@ -27,14 +27,32 @@ public class Estoque {
         this.pecasPorId = new HashMap<>();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public boolean contemPeca(int id){
         return estoqueQuantidades.containsKey(id);
     }
     
+    public boolean quantidadeSuficiente(int id, int quantidade){
+        return quantidade<=estoqueQuantidades.get(id);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Peca buscarPecaPorId(int id){
         return pecasPorId.get(id);
     }
     
+    /**
+     * Metodo para carregar os arquivos do .json
+     * @return 
+     */
     public static Estoque carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);

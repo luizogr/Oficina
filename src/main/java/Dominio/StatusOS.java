@@ -8,9 +8,9 @@ package Dominio;
  *
  * @author luizp
  */
-public enum Cargo {
-    Funcionario,
-    Mecanico,
-    Gerente,
-    Recepcionista
+public enum StatusOS {
+    RECEBIDO,
+    EM_MANUTENCAO,
+    PRONTO_PARA_ENTREGA,
+    ENTREGUE
 }

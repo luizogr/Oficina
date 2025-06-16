@@ -8,7 +8,7 @@ package Dominio;
  *
  * @author luizp
  */
-public class Gerente extends Mecanico{
+public class Gerente extends Funcionario implements Observer{
     /**
      * Construtor da classe gerente
      * @param nome
@@ -16,8 +16,18 @@ public class Gerente extends Mecanico{
      * @param login
      * @param senha 
      */
-    public Gerente(String nome, Cargo cargo, String login, String senha){
+    public Gerente(String nome, String login, String senha){
         super(nome, Cargo.Gerente, login, senha);
-        setCargo(Cargo.Gerente);
-    }                           
+    }  
+
+    
+
+    @Override
+    public void atualizar(String mensagem) {
+        System.out.println("--- Alerta para o Gerente " + getNome() + " ---");
+        System.out.println(">> Evento: " + mensagem);
+        System.out.println("----------------------------------------------\n");
+    }
+    
+    
 }
