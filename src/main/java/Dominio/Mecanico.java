@@ -5,7 +5,9 @@
 package Dominio;
 
 /**
- *
+ * Representa um funcionário com o cargo de Mecânico. Esta classe herda de
+ * Funcionario e implementa a interface Observer para poder ser notificada sobre
+ * mudanças
  * @author luizp
  */
 public class Mecanico extends Funcionario implements Observer{
@@ -59,6 +61,6 @@ public class Mecanico extends Funcionario implements Observer{
 
     @Override
     public String toString() {
-        return "Mecanico{" + "especialidade=" + especialidade + '}';
+        return super.toString() + " | Especialidade: " + especialidade;
     }
 }

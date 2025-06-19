@@ -5,11 +5,17 @@
 package Dominio;
 
 /**
- *
+ * Representa um funcionário com o cargo de Recepcionista.
  * @author luizp
  */
 public class Recepcionista extends Funcionario implements Observer{
 
+    /**
+     * Construtor da classe Recepcionista
+     * @param nome
+     * @param login
+     * @param senha 
+     */
     public Recepcionista(String nome, String login, String senha) {
         super(nome, Cargo.Recepcionista, login, senha);
     }
@@ -28,5 +34,8 @@ public class Recepcionista extends Funcionario implements Observer{
         
     }
     
-    
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

@@ -24,6 +24,7 @@ public class Veiculo {
         this.placa = placa;
         this.ano = ano;
         Cliente.incrementaContadorDeVeiculos();
+        Cliente.contadorDeVeiculos += 1;
     }
     
     /**

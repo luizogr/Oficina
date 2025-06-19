@@ -12,17 +12,26 @@ public class Peca {
     private static int contadorPeca = 0;
     private int idPeca;
     private String nome;
-    private double preco;
+    private double precoVenda;
     //private int quantide; // Tirar quantidade, pois está na lista
     
+    /**
+     * Construtor padrão
+     */
     public Peca(){
     }
 
+    /**
+     * Construtor para criar uma nova peça.
+     * Atribui um ID único e incrementa o contador global de peças.
+     * @param nome
+     * @param preco 
+     */
     public Peca(String nome, double preco) {
         this.contadorPeca += 1;
         this.idPeca = this.contadorPeca;
         this.nome = nome;
-        this.preco = preco;
+        this.precoVenda = preco;
         //this.quantide = quantide;
     }
 
@@ -35,11 +44,11 @@ public class Peca {
     }
 
     public double getPreco() {
-        return preco;
+        return precoVenda;
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        this.precoVenda = preco;
     }
 
 //    public int getQuantide() {
@@ -58,8 +67,16 @@ public class Peca {
         return idPeca;
     }
 
+    public static void setContadorPeca(int contadorPeca) {
+        Peca.contadorPeca = contadorPeca;
+    }
+
+    public void setIdPeca(int idPeca) {
+        this.idPeca = idPeca;
+    }
+
     @Override
     public String toString() {
-        return "Peca{" + "nome=" + nome + ", preco=" + preco + ", quantide=" + '}';
+        return "Peca{" + "nome=" + nome + ", preco=" + precoVenda + ", quantide=" + '}';
     }
 }

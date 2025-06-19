@@ -7,11 +7,14 @@ package Dominio;
 import java.util.ArrayList;
 
 /**
- *
+ * Representa um cliente da oficina mecânica.
+ * Esta classe armazena os dados pessoais do cliente e gerencia um contador estático
+ * para o número total de clientes.
  * @author Hudson
  */
 public class Cliente {
-    private static int contadorDeVeiculos = 0;
+    protected static int contadorDeVeiculos = 0;
+    private static int contadorDeVeiculosPrivate = 0;
     private static int contadorClientes = 0;
     private int idCliente;
     private String nome;
@@ -20,8 +23,17 @@ public class Cliente {
     private String email;
     private long cpf;
     
+    /**
+     * Construtor para criar um novo cliente. Atribui um ID único e incrementa o
+     * contador de clientes.
+     * @param nome
+     * @param endereco
+     * @param telefone
+     * @param email
+     * @param cpf 
+     */
     public Cliente(String nome, String endereco, String telefone, String email, int cpf) {
-        this.contadorClientes += 1;
+        Cliente.contadorClientes += 1;
         this.idCliente = this.contadorClientes;
         this.nome = nome;
         this.endereco = endereco;
@@ -30,6 +42,10 @@ public class Cliente {
         this.cpf = cpf;
     }
     
+    /**
+     * Método de classe para obter a contagem de clientes instanciados.
+     * @return 
+     */
     public static String quantidadeDeInstanciasCliente(){
         return "A quantidade de clientes instânciados no sistema é: " + contadorClientes;
     }
@@ -91,11 +107,15 @@ public class Cliente {
     }
 
     public static void incrementaContadorDeVeiculos(){
-        contadorDeVeiculos += 1;
+        contadorDeVeiculosPrivate += 1;
     }
     
     public static int getContadorDeVeiculos(){
-        return contadorDeVeiculos;
+        return contadorDeVeiculosPrivate;
+    }
+
+    public static void setContadorDeVeiculosPrivate(int contadorDeVeiculosPrivate) {
+        Cliente.contadorDeVeiculosPrivate = contadorDeVeiculosPrivate;
     }
 
     @Override

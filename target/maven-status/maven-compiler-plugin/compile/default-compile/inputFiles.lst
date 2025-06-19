@@ -2,10 +2,14 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\com\mycompany\of
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Agendamento.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cargo.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cliente.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorId.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorNome.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Elevador.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Estoque.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Fornecedor.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Funcionario.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Gerente.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\LotePeca.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Mecanico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Observer.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\OrdemDeServico.java

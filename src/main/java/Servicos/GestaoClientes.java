@@ -27,6 +27,10 @@ public class GestaoClientes {
         this.clientes = new ArrayList<>();
     }
     
+    /**
+     * Carrega a lista de clientes e o estado dos contadores a partir de um arquivo JSON.
+     * @return 
+     */
     public static GestaoClientes carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
@@ -39,6 +43,9 @@ public class GestaoClientes {
         return new GestaoClientes();
     }
 
+    /**
+     * Salva a lista de clientes e o estado dos contadores em um arquivo JSON.
+     */
     private void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -48,7 +55,7 @@ public class GestaoClientes {
     }
     
     /**
-     * Adiciona clinte a ArrayList
+     * Adiciona clinte a ArrayList e salva no arquivo
      * @param cliente 
      */
     public void adicionaCliente(Cliente cliente){
@@ -166,7 +173,7 @@ public class GestaoClientes {
     }
 
     /**
-     * retorna os clientes no ArrayList
+     * retorna os clientes do ArrayList
      * @return 
      */
     public ArrayList<Cliente> getClientes() {

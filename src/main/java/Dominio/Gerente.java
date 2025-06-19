@@ -20,8 +20,6 @@ public class Gerente extends Funcionario implements Observer{
         super(nome, Cargo.Gerente, login, senha);
     }  
 
-    
-
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Gerente " + getNome() + " ---");
@@ -29,5 +27,8 @@ public class Gerente extends Funcionario implements Observer{
         System.out.println("----------------------------------------------\n");
     }
     
-    
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

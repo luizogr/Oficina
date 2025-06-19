@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Representa um funcionário genérico da oficina.
  * @author luizp
  */
 public class Funcionario{

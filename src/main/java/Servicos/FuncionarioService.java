@@ -6,6 +6,9 @@ package Servicos;
 
 import Dominio.Cargo;
 import Dominio.Funcionario;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +17,8 @@ import java.util.ArrayList;
  */
 public class FuncionarioService {
     private ArrayList<Funcionario> funcionarios;
+    private static final String CAMINHO_ARQUIVO = "funcionarios.json";
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     /**
      * Cria uma ArrayList dos funcionarios
@@ -22,12 +27,36 @@ public class FuncionarioService {
         this.funcionarios = new ArrayList<>();
     }
     
+    public static FuncionarioService carregarDoArquivo() {
+        try {
+            File arquivo = new File(CAMINHO_ARQUIVO);
+            if (arquivo.exists() && arquivo.length() > 0) {
+                return mapper.readValue(arquivo, FuncionarioService.class);
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar dados dos funcionários: " + e.getMessage());
+        }
+        return new FuncionarioService();
+    }
+    
+    private void salvarNoArquivo() {
+        try {
+            mapper.writeValue(new File(CAMINHO_ARQUIVO), this);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar dados dos funcionários: " + e.getMessage());
+        }
+    }
+    
     /**
      * 
      * @param funcionario 
      */
     public void adicionarFuncionario(Funcionario funcionario){
-        funcionarios.add(funcionario);
+        if(buscaFuncionario(funcionario.getIdFuncionario()) == null) {
+            funcionarios.add(funcionario);
+        } else {
+            System.err.println("Erro: Já existe um funcionário com o ID " + funcionario.getIdFuncionario());
+        }
     }
     
     /**
@@ -143,7 +172,6 @@ public class FuncionarioService {
         return funcionarios;
     }
     
-    //Talvez tirar não sei se é util
     public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }

@@ -8,6 +8,8 @@ import Dominio.Estoque;
 import Dominio.OrdemDeServico;
 import Dominio.Peca;
 import Dominio.Servicos;
+import Dominio.StatusOS;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class GestaoDeOrdemDeServico {
     public ArrayList<OrdemDeServico> buscarOSPorCliente(int idCliente){
         ArrayList<OrdemDeServico> veiculosCliente = new ArrayList<>();
         for(Map.Entry<Integer, Integer> entry : idOSPorIdCliente.entrySet()){
-            if(entry.getValue() == idCliente){
+            if(entry.getValue().equals(idCliente)){
                 OrdemDeServico ordemDeServico = idPorOS.get(entry.getKey());
                 if(ordemDeServico != null){
                     veiculosCliente.add(ordemDeServico);
@@ -87,7 +89,8 @@ public class GestaoDeOrdemDeServico {
         } else if(estoque.quantidadeSuficiente(idPeca, quantidade)){
             oS.removerPeca(idPeca, quantidade);
             Peca peca = estoque.buscarPecaPorId(idPeca);
-            estoque.adicionarPeca(peca, quantidade);
+            int idFornecedorDevolucao = 0;
+            estoque.adicionarLote(peca, quantidade, idFornecedorDevolucao, peca.getPreco());
             return true;
         }
         return false;
@@ -101,5 +104,64 @@ public class GestaoDeOrdemDeServico {
             os.getServicosRealizados().add(servico);
             return true;
         }
+    }
+    
+    public boolean removerServico(int idOS, Servicos servico) {
+        OrdemDeServico os = buscarOSPorId(idOS);
+        if (os == null) {
+            throw new RuntimeException("OS não encontrada");
+        } else if(os.getStatusOS() != StatusOS.PRONTO_PARA_ENTREGA || os.getStatusOS() != StatusOS.ENTREGUE){
+            return os.getServicosRealizados().remove(servico);
+        }
+        return false;
+    }
+    
+    public boolean editarDescricao(int id, String descricao){
+        OrdemDeServico o = buscarOSPorId(id);
+        if(o != null){
+            o.setDescricao(descricao);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean editarElevador(int id, int idElevador){
+        OrdemDeServico o = buscarOSPorId(id);
+        if(o != null){
+            o.setIdElevador(idElevador);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean alterarMecanico(int id, int idMecanico){
+        OrdemDeServico o = buscarOSPorId(id);
+        if(o != null){
+            o.setIdMecanico(idMecanico);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean alterarStatus(int id, StatusOS novoStatus){
+        OrdemDeServico o = buscarOSPorId(id);
+        if(o != null && novoStatus != o.getStatusOS()){
+            o.setStatusOS(novoStatus);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean alterarDataDeTermino(int id, LocalDateTime dataTermino){
+        OrdemDeServico o = buscarOSPorId(id);
+        if(o != null){
+            if (dataTermino.isBefore(o.getDataInicio())) {
+                throw new IllegalArgumentException("Data de término não pode ser antes do início.");
+            }else {
+                o.setDataTermino(dataTermino);
+                return true;
+            }
+        }
+        return false;
     }
 }
