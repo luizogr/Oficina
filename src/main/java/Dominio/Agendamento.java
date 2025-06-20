@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * @author luizp
  */
 public class Agendamento {
+    private static int contadorId = 0;
+    private int idAgendamento;
     private int idVeiculo;
     private int idCliente;
     private String descricao;
@@ -22,6 +24,8 @@ public class Agendamento {
     private double preco;
 
     public Agendamento(int idVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data, double preco) {
+        Agendamento.contadorId += 1;
+        this.idAgendamento = contadorId;
         this.idVeiculo = idVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
@@ -33,6 +37,8 @@ public class Agendamento {
     }
 
     public Agendamento(int idVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data) {
+        Agendamento.contadorId += 1;
+        this.idAgendamento = contadorId;
         this.idVeiculo = idVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
@@ -45,6 +51,16 @@ public class Agendamento {
     public boolean conflita(Agendamento agendamento2){
         return this.data.equals(agendamento2.getData()) && this.idElevador == agendamento2.getIdElevador();
     }
+
+    public int getIdAgendamento() {
+        return idAgendamento;
+    }
+
+    public void setIdAgendamento(int idAgendamento) {
+        this.idAgendamento = idAgendamento;
+    }
+    
+    
 
     public int getIdVeiculo() {
         return idVeiculo;

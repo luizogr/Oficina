@@ -9,5 +9,26 @@ package Dominio;
  * @author luizp
  */
 public enum Servicos {
+    TROCA_DE_OLEO("Troca de óleo", 150.0),
+    ALINHAMENTO("Alinhamento do veiculo", 100.0),
+    BALANCEAMENTO("Balanceamento das Rodas", 80.0),
+    ARREFECIMENTO("Revisão Sistema de Arrefecimento", 120.0),
+    FREIOS("Revisão dos Freios", 200.0),
+    SUSPENSÃO("Revisão da suspensão", 250.0);
     
+    private String descricao;
+    private double preco;
+    
+    Servicos(String descricao, double preco){
+        this.descricao = descricao;
+        this.preco = preco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
 }

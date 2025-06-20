@@ -1,12 +1,7 @@
 {
-  "estoqueQuantidades" : {
-    "2" : 7
-  },
-  "pecasPorId" : {
-    "2" : {
-      "idPeca" : 2,
-      "nome" : "Pastilha de freio",
-      "preco" : 100.9
-    }
-  }
-}
+  "lotesPorPeca" : {
+    "1" : [ {
+      "idFornecedor" : 1,
+      "quantidade" : 7,
+      "precoCusto" : 108.0,
+      "dataCompra"

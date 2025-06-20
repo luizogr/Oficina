@@ -21,6 +21,9 @@ import Servicos.GestaoClientes;
 import Servicos.GestaoDeVeiculos;
 import java.util.ArrayList;
 import static Dominio.Cargo.Recepcionista;
+import Dominio.Fornecedor;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -206,68 +209,111 @@ public class Oficina {
        
 
 
-        Gerente gerente = new Gerente("Sérgio", "sergio.g", "123");
-        Mecanico mecanico = new Mecanico("Roberto", "roberto.m", "456", "Motor");
+//        Gerente gerente = new Gerente("Sérgio", "sergio.g", "123");
+//        Mecanico mecanico = new Mecanico("Roberto", "roberto.m", "456", "Motor");
+//
+//        //Criando a Ordem de Serviço
+//        OrdemDeServico os = new OrdemDeServico();
+//        os.setDescricao("Revisão completa do motor");
+//        
+//        //Registrando o Gerente e o Mecânico como observadores
+//        System.out.println("Registrando Gerente e Mecânico como observadores desta OS");
+//        os.adicionarObserver(gerente);
+//        os.adicionarObserver(mecanico);
+//        
+//        System.out.println("\n======================================================\n");
+//
+//        // Ambos, Gerente e Mecânico, serão notificados
+//        System.out.println("Trocando o status da OS");
+//        os.setStatusOS(StatusOS.EM_MANUTENCAO);
+//        
+//        // Finalizando o serviço
+//        os.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
+//        
+//        System.out.println("\n======================================================\n");
+//        
+//        //Criado classe Recepcionista e instânciado um objeto
+//        Recepcionista recepcionista1 = new Recepcionista("João", "joão", "789");
+//        
+//        //Criado outro mecânico
+//        Mecanico mecanico2 = new Mecanico("Maria", "maria", "321", "Suspensão");
+//        
+//        //Novas Ordens de serviço
+//        OrdemDeServico os2 = new OrdemDeServico();
+//        os2.setDescricao("Alinhamento");
+//        OrdemDeServico os3 = new OrdemDeServico();
+//        os3.setDescricao("Revisão da suspensão");
+//        
+//        //Adicionado observadores para OS2
+//        System.out.println("Registrando Gerente, Mecânico e Recepcionista como observadores da OS2");
+//        os2.adicionarObserver(gerente);
+//        os2.adicionarObserver(mecanico);
+//        os2.adicionarObserver(recepcionista1);
+//        
+//        //Adicionado observadores para OS3
+//        System.out.println("Registrando Mecânico2 e Recepcionista como observadores da OS3");
+//        os3.adicionarObserver(mecanico2);
+//        os3.adicionarObserver(recepcionista1);
+//        
+//        System.out.println("\n======================================================\n");
+//        
+//        //Trocas de Status
+//        System.out.println("Trocando o status da OS2");
+//        os2.setStatusOS(StatusOS.RECEBIDO);
+//        System.out.println("\n======================================================\n");
+//        System.out.println("Trocando o status da OS3");
+//        os3.setStatusOS(StatusOS.EM_MANUTENCAO);
+//        System.out.println("\n======================================================\n");
+//        
+//        System.out.println("Trocando o status da OS2 e OS3");
+//        os2.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
+//        os3.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
+//        
+//        System.out.println("\n======================================================\n");
+        
+        
+        // Criar o estoque e fornecedores simulados
+        Estoque estoque = new Estoque();
+        Fornecedor fornecedor1 = new Fornecedor("AutoParts");
+        Fornecedor fornecedor2 = new Fornecedor("MegaPeças");
 
-        //Criando a Ordem de Serviço
-        OrdemDeServico os = new OrdemDeServico();
-        os.setDescricao("Revisão completa do motor");
-        
-        //Registrando o Gerente e o Mecânico como observadores
-        System.out.println("Registrando Gerente e Mecânico como observadores desta OS");
-        os.adicionarObserver(gerente);
-        os.adicionarObserver(mecanico);
-        
-        System.out.println("\n======================================================\n");
+        // Criar o mapa de fornecedores
+        Map<Integer, Fornecedor> fornecedores = new HashMap<>();
+        fornecedores.put(fornecedor1.getIdFornecedor(), fornecedor1);
+        fornecedores.put(fornecedor2.getIdFornecedor(), fornecedor2);
 
-        // Ambos, Gerente e Mecânico, serão notificados
-        System.out.println("Trocando o status da OS");
-        os.setStatusOS(StatusOS.EM_MANUTENCAO);
-        
-        // Finalizando o serviço
-        os.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
-        
-        System.out.println("\n======================================================\n");
-        
-        //Criado classe Recepcionista e instânciado um objeto
-        Recepcionista recepcionista1 = new Recepcionista("João", "joão", "789");
-        
-        //Criado outro mecânico
-        Mecanico mecanico2 = new Mecanico("Maria", "maria", "321", "Suspensão");
-        
-        //Novas Ordens de serviço
-        OrdemDeServico os2 = new OrdemDeServico();
-        os2.setDescricao("Alinhamento");
-        OrdemDeServico os3 = new OrdemDeServico();
-        os3.setDescricao("Revisão da suspensão");
-        
-        //Adicionado observadores para OS2
-        System.out.println("Registrando Gerente, Mecânico e Recepcionista como observadores da OS2");
-        os2.adicionarObserver(gerente);
-        os2.adicionarObserver(mecanico);
-        os2.adicionarObserver(recepcionista1);
-        
-        //Adicionado observadores para OS3
-        System.out.println("Registrando Mecânico2 e Recepcionista como observadores da OS3");
-        os3.adicionarObserver(mecanico2);
-        os3.adicionarObserver(recepcionista1);
-        
-        System.out.println("\n======================================================\n");
-        
-        //Trocas de Status
-        System.out.println("Trocando o status da OS2");
-        os2.setStatusOS(StatusOS.RECEBIDO);
-        System.out.println("\n======================================================\n");
-        System.out.println("Trocando o status da OS3");
-        os3.setStatusOS(StatusOS.EM_MANUTENCAO);
-        System.out.println("\n======================================================\n");
-        
-        System.out.println("Trocando o status da OS2 e OS3");
-        os2.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
-        os3.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
-        
-        System.out.println("\n======================================================\n");
-        
+        // Criar peças
+        Peca peca1 = new Peca("Pastilha de Freio", 120.0); // preço de venda
+        Peca peca2 = new Peca("Filtro de Óleo", 50.0);
+
+        // Adicionar lotes
+        System.out.println("== ADICIONANDO LOTE DE PASTILHA ==");
+        estoque.adicionarLote(peca1, 10, fornecedor1.getIdFornecedor(), 90.0); // custo
+
+        System.out.println("== ADICIONANDO OUTRO LOTE DE PASTILHA ==");
+        estoque.adicionarLote(peca1, 5, fornecedor2.getIdFornecedor(), 85.0);
+
+        System.out.println("== ADICIONANDO LOTE DE FILTRO ==");
+        estoque.adicionarLote(peca2, 20, fornecedor1.getIdFornecedor(), 30.0);
+
+        // Editar nome e preço
+        estoque.editarNome(peca2.getIdPeca(), "Filtro de Óleo Premium");
+        estoque.editarPreco(peca1.getIdPeca(), 130.0);
+
+        // Remover peças
+        System.out.println("== REMOVENDO 3 UNIDADES DE PASTILHA ==");
+        estoque.removerPeca(peca1.getIdPeca(), 3);
+
+        System.out.println("== REMOVENDO 20 UNIDADES DE FILTRO (TOTAL) ==");
+        estoque.removerPeca(peca2.getIdPeca(), 20);
+
+        // Verificar quantidade
+        boolean temEstoque = estoque.quantidadeSuficiente(peca1.getIdPeca(), 5);
+        System.out.println("Ainda tem 5 pastilhas no estoque? " + temEstoque);
+
+        // Impressão final
+        System.out.println("\n== ESTOQUE ATUAL ==");
+        estoque.imprimirEstoque(fornecedores);
         
 
     }

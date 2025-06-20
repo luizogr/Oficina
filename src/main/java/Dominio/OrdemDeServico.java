@@ -46,6 +46,8 @@ public class OrdemDeServico implements Subject{
     }
 
     public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
+        OrdemDeServico.contadorOS += 1;
+        this.idOS = contadorOS;
         this.idVeiculo = idVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
@@ -56,8 +58,18 @@ public class OrdemDeServico implements Subject{
         this.pecasUtilizadas = pecasUtilizadas;
         this.servicosRealizados = servicosRealizados;
     }
-    
-    
+
+    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS) {
+        OrdemDeServico.contadorOS += 1;
+        this.idOS = contadorOS;
+        this.idVeiculo = idVeiculo;
+        this.idCliente = idCliente;
+        this.descricao = descricao;
+        this.idElevador = idElevador;
+        this.dataInicio = dataInicio;
+        this.idMecanico = idMecanico;
+        this.statusOS = statusOS;
+    }
 
     public OrdemDeServico() {
         OrdemDeServico.contadorOS += 1;
