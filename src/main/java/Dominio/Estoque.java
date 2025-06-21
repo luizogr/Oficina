@@ -75,7 +75,7 @@ public class Estoque {
         return new Estoque();
     }
 
-    private void salvarNoArquivo() {
+    public void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
         } catch (IOException e) {

@@ -22,6 +22,9 @@ import Servicos.GestaoDeVeiculos;
 import java.util.ArrayList;
 import static Dominio.Cargo.Recepcionista;
 import Dominio.Fornecedor;
+import Dominio.Servicos;
+import Servicos.GestaoDeOrdemDeServico;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -273,47 +276,87 @@ public class Oficina {
         
         
         // Criar o estoque e fornecedores simulados
-        Estoque estoque = new Estoque();
-        Fornecedor fornecedor1 = new Fornecedor("AutoParts");
-        Fornecedor fornecedor2 = new Fornecedor("MegaPeças");
+//        Estoque estoque = new Estoque();
+//        Fornecedor fornecedor1 = new Fornecedor("AutoParts");
+//        Fornecedor fornecedor2 = new Fornecedor("MegaPeças");
+//
+//        // Criar o mapa de fornecedores
+//        Map<Integer, Fornecedor> fornecedores = new HashMap<>();
+//        fornecedores.put(fornecedor1.getIdFornecedor(), fornecedor1);
+//        fornecedores.put(fornecedor2.getIdFornecedor(), fornecedor2);
+//
+//        // Criar peças
+//        Peca peca1 = new Peca("Pastilha de Freio", 120.0); // preço de venda
+//        Peca peca2 = new Peca("Filtro de Óleo", 50.0);
+//
+//        // Adicionar lotes
+//        System.out.println("== ADICIONANDO LOTE DE PASTILHA ==");
+//        estoque.adicionarLote(peca1, 10, fornecedor1.getIdFornecedor(), 90.0); // custo
+//
+//        System.out.println("== ADICIONANDO OUTRO LOTE DE PASTILHA ==");
+//        estoque.adicionarLote(peca1, 5, fornecedor2.getIdFornecedor(), 85.0);
+//
+//        System.out.println("== ADICIONANDO LOTE DE FILTRO ==");
+//        estoque.adicionarLote(peca2, 20, fornecedor1.getIdFornecedor(), 30.0);
+//
+//        // Editar nome e preço
+//        estoque.editarNome(peca2.getIdPeca(), "Filtro de Óleo Premium");
+//        estoque.editarPreco(peca1.getIdPeca(), 130.0);
+//
+//        // Remover peças
+//        System.out.println("== REMOVENDO 3 UNIDADES DE PASTILHA ==");
+//        estoque.removerPeca(peca1.getIdPeca(), 3);
+//
+//        System.out.println("== REMOVENDO 20 UNIDADES DE FILTRO (TOTAL) ==");
+//        estoque.removerPeca(peca2.getIdPeca(), 20);
+//
+//        // Verificar quantidade
+//        boolean temEstoque = estoque.quantidadeSuficiente(peca1.getIdPeca(), 5);
+//        System.out.println("Ainda tem 5 pastilhas no estoque? " + temEstoque);
+//
+//        // Impressão final
+//        System.out.println("\n== ESTOQUE ATUAL ==");
+//        estoque.imprimirEstoque(fornecedores);
+        
+        // 1. Carregar estoque
+        Estoque estoque = Estoque.carregarDoArquivo();
 
-        // Criar o mapa de fornecedores
-        Map<Integer, Fornecedor> fornecedores = new HashMap<>();
-        fornecedores.put(fornecedor1.getIdFornecedor(), fornecedor1);
-        fornecedores.put(fornecedor2.getIdFornecedor(), fornecedor2);
+        // 2. Criar instância de gestão de OS
+        GestaoDeOrdemDeServico gestao = GestaoDeOrdemDeServico.carregarDoArquivo(estoque);
 
-        // Criar peças
-        Peca peca1 = new Peca("Pastilha de Freio", 120.0); // preço de venda
-        Peca peca2 = new Peca("Filtro de Óleo", 50.0);
+        // 3. Criar peça e adicionar ao estoque
+        Peca p1 = new Peca("Filtro de óleo", 100.0); // preco = preço de venda
+        estoque.adicionarLote(p1, 5, 10, 50.0); // preço unitário de custo = 50 → preço de custo final = 60
 
-        // Adicionar lotes
-        System.out.println("== ADICIONANDO LOTE DE PASTILHA ==");
-        estoque.adicionarLote(peca1, 10, fornecedor1.getIdFornecedor(), 90.0); // custo
+        // 4. Criar serviço
+        Servicos servico1 = Servicos.TROCA_DE_OLEO;
 
-        System.out.println("== ADICIONANDO OUTRO LOTE DE PASTILHA ==");
-        estoque.adicionarLote(peca1, 5, fornecedor2.getIdFornecedor(), 85.0);
+        // 5. Criar ordem de serviço
+        OrdemDeServico os = new OrdemDeServico(
+            1, // idVeiculo
+            1, // idCliente
+            "Revisão geral",
+            1, // idElevador
+            LocalDateTime.now(),
+            1001, // idMecânico
+            StatusOS.EM_MANUTENCAO
+        );
 
-        System.out.println("== ADICIONANDO LOTE DE FILTRO ==");
-        estoque.adicionarLote(peca2, 20, fornecedor1.getIdFornecedor(), 30.0);
+        // 6. Adicionar serviços e peças
+        os.adicionarPeca(p1.getIdPeca(), 2);
+        os.getServicosRealizados().add(servico1);
 
-        // Editar nome e preço
-        estoque.editarNome(peca2.getIdPeca(), "Filtro de Óleo Premium");
-        estoque.editarPreco(peca1.getIdPeca(), 130.0);
+        // 7. Adicionar OS à gestão
+        gestao.adicionarOS(os);
 
-        // Remover peças
-        System.out.println("== REMOVENDO 3 UNIDADES DE PASTILHA ==");
-        estoque.removerPeca(peca1.getIdPeca(), 3);
+        // 8. Gerar nota fiscal (vai imprimir)
+        gestao.gerarNotaFiscal(os.getIdOS());
 
-        System.out.println("== REMOVENDO 20 UNIDADES DE FILTRO (TOTAL) ==");
-        estoque.removerPeca(peca2.getIdPeca(), 20);
+        // 9. Salvar os dados em JSON
+        estoque.salvarNoArquivo();
+        gestao.salvarNoArquivo();
 
-        // Verificar quantidade
-        boolean temEstoque = estoque.quantidadeSuficiente(peca1.getIdPeca(), 5);
-        System.out.println("Ainda tem 5 pastilhas no estoque? " + temEstoque);
-
-        // Impressão final
-        System.out.println("\n== ESTOQUE ATUAL ==");
-        estoque.imprimirEstoque(fornecedores);
+        System.out.println("\n✅ Teste concluído e arquivos JSON salvos.");
         
 
     }

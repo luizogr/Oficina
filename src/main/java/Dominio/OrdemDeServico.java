@@ -55,8 +55,8 @@ public class OrdemDeServico implements Subject{
         this.dataInicio = dataInicio;
         this.idMecanico = idMecanico;
         this.statusOS = statusOS;
-        this.pecasUtilizadas = pecasUtilizadas;
-        this.servicosRealizados = servicosRealizados;
+        this.pecasUtilizadas = new HashMap<>();
+        this.servicosRealizados = new ArrayList<>();
     }
 
     public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS) {
@@ -69,6 +69,8 @@ public class OrdemDeServico implements Subject{
         this.dataInicio = dataInicio;
         this.idMecanico = idMecanico;
         this.statusOS = statusOS;
+        this.pecasUtilizadas = new HashMap<>();
+        this.servicosRealizados = new ArrayList<>();
     }
 
     public OrdemDeServico() {

@@ -1,7 +1,7 @@
 {
   "lotesPorPeca" : {
     "1" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 7,
-      "precoCusto" : 108.0,
+      "idFornecedor" : 10,
+      "quantidade" : 5,
+      "precoCusto" : 60.0,
       "dataCompra"

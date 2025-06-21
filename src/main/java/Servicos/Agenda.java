@@ -10,6 +10,8 @@ import Dominio.OrdemDeServico;
 import Dominio.StatusAgendamento;
 import Dominio.StatusOS;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +31,27 @@ public class Agenda {
     public Agenda() {
         this.dataElevadorAgendamento = new HashMap<>();
         this.todosAgendamentos = new ArrayList<>();
+    }
+    
+    public void salvarNoArquivo() {
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
+            System.out.println("Agenda salva com sucesso.");
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar a agenda: " + e.getMessage());
+        }
+    }
+    
+    public static Agenda carregarDoArquivo() {
+        try {
+            File arquivo = new File(CAMINHO_ARQUIVO);
+            if (arquivo.exists()) {
+                return mapper.readValue(arquivo, Agenda.class);
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar a agenda: " + e.getMessage());
+        }
+        return new Agenda(); // se falhar, retorna uma agenda vazia
     }
     
     public boolean existeAgendamento(LocalDateTime data, int idElevador){
@@ -51,6 +74,7 @@ public class Agenda {
         if(existeAgendamento(data, idElevador) == false){
             dataElevadorAgendamento.computeIfAbsent(data, k -> new HashMap<>()).put(idElevador, a);
             todosAgendamentos.add(a);
+            salvarNoArquivo();
             return true;
         }
         return false;
@@ -72,6 +96,7 @@ public class Agenda {
                 }
             }
             todosAgendamentos.remove(a);
+            salvarNoArquivo();
             return true;
         } else {
             return false;

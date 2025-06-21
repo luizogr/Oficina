@@ -5,10 +5,15 @@
 package Servicos;
 
 import Dominio.Estoque;
+import Dominio.NotaFiscal;
 import Dominio.OrdemDeServico;
 import Dominio.Peca;
 import Dominio.Servicos;
 import Dominio.StatusOS;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +24,35 @@ import java.util.Map;
  * @author luizp
  */
 public class GestaoDeOrdemDeServico {
+    @JsonIgnore
     private Estoque estoque;
     private Map<Integer, OrdemDeServico> idPorOS;
     private Map<Integer, Integer> idOSPorIdCliente;
+    private static final String CAMINHO_ARQUIVO = "gestao_os.json";
+    private static final ObjectMapper mapper = new ObjectMapper();
+    
+    public void salvarNoArquivo() {
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
+            System.out.println("Gestão de OS salva com sucesso.");
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar Gestão de OS: " + e.getMessage());
+        }
+    }
+    
+    public static GestaoDeOrdemDeServico carregarDoArquivo(Estoque estoque) {
+        try {
+            File arquivo = new File(CAMINHO_ARQUIVO);
+            if (arquivo.exists()) {
+                GestaoDeOrdemDeServico gestao = mapper.readValue(arquivo, GestaoDeOrdemDeServico.class);
+                gestao.estoque = estoque; // reatribui a referência do estoque
+                return gestao;
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar Gestão de OS: " + e.getMessage());
+        }
+        return new GestaoDeOrdemDeServico(estoque);
+    }
 
     public GestaoDeOrdemDeServico(Estoque estoque) {
         this.estoque = estoque;
@@ -35,6 +66,45 @@ public class GestaoDeOrdemDeServico {
     
     public OrdemDeServico buscarOSPorId(int id){
         return idPorOS.get(id);
+    }
+    
+    public NotaFiscal gerarNotaFiscal(int idOS){
+        OrdemDeServico os = buscarOSPorId(idOS);
+        if(os == null){
+            System.err.println("OS não encontrada");
+            return null;
+        }
+        
+        NotaFiscal nota = new NotaFiscal(os.getIdOS(), os.getIdCliente());
+        for(Servicos servico : os.getServicosRealizados()){
+            nota.adicionarItem(servico.getDescricao(), 1, servico.getPreco());
+        }
+        
+        for(Map.Entry<Integer, Integer> entry : os.getPecasUtilizadas().entrySet()){
+            int idPeca = entry.getKey();
+            int quantidade = entry.getValue();
+            Peca peca = estoque.buscarPecaPorId(idPeca);
+            nota.adicionarItem(peca.getNome(), quantidade, peca.getPreco());
+        }
+        nota.imprimir(); // questão 8 olhar se é isso
+        return nota;
+    }
+    
+    public OrdemDeServico vendaDireta(int idCliente, Map<Integer, Integer> pecasVenda){
+        OrdemDeServico os = new OrdemDeServico();
+        editarDescricao(os.getIdOS(), "Venda Direta");
+        os.setIdCliente(idCliente);
+        os.setDataInicio(LocalDateTime.now());
+        
+        for(Map.Entry<Integer, Integer> entry : pecasVenda.entrySet()){
+            adicionarPeca(os.getIdOS(), entry.getKey(), entry.getValue());
+        }
+        
+        alterarDataDeTermino(os.getIdOS(), LocalDateTime.now());
+        alterarStatus(os.getIdOS(), StatusOS.ENTREGUE);
+        adicionarOS(os);
+        
+        return os;
     }
     
     public void adicionarOS(OrdemDeServico ordemDeServico){

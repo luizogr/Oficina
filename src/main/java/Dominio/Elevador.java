@@ -10,7 +10,7 @@ package Dominio;
  */
 public class Elevador {
     private int id;
-    private String tipo;
+    private TipoElevador tipo;
     private boolean ocupado;
     
     /**
@@ -18,9 +18,10 @@ public class Elevador {
      * @param id
      * @param tipo 
      */
-    public Elevador(int id, String tipo) {
+    public Elevador(int id, TipoElevador tipo) {
         this.id = id;
         this.tipo = tipo;
+        this.ocupado = false;
     }
 
     public int getId() {
@@ -31,11 +32,11 @@ public class Elevador {
         this.id = id;
     }
 
-    public String getTipo() {
+    public TipoElevador getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoElevador tipo) {
         this.tipo = tipo;
     }
 
