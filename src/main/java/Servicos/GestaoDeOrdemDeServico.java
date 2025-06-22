@@ -5,15 +5,18 @@
 package Servicos;
 
 import Dominio.Estoque;
+import Dominio.Lancamento;
 import Dominio.NotaFiscal;
 import Dominio.OrdemDeServico;
 import Dominio.Peca;
 import Dominio.Servicos;
 import Dominio.StatusOS;
+import Dominio.TipoLancamento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,10 +29,19 @@ import java.util.Map;
 public class GestaoDeOrdemDeServico {
     @JsonIgnore
     private Estoque estoque;
+    @JsonIgnore
+    private GestaoFinanceira gestaoFinanceira;
     private Map<Integer, OrdemDeServico> idPorOS;
     private Map<Integer, Integer> idOSPorIdCliente;
     private static final String CAMINHO_ARQUIVO = "gestao_os.json";
     private static final ObjectMapper mapper = new ObjectMapper();
+
+    public GestaoDeOrdemDeServico(Estoque estoque, GestaoFinanceira gestaoFinanceira) {
+        this.gestaoFinanceira = gestaoFinanceira;
+        this.estoque = estoque;
+        this.idPorOS = new HashMap<>();
+        this.idOSPorIdCliente = new HashMap<>();
+    }
     
     public void salvarNoArquivo() {
         try {
@@ -40,24 +52,24 @@ public class GestaoDeOrdemDeServico {
         }
     }
     
-    public static GestaoDeOrdemDeServico carregarDoArquivo(Estoque estoque) {
+    public static GestaoDeOrdemDeServico carregarDoArquivo(Estoque estoque, GestaoFinanceira gestaoFinanceira) {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
-            if (arquivo.exists()) {
-                GestaoDeOrdemDeServico gestao = mapper.readValue(arquivo, GestaoDeOrdemDeServico.class);
-                gestao.estoque = estoque; // reatribui a referência do estoque
+            if (arquivo.exists() && arquivo.length() > 0) {
+                ObjectMapper localMapper = new ObjectMapper();
+                GestaoDeOrdemDeServico gestao = localMapper.readValue(arquivo, GestaoDeOrdemDeServico.class);
+                
+                // Reconecta as dependências externas que não foram salvas
+                gestao.estoque = estoque;
+                gestao.gestaoFinanceira = gestaoFinanceira;
+                
                 return gestao;
             }
         } catch (IOException e) {
             System.err.println("Erro ao carregar Gestão de OS: " + e.getMessage());
         }
-        return new GestaoDeOrdemDeServico(estoque);
-    }
-
-    public GestaoDeOrdemDeServico(Estoque estoque) {
-        this.estoque = estoque;
-        this.idPorOS = new HashMap<>();
-        this.idOSPorIdCliente = new HashMap<>();
+        // Se falhar, retorna uma nova instância com as dependências corretas
+        return new GestaoDeOrdemDeServico(estoque, gestaoFinanceira);
     }
     
     public boolean ordemDeServicoExiste(int id){
@@ -87,6 +99,8 @@ public class GestaoDeOrdemDeServico {
             nota.adicionarItem(peca.getNome(), quantidade, peca.getPreco());
         }
         nota.imprimir(); // questão 8 olhar se é isso
+        Lancamento receita = new Lancamento("Receita da OS #" + idOS, nota.getTotal(), LocalDate.now(), TipoLancamento.Receita, null);
+        gestaoFinanceira.adicionarLancamento(receita);
         return nota;
     }
     

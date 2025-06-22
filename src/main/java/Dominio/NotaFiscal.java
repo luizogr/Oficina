@@ -47,6 +47,46 @@ public class NotaFiscal {
         System.out.printf("VALOR TOTAL: R$ %.2f\n", total);
         System.out.println("=====================================================\n");
     }
+
+    public int getIdOS() {
+        return idOS;
+    }
+
+    public void setIdOS(int idOS) {
+        this.idOS = idOS;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public ArrayList<ItemNota> getItens() {
+        return itens;
+    }
+
+    public void setItens(ArrayList<ItemNota> itens) {
+        this.itens = itens;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
     
     
 }

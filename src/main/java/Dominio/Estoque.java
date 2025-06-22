@@ -5,6 +5,7 @@
 package Dominio;
 
 import Dominio.Peca;
+import Servicos.GestaoFinanceira;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
@@ -22,14 +23,22 @@ import java.util.Map;
 public class Estoque {
     private Map<Integer, List<LotePeca>> lotesPorPeca;
     private Map<Integer, Peca> pecasPorId;
+    private GestaoFinanceira gestaoFinanceira;
     private static final String CAMINHO_ARQUIVO = "estoque.json";
     private static final ObjectMapper mapper = new ObjectMapper();
+
+    public Estoque(GestaoFinanceira gestaoFinanceira) {
+        this.gestaoFinanceira = gestaoFinanceira;
+        this.lotesPorPeca = new HashMap<>();
+        this.pecasPorId = new HashMap<>();
+    }
 
     public Estoque() {
         this.lotesPorPeca = new HashMap<>();
         this.pecasPorId = new HashMap<>();
-        
     }
+    
+    
     
     /**
      * 
@@ -111,6 +120,11 @@ public class Estoque {
 
         lotesPorPeca.get(peca.getIdPeca()).add(lote);
         salvarNoArquivo();
+        
+        double valorTotalCompra = quantidade * precoCusto;
+        Lancamento despesa = new Lancamento(
+            "Compra de " + quantidade + "x " + peca.getNome(), valorTotalCompra, lote.getDataCompra(), TipoLancamento.Despesa, CategoriaDespesa.Compra_De_Peca);
+        gestaoFinanceira.adicionarLancamento(despesa);
 
         System.out.println("Lote adicionado com sucesso!");
         return true;
