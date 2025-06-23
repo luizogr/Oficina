@@ -117,9 +117,11 @@ public class GestaoDeOrdemDeServico {
         alterarDataDeTermino(os.getIdOS(), LocalDateTime.now());
         alterarStatus(os.getIdOS(), StatusOS.ENTREGUE);
         adicionarOS(os);
-        
+        gerarNotaFiscal(os.getIdOS());
         return os;
     }
+    
+    // Criar um metodo para finalizar venda
     
     public void adicionarOS(OrdemDeServico ordemDeServico){
         int id = ordemDeServico.getIdOS();

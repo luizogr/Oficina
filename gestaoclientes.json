@@ -1,11 +1,31 @@
 {
   "clientes" : [ {
+    "idCliente" : 1,
+    "nome" : "João Silva",
+    "endereco" : "Rua das Flores, 123",
+    "telefone" : "3199998888",
+    "email" : "joao@email.com",
+    "cpf" : 111222333
+  }, {
     "idCliente" : 2,
-    "nome" : "Maria",
-    "endereco" : "Rua B",
-    "telefone" : "987654321",
+    "nome" : "Maria Souza",
+    "endereco" : "Av. Principal, 456",
+    "telefone" : "3198887777",
     "email" : "maria@email.com",
-    "cpf" : 987654321,
-    "contadorClientes" : 2
+    "cpf" : 444555666
+  }, {
+    "idCliente" : 3,
+    "nome" : "João Silva",
+    "endereco" : "Rua A",
+    "telefone" : "111",
+    "email" : "joao@email.com",
+    "cpf" : 111222333
+  }, {
+    "idCliente" : 4,
+    "nome" : "Maria Souza",
+    "endereco" : "Rua B",
+    "telefone" : "222",
+    "email" : "maria@email.com",
+    "cpf" : 444555666
   } ]
 }

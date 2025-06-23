@@ -10,6 +10,9 @@ package Dominio;
  */
 public class Recepcionista extends Funcionario implements Observer{
 
+    public Recepcionista() {
+    }
+
     /**
      * Construtor da classe Recepcionista
      * @param nome

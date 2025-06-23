@@ -2,6 +2,7 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\com\mycompany\of
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\com\mycompany\oficina\Oficina.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Agendamento.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cargo.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\CategoriaDespesa.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cliente.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorId.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorNome.java
@@ -11,6 +12,7 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Forneced
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Funcionario.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Gerente.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ItemNota.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Lancamento.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\LotePeca.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Mecanico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\NotaFiscal.java
@@ -18,16 +20,17 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Observer
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\OrdemDeServico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Peca.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Recepcionista.java
-C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Servico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Servicos.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\StatusAgendamento.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\StatusOS.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Subject.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\TipoElevador.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\TipoLancamento.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Veiculo.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\Agenda.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\FuncionarioService.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoClientes.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoDeOrdemDeServico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoDeVeiculos.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoFinanceira.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\Oficina.java

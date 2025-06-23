@@ -1,0 +1,19 @@
+[ "Servicos.FuncionarioService", {
+  "funcionarios" : [ "java.util.ArrayList", [ [ "Dominio.Mecanico", {
+    "idFuncionario" : 2,
+    "nome" : "Bruno Silva",
+    "cargo" : "Mecanico",
+    "login" : "bruno.m",
+    "senha" : "mecanico789",
+    "salario" : 0.0,
+    "especialidade" : "Motor"
+  } ], [ "Dominio.Mecanico", {
+    "idFuncionario" : 3,
+    "nome" : "Carlos",
+    "cargo" : "Mecanico",
+    "login" : "carlos.m",
+    "senha" : "senha123",
+    "salario" : 0.0,
+    "especialidade" : "Elétrica"
+  } ] ] ]
+} ]

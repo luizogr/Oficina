@@ -12,6 +12,9 @@ package Dominio;
  */
 public class Mecanico extends Funcionario implements Observer{
     private String especialidade;
+
+    public Mecanico() {
+    }
     
     /**
      * Construtor da classe mecanico

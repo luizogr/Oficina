@@ -8,6 +8,7 @@ import Dominio.Cliente;
 import Dominio.Estoque;
 import Dominio.Veiculo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,21 +23,30 @@ public class GestaoDeVeiculos {
     private Map<String, Veiculo> placasPorVeiculos;
     private Map<String, Integer> placasPorCliente;
     private static final String CAMINHO_ARQUIVO = "veiculos.json";
+    private static final String CAMINHO_CONTADOR = "contador_veiculos.json";
     private static final ObjectMapper mapper = new ObjectMapper();
     
     public GestaoDeVeiculos(){
         this.placasPorVeiculos = new HashMap<>();
         this.placasPorCliente = new HashMap<>();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
     public static GestaoDeVeiculos carregarDoArquivo() {
+        File arquivoVeiculos = new File(CAMINHO_ARQUIVO);
+        File arquivoContador = new File(CAMINHO_CONTADOR);
         try {
-            File arquivo = new File(CAMINHO_ARQUIVO);
-            if (arquivo.exists()) {
-                return mapper.readValue(arquivo, GestaoDeVeiculos.class);
+            // Carrega o contador primeiro, se ele existir
+            if (arquivoContador.exists() && arquivoContador.length() > 0) {
+                int contagemVeiculos = mapper.readValue(arquivoContador, Integer.class);
+                Cliente.setContadorDeVeiculosPrivate(contagemVeiculos);
+            }
+            // Em seguida, carrega a gestão de veículos
+            if (arquivoVeiculos.exists() && arquivoVeiculos.length() > 0) {
+                return mapper.readValue(arquivoVeiculos, GestaoDeVeiculos.class);
             }
         } catch (IOException e) {
-            System.out.println("Erro ao carregar estoque: " + e.getMessage());
+            System.err.println("Erro ao carregar gestão de veículos: " + e.getMessage());
         }
         return new GestaoDeVeiculos();
     }
@@ -47,6 +57,10 @@ public class GestaoDeVeiculos {
         } catch (IOException e) {
             System.out.println("Erro ao salvar estoque: " + e.getMessage());
         }
+    }
+    
+    public void salvar(){
+        salvarNoArquivo();
     }
         
     public boolean veiculoExiste(String placa){
@@ -105,10 +119,6 @@ public class GestaoDeVeiculos {
             return true;
         }
         return false;
-    }
-    
-    public void salvar(){
-        salvarNoArquivo();
     }
 
     public Map<String, Veiculo> getPlacasPorVeiculos() {

@@ -24,6 +24,7 @@ import static Dominio.Cargo.Recepcionista;
 import Dominio.Fornecedor;
 import Dominio.Servicos;
 import Servicos.GestaoDeOrdemDeServico;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -318,46 +319,160 @@ public class Oficina {
 //        System.out.println("\n== ESTOQUE ATUAL ==");
 //        estoque.imprimirEstoque(fornecedores);
         
-        // 1. Carregar estoque
-        Estoque estoque = Estoque.carregarDoArquivo();
-
-        // 2. Criar instância de gestão de OS
-        GestaoDeOrdemDeServico gestao = GestaoDeOrdemDeServico.carregarDoArquivo(estoque);
-
-        // 3. Criar peça e adicionar ao estoque
-        Peca p1 = new Peca("Filtro de óleo", 100.0); // preco = preço de venda
-        estoque.adicionarLote(p1, 5, 10, 50.0); // preço unitário de custo = 50 → preço de custo final = 60
-
-        // 4. Criar serviço
-        Servicos servico1 = Servicos.TROCA_DE_OLEO;
-
-        // 5. Criar ordem de serviço
-        OrdemDeServico os = new OrdemDeServico(
-            1, // idVeiculo
-            1, // idCliente
-            "Revisão geral",
-            1, // idElevador
-            LocalDateTime.now(),
-            1001, // idMecânico
-            StatusOS.EM_MANUTENCAO
-        );
-
-        // 6. Adicionar serviços e peças
-        os.adicionarPeca(p1.getIdPeca(), 2);
-        os.getServicosRealizados().add(servico1);
-
-        // 7. Adicionar OS à gestão
-        gestao.adicionarOS(os);
-
-        // 8. Gerar nota fiscal (vai imprimir)
-        gestao.gerarNotaFiscal(os.getIdOS());
-
-        // 9. Salvar os dados em JSON
-        estoque.salvarNoArquivo();
-        gestao.salvarNoArquivo();
-
-        System.out.println("\n✅ Teste concluído e arquivos JSON salvos.");
+//        // 1. Carregar estoque
+//        Estoque estoque = Estoque.carregarDoArquivo();
+//
+//        // 2. Criar instância de gestão de OS
+//        GestaoDeOrdemDeServico gestao = GestaoDeOrdemDeServico.carregarDoArquivo(estoque);
+//
+//        // 3. Criar peça e adicionar ao estoque
+//        Peca p1 = new Peca("Filtro de óleo", 100.0); // preco = preço de venda
+//        estoque.adicionarLote(p1, 5, 10, 50.0); // preço unitário de custo = 50 → preço de custo final = 60
+//
+//        // 4. Criar serviço
+//        Servicos servico1 = Servicos.TROCA_DE_OLEO;
+//
+//        // 5. Criar ordem de serviço
+//        OrdemDeServico os = new OrdemDeServico(
+//            1, // idVeiculo
+//            1, // idCliente
+//            "Revisão geral",
+//            1, // idElevador
+//            LocalDateTime.now(),
+//            1001, // idMecânico
+//            StatusOS.EM_MANUTENCAO
+//        );
+//
+//        // 6. Adicionar serviços e peças
+//        os.adicionarPeca(p1.getIdPeca(), 2);
+//        os.getServicosRealizados().add(servico1);
+//
+//        // 7. Adicionar OS à gestão
+//        gestao.adicionarOS(os);
+//
+//        // 8. Gerar nota fiscal (vai imprimir)
+//        gestao.gerarNotaFiscal(os.getIdOS());
+//
+//        // 9. Salvar os dados em JSON
+//        estoque.salvarNoArquivo();
+//        gestao.salvarNoArquivo();
+//
+//        System.out.println("\n✅ Teste concluído e arquivos JSON salvos.");
         
 
+//-------------------------------------------------------------------------------------------------
+//Teste 1 Funcionarios
+
+//        // Apaga o arquivo antigo para garantir um teste limpo
+//        new File("funcionarios.json").delete();
+//        
+//        System.out.println("### INICIANDO TESTE DO MÓDULO DE FUNCIONÁRIOS ###");
+//        
+//        // Carrega a gestão, que estará vazia na primeira vez
+//        FuncionarioService gestao = FuncionarioService.carregarDoArquivo();
+//        
+//        System.out.println("\n--- ESTADO INICIAL ---");
+//        gestao.imprimirFuncionarios(gestao);
+//
+//        System.out.println("\n--- 1. ADICIONANDO NOVOS FUNCIONÁRIOS (EM MEMÓRIA) ---");
+//        Gerente gerente = new Gerente("Ana", "ana.g", "gerente456"); // ID esperado: 1
+//        Mecanico mecanico = new Mecanico("Bruno", "bruno.m", "mecanico789", "Motor"); // ID esperado: 2
+//        
+//        gestao.adicionarFuncionario(gerente);
+//        gestao.adicionarFuncionario(mecanico);
+//        
+//        System.out.println("\n--- ESTADO APÓS ADIÇÃO (ANTES DE SALVAR) ---");
+//        gestao.imprimirFuncionarios(gestao);
+//        
+//        // Salva manualmente
+//        System.out.println("\n--- 2. SALVANDO DADOS NO ARQUIVO... ---");
+//        gestao.salvarFuncionarios();
+//        
+//        System.out.println("\n--- 3. EDITANDO E REMOVENDO (EM MEMÓRIA) ---");
+//        gestao.editarNome(2, "Bruno Silva");
+//        gestao.removerFuncionario(1);
+//
+//        System.out.println("\n--- ESTADO APÓS ALTERAÇÕES (ANTES DE SALVAR) ---");
+//        gestao.imprimirFuncionarios(gestao);
+//
+//        // Salva as novas alterações
+//        System.out.println("\n--- 4. SALVANDO ALTERAÇÕES NO ARQUIVO... ---");
+//        gestao.salvarFuncionarios();
+//
+//        System.out.println("\n--- 5. TESTANDO PERSISTÊNCIA ---");
+//        System.out.println("Carregando os dados do arquivo para uma NOVA instância de gestão...");
+//        FuncionarioService novaGestao = FuncionarioService.carregarDoArquivo();
+//        
+//        System.out.println("\n--- DADOS CARREGADOS DO ARQUIVO ---");
+//        novaGestao.imprimirFuncionarios(novaGestao);
+//        
+//        System.out.println("\n--- 6. VERIFICANDO CONTADOR DE ID ---");
+//        System.out.println("Próximo ID a ser gerado: " + (Funcionario.getContadorId() + 1));
+//        Funcionario novoMecanico = new Mecanico("Carlos", "carlos.m", "senha123", "Elétrica"); // ID esperado: 3
+//        novaGestao.adicionarFuncionario(novoMecanico);
+//        novaGestao.salvarFuncionarios();
+//        
+//        System.out.println("\n--- ESTADO FINAL APÓS ADICIONAR NOVO FUNCIONÁRIO ---");
+//        novaGestao.imprimirFuncionarios(novaGestao);
+        
+        
+        
+ //-------------------------------------------------------------------------------------------------
+//Teste 2 Cliente e veiculo       
+        // Limpa os arquivos antigos para garantir um teste limpo do zero
+        new File("clientes.json").delete();
+        new File("veiculos.json").delete();
+        new File("contador_veiculos.json").delete();
+
+        System.out.println("### INICIANDO TESTE INTEGRADO DOS MÓDULOS CLIENTE E VEÍCULO ###");
+
+        // --- 1. Inicialização ---
+        GestaoClientes gestaoClientes = GestaoClientes.carregarDoArquivo();
+        GestaoDeVeiculos gestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+
+        // --- 2. Cadastrando Clientes ---
+        System.out.println("\n--- CADASTRANDO CLIENTES ---");
+        Cliente cliente1 = new Cliente("João Silva", "Rua A", "111", "joao@email.com", 111222333L);
+        Cliente cliente2 = new Cliente("Maria Souza", "Rua B", "222", "maria@email.com", 444555666L);
+        gestaoClientes.adicionaCliente(cliente1);
+        gestaoClientes.adicionaCliente(cliente2);
+        gestaoClientes.salvar(); // Salvamento manual
+
+        // --- 3. Cadastrando Veículos ---
+        System.out.println("\n--- CADASTRANDO VEÍCULOS ---");
+        Veiculo veiculo1 = new Veiculo("Fiat Uno", "ABC-1234", 2010);
+        Veiculo veiculo2 = new Veiculo("Chevrolet Onix", "DEF-5678", 2018);
+        Veiculo veiculo3 = new Veiculo("Ford Ka", "GHI-9012", 2020);
+        
+        gestaoVeiculos.adicionarVeiculo(cliente1.getIdCliente(), veiculo1);
+        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo2);
+        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo3);
+        gestaoVeiculos.salvar(); // Salvamento manual
+
+        // --- 4. Verificando Contadores (Questão 2) ---
+        System.out.println("\n--- VERIFICANDO CONTADORES ---");
+        System.out.println("Total de clientes cadastrados: " + Cliente.getContadorClientes());
+        System.out.println("Total de veículos (private): " + Cliente.getContadorDeVeiculos());
+        System.out.println("Total de veículos (protected): " + Cliente.getContadorDeVeiculosProtected());
+        
+        // --- 5. Testando a busca ---
+        System.out.println("\n--- BUSCANDO VEÍCULOS DA CLIENTE MARIA (ID: 2) ---");
+        ArrayList<Veiculo> veiculosDaMaria = gestaoVeiculos.buscarVeiculosDoProprietario(2);
+        veiculosDaMaria.forEach(System.out::println);
+        
+        // --- 6. Testando persistência ---
+        System.out.println("\n--- TESTANDO PERSISTÊNCIA ---");
+        System.out.println("Carregando dados em NOVAS instâncias de gestão...");
+        GestaoClientes novaGestaoClientes = GestaoClientes.carregarDoArquivo();
+        GestaoDeVeiculos novaGestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+
+        System.out.println("\nClientes carregados:");
+        novaGestaoClientes.getClientes().forEach(System.out::println);
+        
+        System.out.println("\nVeículos da Cliente Maria (ID: 2) carregados:");
+        novaGestaoVeiculos.buscarVeiculosDoProprietario(2).forEach(System.out::println);
+        
+        System.out.println("\nContador de veículos (private) após recarregar: " + Cliente.getContadorDeVeiculos());
+        System.out.println("Contador de veículos (protected) após recarregar: " + Cliente.getContadorDeVeiculosProtected());
     }
 }

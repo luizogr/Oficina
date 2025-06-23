@@ -7,6 +7,7 @@ package Servicos;
 import Dominio.Cargo;
 import Dominio.Funcionario;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,13 +26,31 @@ public class FuncionarioService {
      */
     public FuncionarioService() {
         this.funcionarios = new ArrayList<>();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
     
     public static FuncionarioService carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
             if (arquivo.exists() && arquivo.length() > 0) {
-                return mapper.readValue(arquivo, FuncionarioService.class);
+                ObjectMapper localMapper = new ObjectMapper();
+                // CORREÇÃO: Adicionado para garantir que as subclasses sejam lidas
+                localMapper.activateDefaultTyping(localMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
+                FuncionarioService gestao = localMapper.readValue(arquivo, FuncionarioService.class);
+                
+                // CORREÇÃO: Ajusta o contador de ID estático para evitar duplicatas
+                int maxId = 0;
+                if (gestao.getFuncionarios() != null) {
+                    for(Funcionario f : gestao.getFuncionarios()){
+                        if(f.getIdFuncionario() > maxId){
+                            maxId = f.getIdFuncionario();
+                        }
+                    }
+                }
+                Funcionario.setContadorId(maxId);
+                
+                return gestao;
             }
         } catch (IOException e) {
             System.err.println("Erro ao carregar dados dos funcionários: " + e.getMessage());
@@ -45,6 +64,10 @@ public class FuncionarioService {
         } catch (IOException e) {
             System.err.println("Erro ao salvar dados dos funcionários: " + e.getMessage());
         }
+    }
+    
+    public void salvarFuncionarios(){
+        salvarNoArquivo();
     }
     
     /**
@@ -162,6 +185,18 @@ public class FuncionarioService {
             return true;
         }
         return false;
+    }
+    
+    public static void imprimirFuncionarios(FuncionarioService service) {
+        ArrayList<Funcionario> funcionarios = service.getFuncionarios();
+
+        if (funcionarios.isEmpty()) {
+            System.out.println("Nenhum funcionário cadastrado.");
+        } else {
+            for (Funcionario f : funcionarios) {
+                System.out.println(f);
+            }
+        }
     }
 
     /**

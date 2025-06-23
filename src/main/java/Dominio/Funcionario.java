@@ -4,11 +4,13 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+
 /**
  * Representa um funcionário genérico da oficina.
  * @author luizp
  */
-public class Funcionario{
+public class Funcionario implements Serializable{
     private static int contadorId = 0;
     private int idFuncionario;
     private String nome;
@@ -16,6 +18,12 @@ public class Funcionario{
     private String login;
     private String senha;
     private double salario;
+
+    /**
+     * Contrutor padrao para o Jackson
+     */
+    public Funcionario() {
+    }
     
     /**
      * Construtor da classe funcionario
@@ -43,7 +51,7 @@ public class Funcionario{
      * @param salario 
      */
     public Funcionario(int idFuncionario, String nome, Cargo cargo, String login, String senha, double salario) {
-        this.contadorId += 1;
+        Funcionario.contadorId += 1;
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.cargo = cargo;
@@ -53,7 +61,7 @@ public class Funcionario{
     }
 
     public Funcionario(String nome, String login, String senha) {
-        this.contadorId += 1;
+        Funcionario.contadorId += 1;
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.login = login;

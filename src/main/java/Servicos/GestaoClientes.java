@@ -7,6 +7,7 @@ package Servicos;
 import Dominio.Cliente;
 import Dominio.Estoque;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class GestaoClientes {
      */
     public GestaoClientes() {
         this.clientes = new ArrayList<>();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
     /**
@@ -34,11 +36,20 @@ public class GestaoClientes {
     public static GestaoClientes carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
-            if (arquivo.exists()) {
-                return mapper.readValue(arquivo, GestaoClientes.class);
+            if (arquivo.exists() && arquivo.length() > 0) {
+                GestaoClientes gestao = mapper.readValue(arquivo, GestaoClientes.class);
+                // CORREÇÃO: Ajusta o contador de IDs após carregar para evitar duplicatas
+                int maxId = 0;
+                for (Cliente c : gestao.getClientes()) {
+                    if (c.getIdCliente() > maxId) {
+                        maxId = c.getIdCliente();
+                    }
+                }
+                Cliente.setContadorClientes(maxId);
+                return gestao;
             }
         } catch (IOException e) {
-            System.out.println("Erro ao carregar gestaoClientes: " + e.getMessage());
+            System.err.println("Erro ao carregar gestão de clientes: " + e.getMessage());
         }
         return new GestaoClientes();
     }
@@ -52,6 +63,10 @@ public class GestaoClientes {
         } catch (IOException e) {
             System.out.println("Erro ao salvar gestaoClientes: " + e.getMessage());
         }
+    }
+    
+    public void salvar(){
+        salvarNoArquivo();
     }
     
     /**

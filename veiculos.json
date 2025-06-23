@@ -1,18 +1,24 @@
 {
   "placasPorVeiculos" : {
-    "XYZ9876" : {
-      "modelo" : "Ford Fiesta",
-      "placa" : "XYZ9876",
-      "ano" : 2017
-    },
-    "ABC1234" : {
+    "ABC-1234" : {
       "modelo" : "Fiat Uno",
-      "placa" : "ABC1234",
+      "placa" : "ABC-1234",
       "ano" : 2010
+    },
+    "GHI-9012" : {
+      "modelo" : "Ford Ka",
+      "placa" : "GHI-9012",
+      "ano" : 2020
+    },
+    "DEF-5678" : {
+      "modelo" : "Chevrolet Onix",
+      "placa" : "DEF-5678",
+      "ano" : 2018
     }
   },
   "placasPorCliente" : {
-    "XYZ9876" : 1,
-    "ABC1234" : 1
+    "ABC-1234" : 3,
+    "GHI-9012" : 4,
+    "DEF-5678" : 4
   }
 }

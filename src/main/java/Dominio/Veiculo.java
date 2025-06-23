@@ -4,14 +4,19 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Hudson
  */
-public class Veiculo {
+public class Veiculo implements Serializable{
     private String modelo;
     private String placa;
     private int ano;
+
+    public Veiculo(){
+    }
     
     /**
      * Construtor da Classe Veiculo
@@ -61,6 +66,6 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cliente=" + '}';
+        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + '}';
     }
 }

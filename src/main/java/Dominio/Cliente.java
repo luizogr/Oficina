@@ -4,6 +4,8 @@
  */
 package Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,16 +14,20 @@ import java.util.ArrayList;
  * para o número total de clientes.
  * @author Hudson
  */
-public class Cliente {
+public class Cliente implements Serializable{
+    private static int contadorClientes = 0;
     protected static int contadorDeVeiculos = 0;
     private static int contadorDeVeiculosPrivate = 0;
-    private static int contadorClientes = 0;
+    
     private int idCliente;
     private String nome;
     private String endereco;
     private String telefone;
     private String email;
     private long cpf;
+
+    public Cliente() {
+    }
     
     /**
      * Construtor para criar um novo cliente. Atribui um ID único e incrementa o
@@ -32,7 +38,7 @@ public class Cliente {
      * @param email
      * @param cpf 
      */
-    public Cliente(String nome, String endereco, String telefone, String email, int cpf) {
+    public Cliente(String nome, String endereco, String telefone, String email, long cpf) {
         Cliente.contadorClientes += 1;
         this.idCliente = this.contadorClientes;
         this.nome = nome;
@@ -90,12 +96,14 @@ public class Cliente {
         return cpf;
     }
 
-    public int getContadorClientes() {
+    @JsonIgnore
+    public static int getContadorClientes() {
         return contadorClientes;
     }
 
-    public void setContadorClientes(int contadorClientes) {
-        this.contadorClientes = contadorClientes;
+    @JsonIgnore
+    public static void setContadorClientes(int contadorClientes) {
+        Cliente.contadorClientes = contadorClientes;
     }
 
     public int getIdCliente() {
@@ -116,6 +124,10 @@ public class Cliente {
 
     public static void setContadorDeVeiculosPrivate(int contadorDeVeiculosPrivate) {
         Cliente.contadorDeVeiculosPrivate = contadorDeVeiculosPrivate;
+    }
+    
+    public static int getContadorDeVeiculosProtected() {
+        return contadorDeVeiculos;
     }
 
     @Override

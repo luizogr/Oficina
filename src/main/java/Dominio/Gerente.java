@@ -9,6 +9,10 @@ package Dominio;
  * @author luizp
  */
 public class Gerente extends Funcionario implements Observer{
+
+    public Gerente() {
+    }
+    
     /**
      * Construtor da classe gerente
      * @param nome

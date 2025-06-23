@@ -1,9 +1,10 @@
 Dominio\LotePeca.class
-Dominio\Servico.class
+Servicos\GestaoFinanceira.class
 Servicos\GestaoDeVeiculos.class
 com\mycompany\oficina\Interface.class
 Servicos\Agenda.class
 Dominio\Servicos.class
+Dominio\CategoriaDespesa.class
 Dominio\Agendamento.class
 Servicos\GestaoDeOrdemDeServico.class
 Dominio\Mecanico.class
@@ -19,6 +20,7 @@ Dominio\Funcionario.class
 Dominio\Subject.class
 Dominio\Peca.class
 Dominio\Veiculo.class
+Dominio\TipoLancamento.class
 Dominio\StatusOS.class
 Dominio\ComparaClientePorNome.class
 Dominio\Fornecedor.class
@@ -31,3 +33,4 @@ Dominio\Observer.class
 Dominio\ItemNota.class
 Dominio\OrdemDeServico.class
 Dominio\Cargo.class
+Dominio\Lancamento.class
