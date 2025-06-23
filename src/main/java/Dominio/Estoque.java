@@ -289,4 +289,9 @@ public class Estoque {
     public void setPecasPorId(Map<Integer, Peca> pecasPorId) {
         this.pecasPorId = pecasPorId;
     }
+
+    @Override
+    public String toString() {
+        return "Estoque{" + "lotesPorPeca=" + lotesPorPeca + ", pecasPorId=" + pecasPorId + ", gestaoFinanceira=" + gestaoFinanceira + '}';
+    }
 }

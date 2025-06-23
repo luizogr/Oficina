@@ -87,6 +87,9 @@ public class NotaFiscal {
     public void setTotal(double total) {
         this.total = total;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "NotaFiscal{" + "idOS=" + idOS + ", idCliente=" + idCliente + ", data=" + data + ", itens=" + itens + ", total=" + total + '}';
+    }    
 }

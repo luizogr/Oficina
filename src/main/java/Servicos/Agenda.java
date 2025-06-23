@@ -140,7 +140,4 @@ public class Agenda {
     public String toString() {
         return "Agenda{" + "dataElevadorAgendamento=" + dataElevadorAgendamento + ", todosAgendamentos=" + todosAgendamentos + '}';
     }
-    
-    
-    
 }
