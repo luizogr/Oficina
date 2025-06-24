@@ -66,25 +66,7 @@ public class Funcionario implements Serializable{
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-    }
-    
-    
-    
-    /**
-     * Metodo para validar os dados do funcionario
-     * @param login
-     * @param senha
-     * @return Retorna true se senha e login forem iguais ao do funcionario
-     */
-//    public boolean validaDados(String login, String senha){
-//        if (this.login == login && this.senha == senha){
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-    
-    //public abstract void atualizar(String mensagem);
+    }    
 
     public String getNome() {
         return nome;

@@ -203,4 +203,10 @@ public class GestaoClientes {
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
     }
+
+    @Override
+    public String toString() {
+        return "GestaoClientes{" + "clientes=" + clientes + '}';
+    }
+    
 }

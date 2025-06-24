@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -11,10 +12,10 @@ import java.util.ArrayList;
  *
  * @author luizp
  */
-public class Agendamento {
+public class Agendamento implements Serializable{
     private static int contadorId = 0;
     private int idAgendamento;
-    private int idVeiculo;
+    private String placaVeiculo;
     private int idCliente;
     private String descricao;
     private ArrayList<Servicos> servicosNecessarios;
@@ -23,10 +24,12 @@ public class Agendamento {
     private LocalDateTime data;
     private double preco;
 
-    public Agendamento(int idVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data, double preco) {
+    public Agendamento() {
+    }
+    public Agendamento(String placaVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data, double preco) {
         Agendamento.contadorId += 1;
         this.idAgendamento = contadorId;
-        this.idVeiculo = idVeiculo;
+        this.placaVeiculo = placaVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
         this.servicosNecessarios = servicosNecessarios;
@@ -36,10 +39,10 @@ public class Agendamento {
         this.preco = preco;
     }
 
-    public Agendamento(int idVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data) {
+    public Agendamento(String placaVeiculo, int idCliente, String descricao, ArrayList<Servicos> servicosNecessarios, int idElevador, LocalDateTime data) {
         Agendamento.contadorId += 1;
         this.idAgendamento = contadorId;
-        this.idVeiculo = idVeiculo;
+        this.placaVeiculo = placaVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
         this.servicosNecessarios = servicosNecessarios;
@@ -59,15 +62,17 @@ public class Agendamento {
     public void setIdAgendamento(int idAgendamento) {
         this.idAgendamento = idAgendamento;
     }
-    
-    
 
-    public int getIdVeiculo() {
-        return idVeiculo;
+    public static void setContadorId(int contadorId) {
+        Agendamento.contadorId = contadorId;
     }
 
-    public void setIdVeiculo(int idVeiculo) {
-        this.idVeiculo = idVeiculo;
+    public String getPlacaVeiculo() {
+        return placaVeiculo;
+    }
+
+    public void setPlacaVeiculo(String placaVeiculo) {
+        this.placaVeiculo = placaVeiculo;
     }
 
     public int getIdCliente() {
@@ -128,8 +133,9 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento{" + "idVeiculo=" + idVeiculo + ", idCliente=" + idCliente + ", descricao=" + descricao + ", servicosNecessarios=" + servicosNecessarios + ", idElevador=" + idElevador + ", status=" + status + ", data=" + data + ", preco=" + preco + '}';
+        return "Agendamento | ID: " + idAgendamento + 
+               " | Data: " + data +
+               " | Cliente ID: " + idCliente + 
+               " | Status: " + status;
     }
-    
-    
 }

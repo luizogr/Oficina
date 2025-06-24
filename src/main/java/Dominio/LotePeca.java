@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  * Armazena a quantidade, o custo unitário e o fornecedor para uma compra específica.
  * @author luizp
  */
-public class LotePeca {
+public class LotePeca implements Serializable{
     private int idFornecedor;
     private int quantidade;
     private double precoCusto;

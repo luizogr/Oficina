@@ -4,11 +4,13 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luizp
  */
-public class Fornecedor {
+public class Fornecedor implements Serializable{
     private static int contadorId = 0;
     private int idFornecedor;
     private String nome;

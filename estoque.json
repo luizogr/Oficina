@@ -1,7 +1,28 @@
 {
   "lotesPorPeca" : {
     "1" : [ {
-      "idFornecedor" : 10,
-      "quantidade" : 5,
-      "precoCusto" : 60.0,
-      "dataCompra"
+      "idFornecedor" : 1,
+      "quantidade" : 9,
+      "precoCusto" : 30.0,
+      "dataCompra" : [ 2025, 6, 23 ]
+    } ],
+    "2" : [ {
+      "idFornecedor" : 1,
+      "quantidade" : 16,
+      "precoCusto" : 14.399999999999999,
+      "dataCompra" : [ 2025, 6, 23 ]
+    } ]
+  },
+  "pecasPorId" : {
+    "1" : {
+      "idPeca" : 1,
+      "nome" : "Filtro de Óleo",
+      "preco" : 50.0
+    },
+    "2" : {
+      "idPeca" : 2,
+      "nome" : "Vela de Ignição",
+      "preco" : 25.0
+    }
+  }
+}

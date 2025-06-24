@@ -4,6 +4,8 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Agendame
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cargo.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\CategoriaDespesa.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Cliente.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaAgendamentoPorCliente.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaAgendamentoPorData.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorId.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\ComparaClientePorNome.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Dominio\Elevador.java
@@ -33,4 +35,4 @@ C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoC
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoDeOrdemDeServico.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoDeVeiculos.java
 C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\GestaoFinanceira.java
-C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\Oficina.java
+C:\Users\luizp\Documents\NetBeansProjects\Oficina\src\main\java\Servicos\SistemaOficina.java

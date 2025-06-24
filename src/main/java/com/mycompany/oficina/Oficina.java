@@ -4,6 +4,7 @@
 
 package com.mycompany.oficina;
 
+import Dominio.Agendamento;
 import Dominio.Cargo;
 import Dominio.Cliente;
 import Dominio.Elevador;
@@ -21,11 +22,22 @@ import Servicos.GestaoClientes;
 import Servicos.GestaoDeVeiculos;
 import java.util.ArrayList;
 import static Dominio.Cargo.Recepcionista;
+import Dominio.CategoriaDespesa;
 import Dominio.Fornecedor;
+import Dominio.Lancamento;
+import Dominio.NotaFiscal;
 import Dominio.Servicos;
+import Dominio.StatusAgendamento;
+import Dominio.TipoElevador;
+import Dominio.TipoLancamento;
+import Servicos.Agenda;
 import Servicos.GestaoDeOrdemDeServico;
+import Servicos.GestaoFinanceira;
+import Servicos.SistemaOficina;
 import java.io.File;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -420,59 +432,370 @@ public class Oficina {
  //-------------------------------------------------------------------------------------------------
 //Teste 2 Cliente e veiculo       
         // Limpa os arquivos antigos para garantir um teste limpo do zero
-        new File("clientes.json").delete();
-        new File("veiculos.json").delete();
-        new File("contador_veiculos.json").delete();
+//        new File("clientes.json").delete();
+//        new File("veiculos.json").delete();
+//        new File("contador_veiculos.json").delete();
+//
+//        System.out.println("### INICIANDO TESTE INTEGRADO DOS MÓDULOS CLIENTE E VEÍCULO ###");
+//
+//        // --- 1. Inicialização ---
+//        GestaoClientes gestaoClientes = GestaoClientes.carregarDoArquivo();
+//        GestaoDeVeiculos gestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+//
+//        // --- 2. Cadastrando Clientes ---
+//        System.out.println("\n--- CADASTRANDO CLIENTES ---");
+//        Cliente cliente1 = new Cliente("João Silva", "Rua A", "111", "joao@email.com", 111222333L);
+//        Cliente cliente2 = new Cliente("Maria Souza", "Rua B", "222", "maria@email.com", 444555666L);
+//        gestaoClientes.adicionaCliente(cliente1);
+//        gestaoClientes.adicionaCliente(cliente2);
+//        gestaoClientes.salvar(); // Salvamento manual
+//
+//        // --- 3. Cadastrando Veículos ---
+//        System.out.println("\n--- CADASTRANDO VEÍCULOS ---");
+//        Veiculo veiculo1 = new Veiculo("Fiat Uno", "ABC-1234", 2010);
+//        Veiculo veiculo2 = new Veiculo("Chevrolet Onix", "DEF-5678", 2018);
+//        Veiculo veiculo3 = new Veiculo("Ford Ka", "GHI-9012", 2020);
+//        
+//        gestaoVeiculos.adicionarVeiculo(cliente1.getIdCliente(), veiculo1);
+//        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo2);
+//        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo3);
+//        gestaoVeiculos.salvar(); // Salvamento manual
+//
+//        // --- 4. Verificando Contadores (Questão 2) ---
+//        System.out.println("\n--- VERIFICANDO CONTADORES ---");
+//        System.out.println("Total de clientes cadastrados: " + Cliente.getContadorClientes());
+//        System.out.println("Total de veículos (private): " + Cliente.getContadorDeVeiculos());
+//        System.out.println("Total de veículos (protected): " + Cliente.getContadorDeVeiculosProtected());
+//        
+//        // --- 5. Testando a busca ---
+//        System.out.println("\n--- BUSCANDO VEÍCULOS DA CLIENTE MARIA (ID: 2) ---");
+//        ArrayList<Veiculo> veiculosDaMaria = gestaoVeiculos.buscarVeiculosDoProprietario(2);
+//        veiculosDaMaria.forEach(System.out::println);
+//        
+//        // --- 6. Testando persistência ---
+//        System.out.println("\n--- TESTANDO PERSISTÊNCIA ---");
+//        System.out.println("Carregando dados em NOVAS instâncias de gestão...");
+//        GestaoClientes novaGestaoClientes = GestaoClientes.carregarDoArquivo();
+//        GestaoDeVeiculos novaGestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+//
+//        System.out.println("\nClientes carregados:");
+//        novaGestaoClientes.getClientes().forEach(System.out::println);
+//        
+//        System.out.println("\nVeículos da Cliente Maria (ID: 2) carregados:");
+//        novaGestaoVeiculos.buscarVeiculosDoProprietario(2).forEach(System.out::println);
+//        
+//        System.out.println("\nContador de veículos (private) após recarregar: " + Cliente.getContadorDeVeiculos());
+//        System.out.println("Contador de veículos (protected) após recarregar: " + Cliente.getContadorDeVeiculosProtected());
 
-        System.out.println("### INICIANDO TESTE INTEGRADO DOS MÓDULOS CLIENTE E VEÍCULO ###");
+//-------------------------------------------------------------------------------------------------
+//Teste 3 Estoque 
 
-        // --- 1. Inicialização ---
-        GestaoClientes gestaoClientes = GestaoClientes.carregarDoArquivo();
-        GestaoDeVeiculos gestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
-
-        // --- 2. Cadastrando Clientes ---
-        System.out.println("\n--- CADASTRANDO CLIENTES ---");
-        Cliente cliente1 = new Cliente("João Silva", "Rua A", "111", "joao@email.com", 111222333L);
-        Cliente cliente2 = new Cliente("Maria Souza", "Rua B", "222", "maria@email.com", 444555666L);
-        gestaoClientes.adicionaCliente(cliente1);
-        gestaoClientes.adicionaCliente(cliente2);
-        gestaoClientes.salvar(); // Salvamento manual
-
-        // --- 3. Cadastrando Veículos ---
-        System.out.println("\n--- CADASTRANDO VEÍCULOS ---");
-        Veiculo veiculo1 = new Veiculo("Fiat Uno", "ABC-1234", 2010);
-        Veiculo veiculo2 = new Veiculo("Chevrolet Onix", "DEF-5678", 2018);
-        Veiculo veiculo3 = new Veiculo("Ford Ka", "GHI-9012", 2020);
+//        new File("estoque.json").delete();
+//        new File("financeiro.json").delete();
+//        
+//        System.out.println("### INICIANDO TESTE INTEGRADO DOS MÓDULOS DE ESTOQUE E FINANCEIRO ###");
+//
+//        // --- 1. Inicialização ---
+//        GestaoFinanceira gestaoFinanceira = new GestaoFinanceira();
+//        Estoque estoque = Estoque.carregarDoArquivo(gestaoFinanceira);
+//        
+//        System.out.println("\n--- ESTADO INICIAL ---");
+//        gestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025);
+//
+//        // --- 2. Adicionando Lote de Peças (o salvamento é automático) ---
+//        System.out.println("\n--- ADICIONANDO UM LOTE DE PEÇAS ---");
+//        Peca filtroOleo = new Peca("Filtro de Óleo Bosch", 55.00);
+//        Fornecedor fornecedorA = new Fornecedor("Autopeças Milho Verde");
+//
+//        estoque.adicionarLote(filtroOleo, 10, fornecedorA.getIdFornecedor(), 30.00);
+//        
+//        System.out.println("\n--- VERIFICANDO O BALANÇO FINANCEIRO APÓS A COMPRA ---");
+//        gestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025);
+//        
+//        // --- 3. Testando a Persistência ---
+//        System.out.println("\n--- TESTANDO PERSISTÊNCIA ---");
+//        System.out.println("Carregando dados em NOVAS instâncias de gestão...");
+//        
+//        GestaoFinanceira novaGestaoFinanceira = GestaoFinanceira.carregarDoArquivo();
+//        Estoque novoEstoque = Estoque.carregarDoArquivo(novaGestaoFinanceira);
+//        
+//        System.out.println("\n--- DADOS CARREGADOS DO ARQUIVO ---");
+//        System.out.println("Quantidade de Filtro de Óleo carregada: " + novoEstoque.getQuantidadeTotal(filtroOleo.getIdPeca()));
+//        
+//        System.out.println("\n--- BALANÇO CARREGADO DO ARQUIVO ---");
+//        novaGestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025);
+//        
+//        System.out.println("\nTeste de integração concluído com sucesso.");
+//    
+    
+//-------------------------------------------------------------------------------------------------
+//Teste 4 Agenda
+//        new File("agenda.json").delete();
+//
+//        System.out.println("### INICIANDO TESTE DO MÓDULO DE AGENDAMENTO ###");
+//        Agenda agenda = Agenda.carregarDoArquivo();
+//        
+//        System.out.println("\n--- 1. REALIZANDO AGENDAMENTOS ---");
+//        Agendamento ag1 = new Agendamento(101, 1, "Barulho no motor", new ArrayList<>(), 1, LocalDateTime.of(2025, 7, 10, 9, 0), 200.0);
+//        Agendamento ag2 = new Agendamento(102, 2, "Troca de óleo", new ArrayList<>(), 2, LocalDateTime.of(2025, 7, 10, 9, 0), 150.0);
+//        Agendamento ag3_conflito = new Agendamento(103, 3, "Pneu furado", new ArrayList<>(), 1, LocalDateTime.of(2025, 7, 10, 9, 0), 50.0);
+//
+//        System.out.println("Agendando serviço 1: " + agenda.agendar(ag1));
+//        System.out.println("Agendando serviço 2: " + agenda.agendar(ag2));
+//        System.out.println("Tentando agendar serviço conflitante: " + agenda.agendar(ag3_conflito));
+//        
+//        System.out.println("\n--- AGENDA APÓS AGENDAMENTOS ---");
+//        agenda.imprimirAgenda();
+//        agenda.salvar();
+//
+//        System.out.println("\n--- 2. CANCELANDO UM AGENDAMENTO ---");
+//        agenda.cancelarAgendamento(2); // Cancelando o agendamento de ID 2
+//        System.out.println("\n--- AGENDA APÓS CANCELAMENTO ---");
+//        agenda.imprimirAgenda();
+//        agenda.salvar();
+//        
+//        System.out.println("\n--- 3. INICIANDO UM SERVIÇO ---");
+//        OrdemDeServico os = agenda.IniciarServico(1, 5); // Iniciando o agendamento de ID 1 com o mecânico ID 5
+//        
+//        if (os != null) {
+//            System.out.println("Ordem de Serviço criada com sucesso: " + os);
+//        }
+//        
+//        System.out.println("\n--- AGENDA APÓS INICIAR SERVIÇO ---");
+//        agenda.imprimirAgenda();
+//        agenda.salvar();
+//        
+//        System.out.println("\n--- 4. TESTANDO PERSISTÊNCIA ---");
+//        Agenda novaAgenda = Agenda.carregarDoArquivo();
+//        System.out.println("\n--- AGENDA CARREGADA DO ARQUIVO ---");
+//        novaAgenda.imprimirAgenda();
+//        
+//-------------------------------------------------------------------------------------------------
+//Teste 4 Agenda
         
-        gestaoVeiculos.adicionarVeiculo(cliente1.getIdCliente(), veiculo1);
-        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo2);
-        gestaoVeiculos.adicionarVeiculo(cliente2.getIdCliente(), veiculo3);
-        gestaoVeiculos.salvar(); // Salvamento manual
+//        // Limpando arquivos para um teste limpo
+//        new File("ordens_de_servico.json").delete();
+//        new File("estoque.json").delete();
+//        new File("financeiro.json").delete();
+//        new File("fornecedores.json").delete();
+//        new File("clientes.json").delete();
+//
+//        System.out.println("### INICIANDO TESTE DO MÓDULO DE ORDEM DE SERVIÇO ###");
+//
+//        // 1. Inicializa todos os sistemas de gestão
+//        GestaoClientes gestaoClientes = new GestaoClientes();
+//        GestaoFinanceira gestaoFinanceira = new GestaoFinanceira();
+//        Estoque estoque = new Estoque(gestaoFinanceira);
+//        GestaoDeOrdemDeServico gestaoOS = new GestaoDeOrdemDeServico(estoque, gestaoFinanceira);
+//        
+//        // [CORREÇÃO] Cadastra clientes reais para o teste
+//        System.out.println("\n--- Cadastrando clientes para o teste ---");
+//        Cliente cliente1 = new Cliente("João Teste", "Rua X", "123", "joao@teste.com", 1L); // ID: 1
+//        Cliente cliente2 = new Cliente("Maria Teste", "Rua Y", "456", "maria@teste.com", 2L); // ID: 2
+//        gestaoClientes.adicionaCliente(cliente1);
+//        gestaoClientes.adicionaCliente(cliente2);
+//
+//
+//        // Prepara o estoque com algumas peças
+//        Peca filtroOleo = new Peca("Filtro de Óleo", 50.0);
+//        Peca vela = new Peca("Vela de Ignição", 25.0);
+//        Fornecedor fornecedor = new Fornecedor("Autopeças Central");
+//        
+//        estoque.adicionarLote(filtroOleo, 10, fornecedor.getIdFornecedor(), 25.0);
+//        estoque.adicionarLote(vela, 20, fornecedor.getIdFornecedor(), 12.0);
+//        
+//        // --- TESTE 1: FLUXO DE SERVIÇO NORMAL ---
+//        System.out.println("\n--- 1. FLUXO DE SERVIÇO NORMAL ---");
+//        OrdemDeServico osServico = gestaoOS.iniciarOSdeServico(cliente1.getIdCliente(), "ABC-1234", "Revisão geral e troca de óleo");
+//        System.out.println("OS de Serviço Criada: " + osServico);
+//
+//        System.out.println("\nAdicionando itens à OS de Serviço...");
+//        gestaoOS.adicionarServico(osServico.getIdOS(), Servicos.TROCA_DE_OLEO);
+//        gestaoOS.adicionarPeca(osServico.getIdOS(), filtroOleo.getIdPeca(), 1); 
+//        
+//        System.out.println("\nFinalizando OS de Serviço...");
+//        gestaoOS.finalizarEGerarNota(osServico.getIdOS());
+//
+//        // --- TESTE 2: FLUXO DE VENDA DIRETA ---
+//        System.out.println("\n--- 2. FLUXO DE VENDA DIRETA ---");
+//        Map<Integer, Integer> pecasParaVenda = new HashMap<>();
+//        pecasParaVenda.put(vela.getIdPeca(), 4);
+//        
+//        gestaoOS.registrarVendaDireta(cliente2.getIdCliente(), pecasParaVenda);
+//
+//        // --- 3. VERIFICANDO O ESTADO FINAL ---
+//        System.out.println("\n--- 3. ESTADO FINAL DO SISTEMA ---");
+//        System.out.println("Verificando OSs do Cliente 1:");
+//        gestaoOS.imprimirOSDoCliente(cliente1.getIdCliente());
+//        
+//        System.out.println("\nVerificando OSs do Cliente 2:");
+//        gestaoOS.imprimirOSDoCliente(cliente2.getIdCliente());
+//
+//        System.out.println("\nVerificando Balanço Financeiro Final:");
+//        gestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025);
 
-        // --- 4. Verificando Contadores (Questão 2) ---
-        System.out.println("\n--- VERIFICANDO CONTADORES ---");
-        System.out.println("Total de clientes cadastrados: " + Cliente.getContadorClientes());
-        System.out.println("Total de veículos (private): " + Cliente.getContadorDeVeiculos());
-        System.out.println("Total de veículos (protected): " + Cliente.getContadorDeVeiculosProtected());
+//-------------------------------------------------------------------------------------------------
+//Teste 5 Financeiro
         
-        // --- 5. Testando a busca ---
-        System.out.println("\n--- BUSCANDO VEÍCULOS DA CLIENTE MARIA (ID: 2) ---");
-        ArrayList<Veiculo> veiculosDaMaria = gestaoVeiculos.buscarVeiculosDoProprietario(2);
-        veiculosDaMaria.forEach(System.out::println);
-        
-        // --- 6. Testando persistência ---
-        System.out.println("\n--- TESTANDO PERSISTÊNCIA ---");
-        System.out.println("Carregando dados em NOVAS instâncias de gestão...");
-        GestaoClientes novaGestaoClientes = GestaoClientes.carregarDoArquivo();
-        GestaoDeVeiculos novaGestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+//        new File("financeiro.json").delete();
+//
+//        System.out.println("### INICIANDO TESTE DO MÓDULO FINANCEIRO ###");
+//
+//        GestaoFinanceira gestao = GestaoFinanceira.carregarDoArquivo();
+//        
+//        System.out.println("\n--- ESTADO INICIAL ---");
+//        gestao.gerarBalancoMes(Month.JUNE, 2025);
+//
+//        // --- 1. Adiciona Lançamentos de Despesa e Receita ---
+//        System.out.println("\n--- REGISTRANDO LANÇAMENTOS ---");
+//        
+//        // Simula uma receita de um serviço finalizado
+//        NotaFiscal nota1 = new NotaFiscal(1, 101);
+//        nota1.adicionarItem("Troca de Óleo", 1, 150.0);
+//        gestao.adicionarLancamento(new Lancamento(
+//            "Receita da OS #1", nota1.getTotal(), LocalDate.of(2025, 6, 10), TipoLancamento.Receita, null
+//        ));
+//        gestao.adicionarNotaFiscal(nota1); // Salva a nota fiscal
+//        gestao.salvar();
+//        
+//        // Simula despesas manuais
+//        gestao.adicionarLancamento(new Lancamento(
+//            "Pagamento Salário", 3500.0, LocalDate.of(2025, 6, 5), TipoLancamento.Despesa, CategoriaDespesa.Salario
+//        ));
+//        gestao.adicionarLancamento(new Lancamento(
+//            "Material de Limpeza", 80.50, LocalDate.of(2025, 6, 15), TipoLancamento.Despesa, CategoriaDespesa.Uso
+//        ));
+//        gestao.salvar();
+//        
+//        // --- 2. Gera o Balanço do Mês ---
+//        System.out.println("\n--- GERANDO BALANÇO DE JUNHO/2025 ---");
+//        gestao.gerarBalancoMes(Month.JUNE, 2025);
+//        
+//        // --- 3. Testa a Persistência ---
+//        System.out.println("\n--- TESTANDO PERSISTÊNCIA ---");
+//        System.out.println("Carregando dados em uma NOVA instância de gestão...");
+//        GestaoFinanceira novaGestao = GestaoFinanceira.carregarDoArquivo();
+//
+//        System.out.println("\n--- BALANÇO CARREGADO DO ARQUIVO ---");
+//        novaGestao.gerarBalancoMes(Month.JUNE, 2025);
+//        
+//        System.out.println("\n--- NOTAS FISCAIS CARREGADAS ---");
+//        if (novaGestao.getNotasFiscais().isEmpty()) {
+//            System.out.println("Nenhuma nota fiscal encontrada.");
+//        } else {
+//            for (NotaFiscal nota : novaGestao.getNotasFiscais()) {
+//                System.out.println(nota);
+//            }
+//        }
+//        
+//        System.out.println("\nTeste do módulo financeiro concluído com sucesso.");
 
-        System.out.println("\nClientes carregados:");
-        novaGestaoClientes.getClientes().forEach(System.out::println);
+//-------------------------------------------------------------------------------------------------
+//Teste 6 Elevador
+
+//        System.out.println("### INICIANDO TESTE DO MÓDULO DE ELEVADORES ###");
+//
+//        // 1. Imprime o status inicial dos elevadores
+//        System.out.println("\n--- ESTADO INICIAL ---");
+//        SistemaOficina.imprimirStatusElevadores();
+//
+//        // 2. Ocupa um dos elevadores
+//        System.out.println("\n--- OCUPANDO O ELEVADOR 2 ---");
+//        Elevador elevador2 = SistemaOficina.buscarElevadorPorId(2);
+//        if (elevador2 != null) {
+//            elevador2.setOcupado(true);
+//            System.out.println("Elevador 2 foi ocupado.");
+//        }
+//
+//        // 3. Imprime o novo status
+//        System.out.println("\n--- NOVO ESTADO ---");
+//        SistemaOficina.imprimirStatusElevadores();
+//
+//        // 4. Libera o elevador
+//        System.out.println("\n--- LIBERANDO O ELEVADOR 2 ---");
+//        if (elevador2 != null) {
+//            elevador2.setOcupado(false);
+//            System.out.println("Elevador 2 foi liberado.");
+//        }
+//
+//        // 5. Imprime o estado final
+//        System.out.println("\n--- ESTADO FINAL ---");
+//        SistemaOficina.imprimirStatusElevadores();
+//        
+//        System.out.println("\nTeste do módulo de Elevadores concluído com sucesso.");
         
-        System.out.println("\nVeículos da Cliente Maria (ID: 2) carregados:");
-        novaGestaoVeiculos.buscarVeiculosDoProprietario(2).forEach(System.out::println);
+//-------------------------------------------------------------------------------------------------
+//Teste 6 Teste todos juntos     
         
-        System.out.println("\nContador de veículos (private) após recarregar: " + Cliente.getContadorDeVeiculos());
-        System.out.println("Contador de veículos (protected) após recarregar: " + Cliente.getContadorDeVeiculosProtected());
+//        System.out.println("### INICIANDO TESTE DE INTEGRAÇÃO DO SISTEMA COMPLETO ###");
+//
+//        // --- 1. INICIALIZAÇÃO DE TODOS OS SISTEMAS DE GESTÃO ---
+//        System.out.println("\n--- 1. Inicializando sistemas de gestão ---");
+//        GestaoClientes gestaoClientes = new GestaoClientes();
+//        GestaoDeVeiculos gestaoVeiculos = new GestaoDeVeiculos();
+//        FuncionarioService gestaoFuncionarios = new FuncionarioService();
+//        GestaoFinanceira gestaoFinanceira = new GestaoFinanceira();
+//        Estoque estoque = new Estoque(gestaoFinanceira);
+//        Agenda agenda = new Agenda();
+//        GestaoDeOrdemDeServico gestaoOS = new GestaoDeOrdemDeServico(estoque, gestaoFinanceira);
+//
+//        // --- 2. POPULANDO DADOS INICIAIS ---
+//        System.out.println("\n--- 2. Populando dados iniciais (Funcionários, Fornecedores, Estoque) ---");
+//        Gerente gerente = new Gerente("Sérgio (Gerente)", "admin", "123");
+//        Mecanico mecanico1 = new Mecanico("Carlos", "carlos", "123", "Motor");
+//        gestaoFuncionarios.adicionarFuncionario(gerente);
+//        gestaoFuncionarios.adicionarFuncionario(mecanico1);
+//        
+//        Fornecedor fornecedor = new Fornecedor("Autopeças Central");
+//        Peca filtroOleo = new Peca("Filtro de Óleo", 50.0);
+//        estoque.adicionarLote(filtroOleo, 20, fornecedor.getIdFornecedor(), 25.0);
+//
+//        // --- 3. FLUXO DE ATENDIMENTO DO CLIENTE ---
+//        System.out.println("\n--- 3. Simulando fluxo de atendimento completo ---");
+//        
+//        // a. Cliente chega e é cadastrado
+//        Cliente cliente = new Cliente("Ana", "Rua das Amélias", "9999-8888", "ana@email.com", 12345L);
+//        gestaoClientes.adicionaCliente(cliente);
+//        Veiculo veiculo = new Veiculo("Toyota Corolla", "XYZ-7890", 2021);
+//        gestaoVeiculos.adicionarVeiculo(cliente.getIdCliente(), veiculo);
+//        System.out.println("Cliente e Veículo cadastrados.");
+//
+//        // b. Agendamento do serviço
+//        SistemaOficina.imprimirStatusElevadores();
+//        Elevador elevadorDisponivel = SistemaOficina.buscarElevadorDisponivel(TipoElevador.GERAL);
+//        if (elevadorDisponivel == null) {
+//            System.out.println("Nenhum elevador disponível para agendamento.");
+//            return;
+//        }
+//        System.out.println("Elevador " + elevadorDisponivel.getId() + " está disponível. Agendando...");
+//        Agendamento agendamento = new Agendamento(cliente.getIdCliente(), "Barulho estranho no motor.", elevadorDisponivel.getId(), LocalDateTime.now().plusHours(1));
+//        agenda.agendar(agendamento);
+//        
+//        // c. Início do serviço e criação da OS
+//        elevadorDisponivel.setOcupado(true);
+//        OrdemDeServico os = gestaoOS.iniciarOSdeServico(cliente.getIdCliente(), veiculo.getPlaca(), agendamento.getDescricao());
+//        os.setIdMecanico(mecanico1.getIdFuncionario()); // Associa o mecânico
+//        agendamento.setStatus(StatusAgendamento.EmManutencao);
+//        System.out.println("Serviço iniciado na OS #" + os.getIdOS());
+//        SistemaOficina.imprimirStatusElevadores();
+//
+//        // d. Execução do serviço (adicionar peças e serviços)
+//        gestaoOS.adicionarServico(os.getIdOS(), Servicos.TROCA_DE_OLEO);
+//        gestaoOS.adicionarPeca(os.getIdOS(), filtroOleo.getIdPeca(), 1);
+//        System.out.println("Serviços e peças adicionados à OS.");
+//
+//        // e. Finalização do serviço
+//        NotaFiscal nota = gestaoOS.finalizarEGerarNota(os.getIdOS());
+//        elevadorDisponivel.setOcupado(false); // Libera o elevador
+//        System.out.println("Serviço finalizado e nota fiscal gerada.");
+//        nota.imprimir();
+//        
+//        // --- 4. LANÇANDO DESPESA MANUAL E GERANDO BALANÇO ---
+//        System.out.println("\n--- 4. Lançando despesa e gerando balanço final ---");
+//        gestaoFinanceira.adicionarLancamento(new Lancamento("Café para a equipe", 50.0, LocalDate.now(), TipoLancamento.Despesa, CategoriaDespesa.Uso));
+//        
+//        gestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025); // Assumindo data atual
+//
+//        System.out.println("\n### TESTE DE INTEGRAÇÃO CONCLUÍDO ###");
     }
 }

@@ -4,18 +4,22 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author luizp
  */
-public class Lancamento {
+public class Lancamento implements Serializable{
     private String descricao;
     private double valor;
     private LocalDate data;
     private TipoLancamento tipo;
     private CategoriaDespesa categoria;
+
+    public Lancamento() {
+    }
 
     public Lancamento(String descricao, double valor, LocalDate data, TipoLancamento tipo, CategoriaDespesa categoria) {
         this.descricao = descricao;

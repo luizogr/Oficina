@@ -6,7 +6,10 @@ package Dominio;
 
 import Dominio.Peca;
 import Servicos.GestaoFinanceira;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -23,6 +26,7 @@ import java.util.Map;
 public class Estoque {
     private Map<Integer, List<LotePeca>> lotesPorPeca;
     private Map<Integer, Peca> pecasPorId;
+    @JsonIgnore
     private GestaoFinanceira gestaoFinanceira;
     private static final String CAMINHO_ARQUIVO = "estoque.json";
     private static final ObjectMapper mapper = new ObjectMapper();
@@ -31,14 +35,14 @@ public class Estoque {
         this.gestaoFinanceira = gestaoFinanceira;
         this.lotesPorPeca = new HashMap<>();
         this.pecasPorId = new HashMap<>();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     public Estoque() {
         this.lotesPorPeca = new HashMap<>();
         this.pecasPorId = new HashMap<>();
     }
-    
-    
     
     /**
      * 
@@ -72,16 +76,32 @@ public class Estoque {
      * Metodo para carregar os arquivos do .json
      * @return 
      */
-    public static Estoque carregarDoArquivo() {
+    public static Estoque carregarDoArquivo(GestaoFinanceira gestaoFinanceira) {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
-            if (arquivo.exists()) {
-                return mapper.readValue(arquivo, Estoque.class);
+            if (arquivo.exists() && arquivo.length() > 0) {
+                ObjectMapper localMapper = new ObjectMapper();
+                localMapper.registerModule(new JavaTimeModule());
+                Estoque gestao = localMapper.readValue(arquivo, Estoque.class);
+                
+                // Reconecta a dependência externa que não foi salva no JSON
+                gestao.gestaoFinanceira = gestaoFinanceira;
+                
+                // Ajusta os contadores estáticos
+                int maxIdPeca = 0;
+                if (gestao.getPecasPorId() != null) {
+                    for(Peca p : gestao.getPecasPorId().values()){
+                        if(p.getIdPeca() > maxIdPeca){ maxIdPeca = p.getIdPeca(); }
+                    }
+                }
+                Peca.setContadorPeca(maxIdPeca);
+                
+                return gestao;
             }
         } catch (IOException e) {
-            System.out.println("Erro ao carregar estoque: " + e.getMessage());
+            System.err.println("Erro ao carregar estoque: " + e.getMessage());
         }
-        return new Estoque();
+        return new Estoque(gestaoFinanceira);
     }
 
     public void salvarNoArquivo() {
@@ -129,29 +149,6 @@ public class Estoque {
         System.out.println("Lote adicionado com sucesso!");
         return true;
     }
-    /*}*/
-    
-    
-    /**
-     *  Adiciona uma nova peça ou incrementa a quantidade de uma peça existente no estoque.
-     * @param peca
-     * @param quantidade
-     * @return 
-//     */
-//    public boolean adicionarPeca(Peca peca, int quantidade){
-//        boolean pecaExiste = contemPeca(peca.getIdPeca());
-//        if(pecaExiste == false){
-//            pecasPorId.put(peca.getIdPeca(), peca);
-//            lotesPorPeca.put(peca.getIdPeca(), quantidade);
-//            salvarNoArquivo();
-//            return true; //Se retornar True mensagem de nova peça adicionada
-//        } else{
-//            int quantidadeAtual = lotesPorPeca.get(peca.getIdPeca());
-//            lotesPorPeca.put(peca.getIdPeca(), quantidadeAtual + quantidade);
-//            salvarNoArquivo();
-//            return false; //Se retornar false mensagem de quantidade atualizada
-//        }
-//    }
     
     /**
      *  Remove uma certa quantidade de uma peça do estoque.
@@ -211,7 +208,11 @@ public class Estoque {
 
         salvarNoArquivo();
         return true;
-        
+    }
+    
+    public int getQuantidadeTotal(int id) {
+        if (!lotesPorPeca.containsKey(id)) return 0;
+        return lotesPorPeca.get(id).stream().mapToInt(LotePeca::getQuantidade).sum();
     }
     
     public boolean editarNome(int id, String nome){

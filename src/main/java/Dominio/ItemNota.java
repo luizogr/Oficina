@@ -4,11 +4,13 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luizp
  */
-public class ItemNota {
+public class ItemNota implements Serializable{
     private String descricao;
     private int quantidade;
     private double valorUnitario;

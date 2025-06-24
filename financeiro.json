@@ -1,0 +1,33 @@
+{
+  "lancamentos" : [ {
+    "descricao" : "Receita da OS #1",
+    "valor" : 150.0,
+    "data" : [ 2025, 6, 10 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Pagamento Salário",
+    "valor" : 3500.0,
+    "data" : [ 2025, 6, 5 ],
+    "tipo" : "Despesa",
+    "categoria" : "Salario"
+  }, {
+    "descricao" : "Material de Limpeza",
+    "valor" : 80.5,
+    "data" : [ 2025, 6, 15 ],
+    "tipo" : "Despesa",
+    "categoria" : "Uso"
+  } ],
+  "notasFiscais" : [ {
+    "idOS" : 1,
+    "idCliente" : 101,
+    "data" : [ 2025, 6, 23, 19, 55, 48, 53680200 ],
+    "itens" : [ {
+      "descricao" : "Troca de Óleo",
+      "quantidade" : 1,
+      "valorUnitario" : 150.0,
+      "valorTotal" : 150.0
+    } ],
+    "total" : 150.0
+  } ]
+}

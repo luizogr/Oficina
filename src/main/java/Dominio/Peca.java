@@ -4,16 +4,17 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luizp
  */
-public class Peca {
+public class Peca implements Serializable{
     private static int contadorPeca = 0;
     private int idPeca;
     private String nome;
     private double precoVenda;
-    //private int quantide; // Tirar quantidade, pois está na lista
     
     /**
      * Construtor padrão
@@ -28,8 +29,8 @@ public class Peca {
      * @param preco 
      */
     public Peca(String nome, double preco) {
-        this.contadorPeca += 1;
-        this.idPeca = this.contadorPeca;
+        Peca.contadorPeca += 1;
+        this.idPeca = Peca.contadorPeca;
         this.nome = nome;
         this.precoVenda = preco;
         //this.quantide = quantide;

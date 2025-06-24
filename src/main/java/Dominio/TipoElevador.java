@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Enum que define os tipos de elevadores da oficina.
  * @author luizp
  */
 public enum TipoElevador {

@@ -1,31 +1,19 @@
 {
   "clientes" : [ {
     "idCliente" : 1,
-    "nome" : "João Silva",
-    "endereco" : "Rua das Flores, 123",
-    "telefone" : "3199998888",
-    "email" : "joao@email.com",
-    "cpf" : 111222333
+    "nome" : "João Teste",
+    "endereco" : "Rua X",
+    "telefone" : "123",
+    "email" : "joao@teste.com",
+    "cpf" : 1,
+    "cpfAnonimizado" : "***.***.000-01"
   }, {
     "idCliente" : 2,
-    "nome" : "Maria Souza",
-    "endereco" : "Av. Principal, 456",
-    "telefone" : "3198887777",
-    "email" : "maria@email.com",
-    "cpf" : 444555666
-  }, {
-    "idCliente" : 3,
-    "nome" : "João Silva",
-    "endereco" : "Rua A",
-    "telefone" : "111",
-    "email" : "joao@email.com",
-    "cpf" : 111222333
-  }, {
-    "idCliente" : 4,
-    "nome" : "Maria Souza",
-    "endereco" : "Rua B",
-    "telefone" : "222",
-    "email" : "maria@email.com",
-    "cpf" : 444555666
+    "nome" : "Maria Teste",
+    "endereco" : "Rua Y",
+    "telefone" : "456",
+    "email" : "maria@teste.com",
+    "cpf" : 2,
+    "cpfAnonimizado" : "***.***.000-02"
   } ]
 }

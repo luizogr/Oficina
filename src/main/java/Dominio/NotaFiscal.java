@@ -7,18 +7,22 @@ package Dominio;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import Dominio.ItemNota;
+import java.io.Serializable;
 
 /**
  *
  * @author luizp
  */
-public class NotaFiscal {
+public class NotaFiscal implements Serializable{
     private int idOS;
     private int idCliente;
     private LocalDateTime data;
     private ArrayList<ItemNota> itens;
     private double total = 0;
 
+    public NotaFiscal() {
+    }
+    
     public NotaFiscal(int idOS, int idCliente) {
         this.idOS = idOS;
         this.idCliente = idCliente;
@@ -90,6 +94,6 @@ public class NotaFiscal {
 
     @Override
     public String toString() {
-        return "NotaFiscal{" + "idOS=" + idOS + ", idCliente=" + idCliente + ", data=" + data + ", itens=" + itens + ", total=" + total + '}';
-    }    
+        return "NotaFiscal | OS #" + idOS + " | Cliente ID: " + idCliente + " | Valor Total: R$" + String.format("%.2f", total);
+    }   
 }

@@ -30,6 +30,10 @@ public class FuncionarioService {
         mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public static FuncionarioService carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
@@ -58,6 +62,9 @@ public class FuncionarioService {
         return new FuncionarioService();
     }
     
+    /**
+     * 
+     */
     private void salvarNoArquivo() {
         try {
             mapper.writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -102,6 +109,35 @@ public class FuncionarioService {
             }
         }
         return null;
+    }
+    
+    /**
+     * busca um funcionario por seu login, usado para fazer o login no sistema
+     * @param login
+     * @return 
+     */
+    public Funcionario buscaFuncionarioLogin(String login){
+        for(Funcionario i: funcionarios){
+            if(i.getLogin().equals(login)){
+                return i;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Metodo para validar os dados do funcionario
+     * @param login
+     * @param senha
+     * @return Retorna true se senha e login forem iguais ao do funcionario
+     */
+    public boolean validaDados(String login, String senha){
+        Funcionario f = buscaFuncionarioLogin(login);
+        if (f.getLogin().equals(login) && f.getSenha().equals(senha)){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     /**

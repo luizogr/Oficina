@@ -4,6 +4,8 @@
  */
 package Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +16,10 @@ import java.util.Map;
  *
  * @author luizp
  */
-public class OrdemDeServico implements Subject{
+public class OrdemDeServico implements Subject, Serializable{
     private static int contadorOS = 0;
     private int idOS;
-    private int idVeiculo;
+    private String placaVeiculo;
     private int idCliente;
     private String descricao;
     private int idElevador;
@@ -28,13 +30,15 @@ public class OrdemDeServico implements Subject{
     private Map<Integer, Integer> pecasUtilizadas;
     private List<Servicos> servicosRealizados;
     
+    @JsonIgnore
     private List<Observer> observers = new ArrayList<>();
+    @JsonIgnore
     private String ultimaAtualizacao;
 
-    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, LocalDateTime dataTermino, int idMecanico, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
+    public OrdemDeServico(String placaVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, LocalDateTime dataTermino, int idMecanico, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
         OrdemDeServico.contadorOS += 1;
         this.idOS = contadorOS;
-        this.idVeiculo = idVeiculo;
+        this.placaVeiculo = placaVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
         this.idElevador = idElevador;
@@ -43,12 +47,13 @@ public class OrdemDeServico implements Subject{
         this.idMecanico = idMecanico;
         this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
 
-    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
+    public OrdemDeServico(String placaVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS, Map<Integer, Integer> pecasUtilizadas, List<Servicos> servicosRealizados) {
         OrdemDeServico.contadorOS += 1;
         this.idOS = contadorOS;
-        this.idVeiculo = idVeiculo;
+        this.placaVeiculo = placaVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
         this.idElevador = idElevador;
@@ -57,12 +62,13 @@ public class OrdemDeServico implements Subject{
         this.statusOS = statusOS;
         this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
 
-    public OrdemDeServico(int idVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS) {
+    public OrdemDeServico(String placaVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime dataInicio, int idMecanico, StatusOS statusOS) {
         OrdemDeServico.contadorOS += 1;
         this.idOS = contadorOS;
-        this.idVeiculo = idVeiculo;
+        this.placaVeiculo = placaVeiculo;
         this.idCliente = idCliente;
         this.descricao = descricao;
         this.idElevador = idElevador;
@@ -71,6 +77,18 @@ public class OrdemDeServico implements Subject{
         this.statusOS = statusOS;
         this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
+        this.observers = new ArrayList<>();
+    }
+
+    public OrdemDeServico(String placaVeiculo, int idCliente, String descricao) {
+        OrdemDeServico.contadorOS += 1;
+        this.idOS = contadorOS;
+        this.placaVeiculo = placaVeiculo;
+        this.idCliente = idCliente;
+        this.descricao = descricao;
+        this.pecasUtilizadas = new HashMap<>();
+        this.servicosRealizados = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
 
     public OrdemDeServico() {
@@ -78,6 +96,7 @@ public class OrdemDeServico implements Subject{
         this.idOS = contadorOS;
         this.pecasUtilizadas = new HashMap<>();
         this.servicosRealizados = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
     
     public void adicionarPeca(int idPeca, int quantidade) {
@@ -134,14 +153,14 @@ public class OrdemDeServico implements Subject{
         this.idOS = idOS;
     }
 
-    public int getIdVeiculo() {
-        return idVeiculo;
+    public String getPlacaVeiculo() {
+        return placaVeiculo;
     }
 
-    public void setIdVeiculo(int idVeiculo) {
-        this.idVeiculo = idVeiculo;
+    public void setPlacaVeiculo(String placaVeiculo) {
+        this.placaVeiculo = placaVeiculo;
     }
-
+    
     public int getIdCliente() {
         return idCliente;
     }
@@ -221,9 +240,19 @@ public class OrdemDeServico implements Subject{
         this.pecasUtilizadas = pecasUtilizadas;
     }
 
+    public static int getContadorOS() {
+        return contadorOS;
+    }
+
+    public static void setContadorOS(int contadorOS) {
+        OrdemDeServico.contadorOS = contadorOS;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "OrdemDeServico{" + "idOS=" + idOS + ", idVeiculo=" + idVeiculo + ", idCliente=" + idCliente + ", descricao=" + descricao + ", idElevador=" + idElevador + ", dataInicio=" + dataInicio + ", dataTermino=" + dataTermino + ", idMecanico=" + idMecanico + ", pecasUtilizadas=" + pecasUtilizadas + ", servicosRealizados=" + servicosRealizados + '}';
+        return "OrdemDeServico{" + "idOS=" + idOS + ", idVeiculo=" + placaVeiculo + ", idCliente=" + idCliente + ", descricao=" + descricao + ", idElevador=" + idElevador + ", dataInicio=" + dataInicio + ", dataTermino=" + dataTermino + ", idMecanico=" + idMecanico + ", pecasUtilizadas=" + pecasUtilizadas + ", servicosRealizados=" + servicosRealizados + '}';
     }    
     
 }

@@ -10,6 +10,8 @@ import Dominio.OrdemDeServico;
 import Dominio.StatusAgendamento;
 import Dominio.StatusOS;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -31,9 +33,11 @@ public class Agenda {
     public Agenda() {
         this.dataElevadorAgendamento = new HashMap<>();
         this.todosAgendamentos = new ArrayList<>();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
-    public void salvarNoArquivo() {
+    private void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
             System.out.println("Agenda salva com sucesso.");
@@ -45,13 +49,30 @@ public class Agenda {
     public static Agenda carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
-            if (arquivo.exists()) {
-                return mapper.readValue(arquivo, Agenda.class);
+            if (arquivo.exists() && arquivo.length() > 0) {
+                ObjectMapper localMapper = new ObjectMapper();
+                localMapper.registerModule(new JavaTimeModule());
+                Agenda agenda = localMapper.readValue(arquivo, Agenda.class);
+                agenda.reconstruirMapaDeConflitos(); //Reconstrói o mapa de conflitos após carregar
+                return agenda;
             }
         } catch (IOException e) {
             System.err.println("Erro ao carregar a agenda: " + e.getMessage());
         }
-        return new Agenda(); // se falhar, retorna uma agenda vazia
+        return new Agenda();
+    }
+    
+    private void reconstruirMapaDeConflitos() {
+        this.dataElevadorAgendamento.clear();
+        for (Agendamento ag : this.todosAgendamentos) {
+            if (ag.getStatus() == StatusAgendamento.Agendado) {
+                 dataElevadorAgendamento.computeIfAbsent(ag.getData(), k -> new HashMap<>()).put(ag.getIdElevador(), ag);
+            }
+        }
+    }
+    
+    public void salvar(){
+        salvarNoArquivo();
     }
     
     public boolean existeAgendamento(LocalDateTime data, int idElevador){
@@ -74,7 +95,6 @@ public class Agenda {
         if(existeAgendamento(data, idElevador) == false){
             dataElevadorAgendamento.computeIfAbsent(data, k -> new HashMap<>()).put(idElevador, a);
             todosAgendamentos.add(a);
-            salvarNoArquivo();
             return true;
         }
         return false;
@@ -95,8 +115,7 @@ public class Agenda {
                     dataElevadorAgendamento.remove(data);
                 }
             }
-            todosAgendamentos.remove(a);
-            salvarNoArquivo();
+            a.setStatus(StatusAgendamento.Cancelado);
             return true;
         } else {
             return false;
@@ -116,8 +135,20 @@ public class Agenda {
         }
         
         a.setStatus(StatusAgendamento.EmManutencao);
-        OrdemDeServico os = new OrdemDeServico(a.getIdVeiculo(), a.getIdCliente(), a.getDescricao(), a.getIdElevador(), LocalDateTime.now(), idMecanico, StatusOS.EM_MANUTENCAO);
+        OrdemDeServico os = new OrdemDeServico(a.getPlacaVeiculo(), a.getIdCliente(), a.getDescricao(), a.getIdElevador(), LocalDateTime.now(), idMecanico, StatusOS.EM_MANUTENCAO);
         return os;
+    }
+    
+    public void imprimirAgenda() {
+        System.out.println("--- Lista de Todos os Agendamentos ---");
+        if (todosAgendamentos.isEmpty()) {
+            System.out.println("Nenhum agendamento encontrado.");
+        } else {
+            for (Agendamento ag : todosAgendamentos) {
+                System.out.println(ag);
+            }
+        }
+        System.out.println("--------------------------------------");
     }
 
     public Map<LocalDateTime, Map<Integer, Agendamento>> getDataElevadorAgendamento() {

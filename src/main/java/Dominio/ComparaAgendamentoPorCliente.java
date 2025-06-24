@@ -10,9 +10,9 @@ import java.util.Comparator;
  *
  * @author luizp
  */
-public class ComparaClientePorId implements Comparator<Cliente>{
+public class ComparaAgendamentoPorCliente implements Comparator<Agendamento>{
     @Override
-    public int compare(Cliente c1, Cliente c2) {
-        return Integer.compare(c1.getIdCliente(), c2.getIdCliente()); // Mudar para logica propria
+    public int compare(Agendamento a1, Agendamento a2) {
+        return Integer.compare(a1.getIdCliente(), a2.getIdCliente());
     }
 }

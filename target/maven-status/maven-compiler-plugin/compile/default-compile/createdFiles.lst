@@ -3,10 +3,12 @@ Servicos\GestaoFinanceira.class
 Servicos\GestaoDeVeiculos.class
 com\mycompany\oficina\Interface.class
 Servicos\Agenda.class
+Servicos\SistemaOficina.class
 Dominio\Servicos.class
 Dominio\CategoriaDespesa.class
 Dominio\Agendamento.class
 Servicos\GestaoDeOrdemDeServico.class
+Dominio\ComparaAgendamentoPorCliente.class
 Dominio\Mecanico.class
 Dominio\Elevador.class
 Dominio\StatusAgendamento.class
@@ -19,6 +21,7 @@ Dominio\ComparaClientePorId.class
 Dominio\Funcionario.class
 Dominio\Subject.class
 Dominio\Peca.class
+Dominio\ComparaAgendamentoPorData.class
 Dominio\Veiculo.class
 Dominio\TipoLancamento.class
 Dominio\StatusOS.class
@@ -27,7 +30,6 @@ Dominio\Fornecedor.class
 Dominio\Cliente.class
 Dominio\NotaFiscal.class
 Dominio\Estoque.class
-Servicos\Oficina.class
 com\mycompany\oficina\Oficina.class
 Dominio\Observer.class
 Dominio\ItemNota.class

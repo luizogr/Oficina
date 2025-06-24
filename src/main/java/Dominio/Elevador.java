@@ -5,16 +5,23 @@
 package Dominio;
 
 /**
- *
+ * Representa um elevador físico na oficina.
  * @author dtiDigital
  */
 public class Elevador {
     private int id;
     private TipoElevador tipo;
     private boolean ocupado;
+
+    /**
+     * Construtor padrão para o Jackson
+     */
+    public Elevador() {
+    }
     
     /**
-     * Construtor de elevador
+     * Construtor para criar um novo elevador.
+     * Por padrão, um novo elevador é sempre inicializado como não ocupado.
      * @param id
      * @param tipo 
      */
@@ -50,6 +57,7 @@ public class Elevador {
     
     @Override
     public String toString() {
-     return "Elevador {" + "id: " + id + ", tipo: " + tipo + ", ocupado: " + ocupado + '}';
+        String status = ocupado ? "Ocupado" : "Livre";
+        return "Elevador | ID: " + id + " | Tipo: " + tipo + " | Status: " + status;
     }
 }

@@ -95,6 +95,11 @@ public class Cliente implements Serializable{
     public long getCpf() {
         return cpf;
     }
+    
+    public String getCpfAnonimizado() {
+        String cpfStr = String.format("%011d", cpf); // garante 11 dígitos com zeros à esquerda
+        return "***.***." + cpfStr.substring(6, 9) + "-" + cpfStr.substring(9);
+    }
 
     @JsonIgnore
     public static int getContadorClientes() {
@@ -132,6 +137,6 @@ public class Cliente implements Serializable{
 
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + '}';
+        return "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", cpf=" + getCpfAnonimizado() + '}';
     }    
 }
