@@ -23,6 +23,8 @@ import Servicos.GestaoDeVeiculos;
 import java.util.ArrayList;
 import static Dominio.Cargo.Recepcionista;
 import Dominio.CategoriaDespesa;
+import Dominio.ComparaClientePorId;
+import Dominio.ComparaClientePorNome;
 import Dominio.Fornecedor;
 import Dominio.Lancamento;
 import Dominio.NotaFiscal;
@@ -38,7 +40,10 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -797,5 +802,149 @@ public class Oficina {
 //        gestaoFinanceira.gerarBalancoMes(Month.JUNE, 2025); // Assumindo data atual
 //
 //        System.out.println("\n### TESTE DE INTEGRAÇÃO CONCLUÍDO ###");
+
+
+//        // Instanciar o sistema
+//        SistemaOficina sistema = new SistemaOficina();
+//
+//        // Criar manualmente um gerente fictício
+//        Funcionario gerente = new Funcionario("Carlos Gerente", Cargo.Gerente, "carlos", "123", 7000.0);
+//        sistema.getGestaoFuncionarios().adicionarFuncionario(gerente);
+//        sistema.login("carlos", "123"); // Essa parte só vai funcionar se "carlos" já estiver no json
+//        sistema.baterPonto();
+//
+//        // OU: Simular login direto se você quiser forçar para teste
+//        // sistema.setFuncionarioLogado(gerente); (se você criar esse método)
+//
+//        // Criar serviço financeiro
+//        GestaoFinanceira financeiro = GestaoFinanceira.carregarDoArquivo();
+//
+//        
+//
+//        // Gerar balanço
+//        financeiro.gerarBalancoMes(Month.JUNE, 2025, sistema.getFuncionarioLogado());
+//
+//        // Encerrar
+//        sistema.encerrarExpediente();
+//        sistema.getGestaoFuncionarios().listarPontos(sistema.getFuncionarioLogado().getIdFuncionario());
+//        sistema.getGestaoFuncionarios().salvarFuncionarios();
+//        sistema.logout();
+//        
+//        Mecanico mecanico1 = new Mecanico("Marcos", "marcos", "12345", "Motor");
+//        sistema.getGestaoFuncionarios().adicionarFuncionario(mecanico1);
+//        sistema.getGestaoFuncionarios().salvarFuncionarios();
+//        sistema.login("marcos", "12345");
+//        
+//        financeiro.gerarBalancoMes(Month.JUNE, 2025, sistema.getFuncionarioLogado());
+
+// Questão 15
+//        System.out.println("Questão 15");
+//        System.out.println("--------------------------------------------");
+//        SistemaOficina sistemaOficina = new SistemaOficina();
+//        //FuncionarioService gestao = new FuncionarioService();
+//        sistemaOficina.getGestaoFuncionarios().adicionarFuncionario(new Gerente("Ana", "ana.g", "123"));
+//        sistemaOficina.getGestaoFuncionarios().adicionarFuncionario(new Mecanico("Bruno", "bruno.m", "456", "Motor"));
+//        sistemaOficina.getGestaoFuncionarios().adicionarFuncionario(new Mecanico("Carlos", "carlos.m", "789", "Suspensão"));
+//        sistemaOficina.getGestaoFuncionarios().salvarFuncionarios();
+//        System.out.println("TESTE DA QUESTÃO 15");
+//
+//        System.out.println("\n1. Percorrendo com Iterator e o laço 'while'");
+//        
+//        Iterator<Funcionario> iterator = sistemaOficina.getGestaoFuncionarios().getFuncionarios().iterator();
+//        
+//        while(iterator.hasNext()) {
+//            // Imprime o próximo funcionário da lista
+//            System.out.println(iterator.next());
+//        }
+//
+//        System.out.println("\n2. Percorrendo com o laço 'foreach'");
+//        
+//        for (Funcionario f : sistemaOficina.getGestaoFuncionarios().getFuncionarios()) {
+//            System.out.println(f);
+//        }
+        
+        
+        // Questão 16
+//        System.out.println("Questão 16");
+//        System.out.println("--------------------------------------------");
+//        
+//        SistemaOficina sistemaOficina = new SistemaOficina();
+//
+//        sistemaOficina.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   // ID: 1
+//        sistemaOficina.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));    // ID: 2
+//        sistemaOficina.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));  // ID: 3
+//        
+//        System.out.println("TESTE DA QUESTÃO 16");
+//
+//        // Imprime a lista original, desordenada
+//        System.out.println("\n1. Lista Original (Desordenada)");
+//        for (Cliente c : sistemaOficina.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//
+//        System.out.println("\n2. Ordenando por NOME");
+//        
+//        Collections.sort(sistemaOficina.getGestaoClientes().getClientes(), new ComparaClientePorNome());
+//        
+//        for (Cliente c : sistemaOficina.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n3. Ordenando por ID");
+//        
+//        Collections.sort(sistemaOficina.getGestaoClientes().getClientes(), new ComparaClientePorId());
+//
+//        for (Cliente c : sistemaOficina.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+
+        // Questão 17
+        System.out.println("Questão 17");
+        System.out.println("--------------------------------------------");
+        
+        System.out.println("TESTE DA QUESTÃO 17");
+        
+        
+        SistemaOficina sO = new SistemaOficina();
+        
+        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
+        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));
+        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+        sO.getGestaoClientes().adicionaCliente(new Cliente("Joao", "Rua D", "4444444", "joao@gmail", 444L));
+        
+        System.out.println("\n1. Testando o nosso método 'find' (Busca Linear)");
+        
+        Cliente clienteBusca = new Cliente();
+        clienteBusca.setNome("Bruno");
+        ComparaClientePorNome comparadorPorNome = new ComparaClientePorNome();
+        
+        System.out.println("Buscando por cliente com nome 'Bruno'...");
+        Cliente encontradoComFind = sO.getGestaoClientes().find(clienteBusca, comparadorPorNome);
+        
+        if (encontradoComFind != null) {
+            System.out.println("Encontrado: " + encontradoComFind);
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+
+        System.out.println("\n2. Testando o Collections.binarySearch (Busca Binária)");
+        List<Cliente> listaParaBusca = sO.getGestaoClientes().getClientes();
+        
+        System.out.println("\nOrdenando a lista por nome antes da busca...");
+        Collections.sort(listaParaBusca, comparadorPorNome);
+        
+        System.out.println("Lista ordenada:");
+        listaParaBusca.forEach(System.out::println);
+        
+        System.out.println("\nBuscando por cliente com nome 'Bruno'...");
+        
+        int indice = Collections.binarySearch(listaParaBusca, clienteBusca, comparadorPorNome);
+        
+        if (indice >= 0) {
+            System.out.println("Encontrado: " + listaParaBusca.get(indice) + " no índice " + indice);
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+
     }
 }

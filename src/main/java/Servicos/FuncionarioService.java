@@ -10,7 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -18,6 +21,7 @@ import java.util.ArrayList;
  */
 public class FuncionarioService {
     private ArrayList<Funcionario> funcionarios;
+    private Map<Integer, Map<LocalDateTime, LocalDateTime>> controleDePontos;
     private static final String CAMINHO_ARQUIVO = "funcionarios.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -26,6 +30,7 @@ public class FuncionarioService {
      */
     public FuncionarioService() {
         this.funcionarios = new ArrayList<>();
+        this.controleDePontos = new HashMap<>();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
@@ -95,6 +100,64 @@ public class FuncionarioService {
      */
     public void removerFuncionario(Funcionario funcionario){
         funcionarios.remove(funcionario);
+    }
+    
+    /**
+     * 
+     * @param idFuncionario
+     * @return 
+     */
+    public boolean baterPonto(int idFuncionario){
+        Map<LocalDateTime, LocalDateTime> pontosFuncionario = controleDePontos.getOrDefault(idFuncionario, new HashMap<>());
+        for(Map.Entry<LocalDateTime, LocalDateTime> entry : pontosFuncionario.entrySet()){
+            if(entry.getValue() == null){
+                System.out.println("Ponto registrado,mas ainda não encerrado");
+                return false;
+            }
+        }
+        pontosFuncionario.put(LocalDateTime.now(), null);
+        controleDePontos.put(idFuncionario, pontosFuncionario);
+        System.out.println("Ponto registrado");
+        return true;
+    }
+    
+    /**
+     * 
+     * @param idFuncionario
+     * @return 
+     */
+    public boolean encerrarExpediente(int idFuncionario){
+        Map<LocalDateTime, LocalDateTime> pontosFuncionario = controleDePontos.get(idFuncionario);
+        if(pontosFuncionario == null || pontosFuncionario.isEmpty()){
+            System.out.println("Nenhum entrada encontrada");
+            return false;
+        }
+        for(Map.Entry<LocalDateTime, LocalDateTime> entry : pontosFuncionario.entrySet()){
+            if(entry.getValue() == null){
+                entry.setValue(LocalDateTime.now());
+                System.out.println("Saida registrada");
+                return true;
+            }
+        }
+        System.out.println("Nenhum ponto para encerrar");
+        return false;
+    }
+    
+    /**
+     * 
+     * @param idFuncionario 
+     */
+    public void listarPontos(int idFuncionario) {
+        Map<LocalDateTime, LocalDateTime> pontosFuncionario = controleDePontos.get(idFuncionario);
+        if (pontosFuncionario == null || pontosFuncionario.isEmpty()) {
+            System.out.println("Nenhum ponto registrado.");
+            return;
+        }
+        
+        System.out.println("Pontos registrados:");
+        for (Map.Entry<LocalDateTime, LocalDateTime> entry : pontosFuncionario.entrySet()) {
+            System.out.println("Entrada: " + entry.getKey() + " | Saída: " + (entry.getValue() != null ? entry.getValue() : "Em andamento"));
+        }
     }
     
     /**

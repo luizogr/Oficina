@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
@@ -185,6 +187,20 @@ public class GestaoClientes {
             return true;
         }
         return false;
+    }
+    
+    public Cliente find(Cliente clienteBusca, Comparator<Cliente> comparator){
+        Iterator<Cliente> iterator = clientes.iterator();
+        
+        int contadorIterações = 0;
+        while(iterator.hasNext()){
+            contadorIterações += 1;
+            Cliente c = iterator.next();
+            if(comparator.compare(c, clienteBusca) == 0){
+                return c, contadorIterações;
+            }   
+        }
+        return null;
     }
 
     /**

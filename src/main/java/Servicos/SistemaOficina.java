@@ -5,8 +5,10 @@
 package Servicos;
 
 import Dominio.Elevador;
+import Dominio.Estoque;
 import Dominio.Funcionario;
 import Dominio.TipoElevador;
+import java.util.Scanner;
 
 /**
  *
@@ -14,6 +16,12 @@ import Dominio.TipoElevador;
  */
 public class SistemaOficina {
     private FuncionarioService gestaoFuncionarios = FuncionarioService.carregarDoArquivo();
+    private GestaoClientes gestaoClientes = GestaoClientes.carregarDoArquivo();
+    private Agenda agenda = Agenda.carregarDoArquivo();
+    private GestaoDeVeiculos gestaoVeiculos = GestaoDeVeiculos.carregarDoArquivo();
+    private GestaoFinanceira gestaoFinanceira = GestaoFinanceira.carregarDoArquivo();
+    private Estoque estoque = Estoque.carregarDoArquivo(gestaoFinanceira);
+    private GestaoDeOrdemDeServico gestaoOS = GestaoDeOrdemDeServico.carregarDoArquivo(estoque, gestaoFinanceira);
     
     private Funcionario funcionarioLogado;
     private static final Elevador[] elevadores = new Elevador[3];
@@ -75,6 +83,18 @@ public class SistemaOficina {
         return false;
     }
     
+    public void baterPonto(){
+        if(funcionarioLogado != null){
+            gestaoFuncionarios.baterPonto(funcionarioLogado.getIdFuncionario());
+        }
+    }
+    
+    public void encerrarExpediente(){
+        if(funcionarioLogado != null){
+            gestaoFuncionarios.encerrarExpediente(funcionarioLogado.getIdFuncionario());
+        }
+    }
+    
     /**
      * 
      */
@@ -82,4 +102,150 @@ public class SistemaOficina {
         funcionarioLogado = null;
         System.out.println("Logout realizado");
     }
+    
+    public void menuPrincipal() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Loop de login
+        while (funcionarioLogado == null) {
+            System.out.print("Login: ");
+            String login = scanner.nextLine();
+
+            System.out.print("Senha: ");
+            String senha = scanner.nextLine();
+
+            login(login, senha); // se o login for bem-sucedido, o funcionário será setado
+        }
+
+        // Menu após login
+        int opcao = -1;
+        while (opcao != 0) {
+            System.out.println("\n==== Menu Principal ====");
+            System.out.println("Funcionário logado: " + funcionarioLogado.getNome());
+            System.out.println("1. Bater ponto");
+            System.out.println("2. Encerrar expediente");
+            System.out.println("3. Listar pontos");
+            System.out.println("4. Gestão de Funcionários");
+            System.out.println("5. Gestão de Clientes");
+            System.out.println("6. Gestão de Veículos");
+            System.out.println("7. Gestão de Ordens de Serviço");
+            System.out.println("8. Gestão Financeira");
+            System.out.println("9. Agenda");
+            System.out.println("0. Logout e sair");
+            System.out.print("Escolha uma opção: ");
+        
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida.");
+                continue;
+            }
+
+            switch (opcao) {
+                case 1:
+                    baterPonto();
+                    break;
+                case 2:
+                    encerrarExpediente();
+                    break;
+                case 3:
+                    gestaoFuncionarios.listarPontos(funcionarioLogado.getIdFuncionario());
+//                case 4:
+//                    gestaoFuncionarios.menu(); 
+//                    break;
+//                case 5:
+//                    gestaoClientes.menu();
+//                    break;
+//                case 6:
+//                    gestaoVeiculos.menu();
+//                    break;
+//                case 7:
+//                    gestaoOS.menu(funcionarioLogado); 
+//                    break;
+//                case 8:
+//                    gestaoFinanceira.menu(funcionarioLogado);
+//                    break;
+//                case 9:
+//                    agenda.menu();
+//                    break;
+                case 0: 
+                    logout();
+                    System.out.println("Saindo do sistema...");
+                    break;
+                
+                default: 
+                    System.out.println("Opção inválida.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    public Funcionario getFuncionarioLogado() {
+        return funcionarioLogado;
+    }
+
+    public FuncionarioService getGestaoFuncionarios() {
+        return gestaoFuncionarios;
+    }
+
+    public void setGestaoFuncionarios(FuncionarioService gestaoFuncionarios) {
+        this.gestaoFuncionarios = gestaoFuncionarios;
+    }
+
+    public GestaoClientes getGestaoClientes() {
+        return gestaoClientes;
+    }
+
+    public void setGestaoClientes(GestaoClientes gestaoClientes) {
+        this.gestaoClientes = gestaoClientes;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    public GestaoDeVeiculos getGestaoVeiculos() {
+        return gestaoVeiculos;
+    }
+
+    public void setGestaoVeiculos(GestaoDeVeiculos gestaoVeiculos) {
+        this.gestaoVeiculos = gestaoVeiculos;
+    }
+
+    public GestaoFinanceira getGestaoFinanceira() {
+        return gestaoFinanceira;
+    }
+
+    public void setGestaoFinanceira(GestaoFinanceira gestaoFinanceira) {
+        this.gestaoFinanceira = gestaoFinanceira;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
+    }
+
+    public GestaoDeOrdemDeServico getGestaoOS() {
+        return gestaoOS;
+    }
+
+    public void setGestaoOS(GestaoDeOrdemDeServico gestaoOS) {
+        this.gestaoOS = gestaoOS;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "SistemaOficina{" + "funcionarioLogado=" + funcionarioLogado + '}';
+    }
+    
 }

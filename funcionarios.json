@@ -1,10 +1,17 @@
 [ "Servicos.FuncionarioService", {
-  "funcionarios" : [ "java.util.ArrayList", [ [ "Dominio.Mecanico", {
+  "funcionarios" : [ "java.util.ArrayList", [ [ "Dominio.Gerente", {
+    "idFuncionario" : 1,
+    "nome" : "Ana",
+    "cargo" : "Gerente",
+    "login" : "ana.g",
+    "senha" : "123",
+    "salario" : 0.0
+  } ], [ "Dominio.Mecanico", {
     "idFuncionario" : 2,
-    "nome" : "Bruno Silva",
+    "nome" : "Bruno",
     "cargo" : "Mecanico",
     "login" : "bruno.m",
-    "senha" : "mecanico789",
+    "senha" : "456",
     "salario" : 0.0,
     "especialidade" : "Motor"
   } ], [ "Dominio.Mecanico", {
@@ -12,8 +19,8 @@
     "nome" : "Carlos",
     "cargo" : "Mecanico",
     "login" : "carlos.m",
-    "senha" : "senha123",
+    "senha" : "789",
     "salario" : 0.0,
-    "especialidade" : "Elétrica"
+    "especialidade" : "Suspensão"
   } ] ] ]
 } ]

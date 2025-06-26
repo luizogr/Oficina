@@ -43,14 +43,13 @@ public class Funcionario implements Serializable{
 
     /**
      * Construtor da classe funcionario
-     * @param idFuncionario
      * @param nome
      * @param cargo
      * @param login
      * @param senha
      * @param salario 
      */
-    public Funcionario(int idFuncionario, String nome, Cargo cargo, String login, String senha, double salario) {
+    public Funcionario(String nome, Cargo cargo, String login, String senha, double salario) {
         Funcionario.contadorId += 1;
         this.idFuncionario = idFuncionario;
         this.nome = nome;

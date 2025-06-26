@@ -95,9 +95,9 @@ public class Cliente implements Serializable{
     public long getCpf() {
         return cpf;
     }
-    
+    @JsonIgnore
     public String getCpfAnonimizado() {
-        String cpfStr = String.format("%011d", cpf); // garante 11 dígitos com zeros à esquerda
+        String cpfStr = String.format("%011d", cpf);
         return "***.***." + cpfStr.substring(6, 9) + "-" + cpfStr.substring(9);
     }
 
