@@ -33,7 +33,7 @@ public class Funcionario implements Serializable{
      * @param senha 
      */
     public Funcionario(String nome, Cargo cargo, String login, String senha){
-        this.contadorId += 1;
+        Funcionario.contadorId += 1;
         this.idFuncionario = contadorId;
         this.nome = nome;
         this.cargo = cargo;
@@ -51,7 +51,7 @@ public class Funcionario implements Serializable{
      */
     public Funcionario(String nome, Cargo cargo, String login, String senha, double salario) {
         Funcionario.contadorId += 1;
-        this.idFuncionario = idFuncionario;
+        this.idFuncionario = contadorId;
         this.nome = nome;
         this.cargo = cargo;
         this.login = login;
@@ -61,7 +61,7 @@ public class Funcionario implements Serializable{
 
     public Funcionario(String nome, String login, String senha) {
         Funcionario.contadorId += 1;
-        this.idFuncionario = idFuncionario;
+        this.idFuncionario = contadorId;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
@@ -129,6 +129,6 @@ public class Funcionario implements Serializable{
      */
     @Override
     public String toString() {
-        return "Funcionario{" + "idFuncionario=" + idFuncionario + ", nome=" + nome + ", cargo=" + cargo + ", login=" + login + ", senha=" + senha + '}';
+        return "Funcionario | ID: " + idFuncionario + " | Nome: " + nome + " | Cargo: " + cargo;
     }
 }

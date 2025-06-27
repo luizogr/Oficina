@@ -179,7 +179,7 @@ public class GestaoClientes {
      * @param cpf
      * @return 
      */
-    public boolean editarCpf(int id, int cpf){
+    public boolean editarCpf(int id, long cpf){
         Cliente cliente = buscarCliente(id);
         if(cliente != null){
             cliente.setCpf(cpf);
@@ -192,12 +192,10 @@ public class GestaoClientes {
     public Cliente find(Cliente clienteBusca, Comparator<Cliente> comparator){
         Iterator<Cliente> iterator = clientes.iterator();
         
-        int contadorIterações = 0;
         while(iterator.hasNext()){
-            contadorIterações += 1;
             Cliente c = iterator.next();
             if(comparator.compare(c, clienteBusca) == 0){
-                return c, contadorIterações;
+                return c;
             }   
         }
         return null;
@@ -222,7 +220,13 @@ public class GestaoClientes {
 
     @Override
     public String toString() {
-        return "GestaoClientes{" + "clientes=" + clientes + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Relatório de Clientes Cadastrados ---\n");
+        for (Cliente c : clientes) {
+            sb.append(c.toString()).append("\n");
+        }
+        sb.append("-------------------------------------------");
+        return sb.toString();
     }
     
 }

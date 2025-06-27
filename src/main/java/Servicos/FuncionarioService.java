@@ -6,8 +6,10 @@ package Servicos;
 
 import Dominio.Cargo;
 import Dominio.Funcionario;
+import Dominio.Mecanico;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -31,6 +33,7 @@ public class FuncionarioService {
     public FuncionarioService() {
         this.funcionarios = new ArrayList<>();
         this.controleDePontos = new HashMap<>();
+        mapper.registerModule(new JavaTimeModule());
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
@@ -44,11 +47,10 @@ public class FuncionarioService {
             File arquivo = new File(CAMINHO_ARQUIVO);
             if (arquivo.exists() && arquivo.length() > 0) {
                 ObjectMapper localMapper = new ObjectMapper();
-                // CORREÇÃO: Adicionado para garantir que as subclasses sejam lidas
+                localMapper.registerModule(new JavaTimeModule());
                 localMapper.activateDefaultTyping(localMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
                 FuncionarioService gestao = localMapper.readValue(arquivo, FuncionarioService.class);
                 
-                // CORREÇÃO: Ajusta o contador de ID estático para evitar duplicatas
                 int maxId = 0;
                 if (gestao.getFuncionarios() != null) {
                     for(Funcionario f : gestao.getFuncionarios()){
@@ -247,6 +249,16 @@ public class FuncionarioService {
         return false;
     }
     
+    public boolean editarEspecialidade(int id, String especialidade){
+        Funcionario f = buscaFuncionario(id);
+        if(f != null && f.getCargo() == Cargo.Mecanico){
+            Mecanico m = (Mecanico) f;
+            m.setEspecialidade(especialidade);
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * função para editar login
      * @param id
@@ -312,6 +324,12 @@ public class FuncionarioService {
 
     @Override
     public String toString() {
-        return "FuncionarioService{" + "funcionarios=" + funcionarios + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Relatório de Funcionários Cadastrados ---\n");
+        for (Funcionario f : funcionarios) {
+            sb.append(f.toString()).append("\n");
+        }
+        sb.append("-------------------------------------------");
+        return sb.toString();
     }
 }

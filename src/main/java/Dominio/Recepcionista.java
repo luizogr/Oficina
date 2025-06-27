@@ -23,6 +23,12 @@ public class Recepcionista extends Funcionario implements Observer{
         super(nome, Cargo.Recepcionista, login, senha);
     }
 
+    public Recepcionista(String nome, String login, String senha, double salario) {
+        super(nome, Cargo.Recepcionista, login, senha, salario);
+    }
+    
+    
+
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Recepcionista " + getNome() + " ---");

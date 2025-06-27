@@ -24,6 +24,18 @@ public class Gerente extends Funcionario implements Observer{
         super(nome, Cargo.Gerente, login, senha);
     }  
 
+    /**
+     * Construtor da classe gerente
+     * @param nome
+     * @param cargo
+     * @param login
+     * @param senha
+     * @param salario 
+     */
+    public Gerente(String nome, String login, String senha, double salario) {
+        super(nome, Cargo.Gerente, login, senha, salario);
+    }
+
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Gerente " + getNome() + " ---");

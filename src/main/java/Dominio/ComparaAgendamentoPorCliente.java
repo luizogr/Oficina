@@ -13,6 +13,12 @@ import java.util.Comparator;
 public class ComparaAgendamentoPorCliente implements Comparator<Agendamento>{
     @Override
     public int compare(Agendamento a1, Agendamento a2) {
-        return Integer.compare(a1.getIdCliente(), a2.getIdCliente());
+        if(a1.getIdCliente() < a2.getIdCliente()){
+            return -1;
+        }
+        if(a1.getIdCliente() > a2.getIdCliente()){
+            return 1;
+        }
+        return 0;
     }
 }

@@ -46,6 +46,13 @@ public class GestaoDeOrdemDeServico {
         mapper.registerModule(new JavaTimeModule());
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
+
+    public GestaoDeOrdemDeServico() {
+        this.idPorOS = new HashMap<>();
+        this.idOSPorIdCliente = new HashMap<>();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+    }
     
     public void salvarNoArquivo() {
         try {
@@ -129,11 +136,9 @@ public class GestaoDeOrdemDeServico {
         
         nota.imprimir();
         
-        // Integração com o financeiro
-        Lancamento receita = new Lancamento(
-            "Receita da OS #" + idOS, nota.getTotal(), LocalDate.now(), TipoLancamento.Receita, null
-        );
+        Lancamento receita = new Lancamento("Receita da OS #" + idOS, nota.getTotal(), LocalDate.now(), TipoLancamento.Receita, null);
         gestaoFinanceira.adicionarLancamento(receita);
+        gestaoFinanceira.adicionarNotaFiscal(nota);
         
         salvarNoArquivo();
         return nota;
@@ -173,8 +178,6 @@ public class GestaoDeOrdemDeServico {
         finalizarEGerarNota(osVenda.getIdOS());
         return osVenda;
     }
-    
-    // Criar um metodo para finalizar venda
     
     public void adicionarOS(OrdemDeServico ordemDeServico){
         int id = ordemDeServico.getIdOS();
@@ -296,8 +299,10 @@ public class GestaoDeOrdemDeServico {
     public boolean alterarStatus(int id, StatusOS novoStatus){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null && novoStatus != o.getStatusOS()){
-            o.setStatusOS(novoStatus);
-            return true;
+            if(novoStatus != StatusOS.PRONTO_PARA_ENTREGA){
+                o.setStatusOS(novoStatus);
+                return true;
+            } 
         }
         return false;
     }

@@ -39,6 +39,11 @@ public class Mecanico extends Funcionario implements Observer{
         super(nome, Cargo.Mecanico, login, senha);
     }
 
+    public Mecanico(String nome, String login, String senha, double salario, String especialidade) {
+        super(nome, Cargo.Mecanico, login, senha, salario);
+        this.especialidade = especialidade;
+    }
+
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Mecânico " + getNome() + " ---");

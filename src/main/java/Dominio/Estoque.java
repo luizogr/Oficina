@@ -42,6 +42,8 @@ public class Estoque {
     public Estoque() {
         this.lotesPorPeca = new HashMap<>();
         this.pecasPorId = new HashMap<>();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
     /**
@@ -85,7 +87,7 @@ public class Estoque {
                 Estoque gestao = localMapper.readValue(arquivo, Estoque.class);
                 
                 // Reconecta a dependência externa que não foi salva no JSON
-                gestao.gestaoFinanceira = gestaoFinanceira;
+                gestao.setGestaoFinanceira(gestaoFinanceira);
                 
                 // Ajusta os contadores estáticos
                 int maxIdPeca = 0;
@@ -274,6 +276,15 @@ public class Estoque {
         }
     }
 
+    public GestaoFinanceira getGestaoFinanceira() {
+        return gestaoFinanceira;
+    }
+
+    public void setGestaoFinanceira(GestaoFinanceira gestaoFinanceira) {
+        this.gestaoFinanceira = gestaoFinanceira;
+    }
+
+    
 
     public Map<Integer, List<LotePeca>> getLotesPorPeca() {
         return lotesPorPeca;

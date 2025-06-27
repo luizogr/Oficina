@@ -1,13 +1,79 @@
 [ "Servicos.FuncionarioService", {
   "funcionarios" : [ "java.util.ArrayList", [ [ "Dominio.Gerente", {
     "idFuncionario" : 1,
+    "nome" : "Davi",
+    "cargo" : "Gerente",
+    "login" : "davi",
+    "senha" : "1234",
+    "salario" : 4000.0
+  } ], [ "Dominio.Mecanico", {
+    "idFuncionario" : 2,
+    "nome" : "Marcos",
+    "cargo" : "Mecanico",
+    "login" : "marcos",
+    "senha" : "12345",
+    "salario" : 5000.0,
+    "especialidade" : "Eletrica"
+  } ], [ "Dominio.Recepcionista", {
+    "idFuncionario" : 3,
+    "nome" : "Maria",
+    "cargo" : "Recepcionista",
+    "login" : "maria",
+    "senha" : "123",
+    "salario" : 3000.0
+  } ], [ "Dominio.Gerente", {
+    "idFuncionario" : 4,
+    "nome" : "Davi",
+    "cargo" : "Gerente",
+    "login" : "davi",
+    "senha" : "1234",
+    "salario" : 4000.0
+  } ], [ "Dominio.Mecanico", {
+    "idFuncionario" : 5,
+    "nome" : "Marcos",
+    "cargo" : "Mecanico",
+    "login" : "marcos",
+    "senha" : "12345",
+    "salario" : 5000.0,
+    "especialidade" : "Eletrica"
+  } ], [ "Dominio.Recepcionista", {
+    "idFuncionario" : 6,
+    "nome" : "Maria",
+    "cargo" : "Recepcionista",
+    "login" : "maria",
+    "senha" : "123",
+    "salario" : 3000.0
+  } ], [ "Dominio.Gerente", {
+    "idFuncionario" : 7,
+    "nome" : "Davi",
+    "cargo" : "Gerente",
+    "login" : "davi",
+    "senha" : "1234",
+    "salario" : 4000.0
+  } ], [ "Dominio.Mecanico", {
+    "idFuncionario" : 8,
+    "nome" : "Marcos",
+    "cargo" : "Mecanico",
+    "login" : "marcos",
+    "senha" : "12345",
+    "salario" : 5000.0,
+    "especialidade" : "Eletrica"
+  } ], [ "Dominio.Recepcionista", {
+    "idFuncionario" : 9,
+    "nome" : "Maria",
+    "cargo" : "Recepcionista",
+    "login" : "maria",
+    "senha" : "123",
+    "salario" : 3000.0
+  } ], [ "Dominio.Gerente", {
+    "idFuncionario" : 10,
     "nome" : "Ana",
     "cargo" : "Gerente",
     "login" : "ana.g",
     "senha" : "123",
     "salario" : 0.0
   } ], [ "Dominio.Mecanico", {
-    "idFuncionario" : 2,
+    "idFuncionario" : 11,
     "nome" : "Bruno",
     "cargo" : "Mecanico",
     "login" : "bruno.m",
@@ -15,7 +81,7 @@
     "salario" : 0.0,
     "especialidade" : "Motor"
   } ], [ "Dominio.Mecanico", {
-    "idFuncionario" : 3,
+    "idFuncionario" : 12,
     "nome" : "Carlos",
     "cargo" : "Mecanico",
     "login" : "carlos.m",

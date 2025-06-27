@@ -837,7 +837,229 @@ public class Oficina {
 //        
 //        financeiro.gerarBalancoMes(Month.JUNE, 2025, sistema.getFuncionarioLogado());
 
-// Questão 15
+
+        //Questão 4
+//        System.out.println("Questão 4");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 4");
+//        
+//        
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        System.out.println("\n1. Criando funcionarios");
+//        Gerente g = new Gerente("Davi", "davi", "1234", 4000);
+//        Mecanico m = new Mecanico("Marcos", "marcos", "12345", 5000, "Eletrica");
+//        Recepcionista r = new Recepcionista("Maria", "maria", "123", 3000);
+//        
+//        sO.getGestaoFuncionarios().adicionarFuncionario(g);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(m);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(r);
+//        sO.getGestaoFuncionarios().salvarFuncionarios();
+//        
+//        System.out.println("\n2. Testando o super nas subclasses");
+//        
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+
+        //Questão 5
+//        System.out.println("Questão 5");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 5");
+//        
+//        System.out.println("\n1. Mostrando os elevadores da oficina");
+//        SistemaOficina.imprimirStatusElevadores();
+//        
+//        System.out.println("\n2. Setando o status do elevador 1 para ocupado");
+//        Elevador e = SistemaOficina.buscarElevadorPorId(1);
+//        e.setOcupado(true);
+//        SistemaOficina.imprimirStatusElevadores();
+//        
+//        System.out.println("\n3. Voltando Status para Livre");
+//        e.setOcupado(false);
+//        SistemaOficina.imprimirStatusElevadores();
+
+        //Questão 6
+//        System.out.println("Questão 6");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 6");
+//        
+//        System.out.println("\n1. Cadastrando e exibindo funcionarios");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        Gerente g = new Gerente("Davi", "davi", "1234", 4000);
+//        Mecanico m = new Mecanico("Marcos", "marcos", "12345", 5000, "Eletrica");
+//        Recepcionista r = new Recepcionista("Maria", "maria", "123", 3000);
+//        
+//        sO.getGestaoFuncionarios().adicionarFuncionario(g);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(m);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(r);
+//        sO.getGestaoFuncionarios().salvarFuncionarios();
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+//        
+//        System.out.println("\n2. Editando dados dos funcionarios");
+//        sO.getGestaoFuncionarios().editarNome(3, "Luiz");
+//        sO.getGestaoFuncionarios().editarLogin(1, "marcos_m");
+//        sO.getGestaoFuncionarios().editarLogin(3, "luiz");
+//        sO.getGestaoFuncionarios().editarEspecialidade(2, "Suspensão");
+//        sO.getGestaoFuncionarios().editarCargo(3, Cargo.Gerente);
+//        sO.getGestaoFuncionarios().editarSenha(3, "4321");
+//        sO.getGestaoFuncionarios().editarSalario(3, 3000);
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+
+        //Questão 7
+//        System.out.println("Questão 7");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 7");
+//        
+//        System.out.println("\n1. Cadastrando e exibindo clientes");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        System.out.println(sO.getGestaoClientes().toString());
+//        
+//        System.out.println("\n2. Editando dados dos clientes");
+//        sO.getGestaoClientes().editarCpf(2, 444L);
+//        sO.getGestaoClientes().editarEmail(1, "carlos_c@gmail");
+//        sO.getGestaoClientes().editarEndereco(3, "Rua D");
+//        sO.getGestaoClientes().editarTelefone(3, "44444444");
+//        sO.getGestaoClientes().editarNome(1, "Carlos Silva");
+//        System.out.println(sO.getGestaoClientes().toString());
+//        
+//        System.out.println("\n2. Excluindo cliente");
+//        sO.getGestaoClientes().removerCliente(3);
+//        System.out.println(sO.getGestaoClientes().toString());
+        
+        
+        //Questão 8
+//        System.out.println("Questão 8");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 8");
+//        
+//        System.out.println("\n1. Cadastrando e exibindo clientes");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        System.out.println(sO.getGestaoClientes().toString());
+//        
+//        System.out.println("\n2. Criando veiculos");
+//        Veiculo v1 = new Veiculo("Uno", "ABC1234", 2006);
+//        Veiculo v2 = new Veiculo("Toyota Corolla", "XYZ7890", 2021);
+//        sO.getGestaoVeiculos().adicionarVeiculo(1, v1);
+//        sO.getGestaoVeiculos().adicionarVeiculo(2, v2);
+//        
+//        System.out.println("\n2. Criando OSs");
+//        OrdemDeServico oS1 = new OrdemDeServico("ABC1234", 1, "Alinhamento");
+//        OrdemDeServico oS2 = new OrdemDeServico("XYZ7890", 2, "Alinhamento");
+//        sO.getGestaoOS().adicionarOS(oS1);
+//        sO.getGestaoOS().adicionarOS(oS2);
+//        sO.getGestaoOS().adicionarServico(1, Servicos.ALINHAMENTO);
+//        sO.getGestaoOS().adicionarServico(2, Servicos.ALINHAMENTO);
+//        Map<Integer, Integer> pecas = new HashMap<>();
+//        pecas.put(1, 2);
+//        sO.getGestaoOS().registrarVendaDireta(1, pecas);
+//        
+//        
+//        System.out.println("\n3. Verificando OSs do cliente");
+//        System.out.println(sO.getGestaoOS().buscarOSPorCliente(1));
+//        System.out.println(sO.getGestaoOS().buscarOSPorCliente(2));
+//        System.out.println(sO.getGestaoOS().buscarOSPorCliente(3));
+
+        //Questão 9
+//        System.out.println("Questão 9");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 9");
+//        
+//        System.out.println("\n1. Cadastrando e exibindo clientes, estoque e Ordem de serviço");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));  
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        System.out.println(sO.getGestaoClientes().toString());
+//        
+//        Peca p1 = new Peca("Filtro de óleo", 50);
+//        Peca p2 = new Peca("Vela", 45);
+//        Peca p3 = new Peca("Liquido de arrefecimento", 70);
+//        
+//        Fornecedor f1 = new Fornecedor("Autopecas 1");
+//        Fornecedor f2 = new Fornecedor("Autopecas 2");
+//        
+//        sO.getEstoque().adicionarLote(p1, 30, 1, 40);
+//        sO.getEstoque().adicionarLote(p2, 50, 1, 30);
+//        sO.getEstoque().adicionarLote(p3, 10, 2, 55);
+//        System.out.println(sO.getEstoque().toString());
+//        
+//        Map<Integer, Integer> pecas = new HashMap<>();
+//        pecas.put(1, 2);
+//        Map<Integer, Integer> pecas2 = new HashMap<>();
+//        pecas2.put(2, 4);
+//        pecas2.put(3, 1);
+//        
+//        sO.getGestaoOS().registrarVendaDireta(1, pecas);
+//        sO.getGestaoOS().registrarVendaDireta(3, pecas2);
+//        
+//        System.out.println("\n2. Criando novas instâncias de GestaoClientes, Estoque e GestaoDeOrdemDeServico");
+//        GestaoClientes gC = GestaoClientes.carregarDoArquivo();
+//        System.out.println(gC.toString());
+//        
+//        Estoque e = Estoque.carregarDoArquivo(sO.getGestaoFinanceira());
+//        System.out.println(e.toString());
+//        
+//        GestaoDeOrdemDeServico gOS = GestaoDeOrdemDeServico.carregarDoArquivo(e, sO.getGestaoFinanceira());
+//        System.out.println(gOS.toString());
+        
+        //Questão 10
+        System.out.println("Questão 10");
+        System.out.println("--------------------------------------------");
+        
+        System.out.println("TESTE DA QUESTÃO 10");
+        
+        System.out.println("\n1. Cadastrando Ordem de serviço");
+        SistemaOficina sO = new SistemaOficina();
+        
+        
+        Peca p1 = new Peca("Filtro de óleo", 50);
+        Peca p2 = new Peca("Vela", 45);
+        Peca p3 = new Peca("Liquido de arrefecimento", 70);
+        
+        Fornecedor f1 = new Fornecedor("Autopecas 1");
+        Fornecedor f2 = new Fornecedor("Autopecas 2");
+        
+        sO.getEstoque().adicionarLote(p1, 30, 1, 40);
+        sO.getEstoque().adicionarLote(p2, 50, 1, 30);
+        sO.getEstoque().adicionarLote(p3, 10, 2, 55);
+        System.out.println(sO.getEstoque().toString());
+        
+        Map<Integer, Integer> pecas = new HashMap<>();
+        pecas.put(1, 2);
+        Map<Integer, Integer> pecas2 = new HashMap<>();
+        pecas2.put(2, 4);
+        pecas2.put(3, 1);
+        
+        sO.getGestaoOS().registrarVendaDireta(1, pecas);
+        sO.getGestaoOS().registrarVendaDireta(3, pecas2);
+        
+        System.out.println("\n2. Criando novas instâncias de GestaoClientes, Estoque e GestaoDeOrdemDeServico");
+        GestaoClientes gC = GestaoClientes.carregarDoArquivo();
+        System.out.println(gC.toString());
+        
+        Estoque e = Estoque.carregarDoArquivo(sO.getGestaoFinanceira());
+        System.out.println(e.toString());
+        
+        GestaoDeOrdemDeServico gOS = GestaoDeOrdemDeServico.carregarDoArquivo(e, sO.getGestaoFinanceira());
+        System.out.println(gOS.toString());
+
+
+        // Questão 15
 //        System.out.println("Questão 15");
 //        System.out.println("--------------------------------------------");
 //        SistemaOficina sistemaOficina = new SistemaOficina();
@@ -899,52 +1121,52 @@ public class Oficina {
 //        }
 
         // Questão 17
-        System.out.println("Questão 17");
-        System.out.println("--------------------------------------------");
-        
-        System.out.println("TESTE DA QUESTÃO 17");
-        
-        
-        SistemaOficina sO = new SistemaOficina();
-        
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Joao", "Rua D", "4444444", "joao@gmail", 444L));
-        
-        System.out.println("\n1. Testando o nosso método 'find' (Busca Linear)");
-        
-        Cliente clienteBusca = new Cliente();
-        clienteBusca.setNome("Bruno");
-        ComparaClientePorNome comparadorPorNome = new ComparaClientePorNome();
-        
-        System.out.println("Buscando por cliente com nome 'Bruno'...");
-        Cliente encontradoComFind = sO.getGestaoClientes().find(clienteBusca, comparadorPorNome);
-        
-        if (encontradoComFind != null) {
-            System.out.println("Encontrado: " + encontradoComFind);
-        } else {
-            System.out.println("Cliente não encontrado.");
-        }
-
-        System.out.println("\n2. Testando o Collections.binarySearch (Busca Binária)");
-        List<Cliente> listaParaBusca = sO.getGestaoClientes().getClientes();
-        
-        System.out.println("\nOrdenando a lista por nome antes da busca...");
-        Collections.sort(listaParaBusca, comparadorPorNome);
-        
-        System.out.println("Lista ordenada:");
-        listaParaBusca.forEach(System.out::println);
-        
-        System.out.println("\nBuscando por cliente com nome 'Bruno'...");
-        
-        int indice = Collections.binarySearch(listaParaBusca, clienteBusca, comparadorPorNome);
-        
-        if (indice >= 0) {
-            System.out.println("Encontrado: " + listaParaBusca.get(indice) + " no índice " + indice);
-        } else {
-            System.out.println("Cliente não encontrado.");
-        }
+//        System.out.println("Questão 17");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 17");
+//        
+//        
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Joao", "Rua D", "4444444", "joao@gmail", 444L));
+//        
+//        System.out.println("\n1. Testando o nosso método 'find' (Busca Linear)");
+//        
+//        Cliente clienteBusca = new Cliente();
+//        clienteBusca.setNome("Bruno");
+//        ComparaClientePorNome comparadorPorNome = new ComparaClientePorNome();
+//        
+//        System.out.println("Buscando por cliente com nome 'Bruno'...");
+//        Cliente encontradoComFind = sO.getGestaoClientes().find(clienteBusca, comparadorPorNome);
+//        
+//        if (encontradoComFind != null) {
+//            System.out.println("Encontrado: " + encontradoComFind);
+//        } else {
+//            System.out.println("Cliente não encontrado.");
+//        }
+//
+//        System.out.println("\n2. Testando o Collections.binarySearch (Busca Binária)");
+//        List<Cliente> listaParaBusca = sO.getGestaoClientes().getClientes();
+//        
+//        System.out.println("\nOrdenando a lista por nome antes da busca...");
+//        Collections.sort(listaParaBusca, comparadorPorNome);
+//        
+//        System.out.println("Lista ordenada:");
+//        listaParaBusca.forEach(System.out::println);
+//        
+//        System.out.println("\nBuscando por cliente com nome 'Bruno'...");
+//        
+//        int indice = Collections.binarySearch(listaParaBusca, clienteBusca, comparadorPorNome);
+//        
+//        if (indice >= 0) {
+//            System.out.println("Encontrado: " + listaParaBusca.get(indice) + " no índice " + indice);
+//        } else {
+//            System.out.println("Cliente não encontrado.");
+//        }
 
     }
 }
