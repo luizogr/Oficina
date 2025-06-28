@@ -1,24 +1,12 @@
 {
   "placasPorVeiculos" : {
-    "ABC-1234" : {
+    "AAA-1111" : {
       "modelo" : "Fiat Uno",
-      "placa" : "ABC-1234",
+      "placa" : "AAA-1111",
       "ano" : 2010
-    },
-    "GHI-9012" : {
-      "modelo" : "Ford Ka",
-      "placa" : "GHI-9012",
-      "ano" : 2020
-    },
-    "DEF-5678" : {
-      "modelo" : "Chevrolet Onix",
-      "placa" : "DEF-5678",
-      "ano" : 2018
     }
   },
   "placasPorCliente" : {
-    "ABC-1234" : 3,
-    "GHI-9012" : 4,
-    "DEF-5678" : 4
+    "AAA-1111" : 1
   }
 }

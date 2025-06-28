@@ -11,7 +11,6 @@ package Dominio;
 public class Elevador {
     private int id;
     private TipoElevador tipo;
-    private boolean ocupado;
 
     /**
      * Construtor padrão para o Jackson
@@ -28,7 +27,6 @@ public class Elevador {
     public Elevador(int id, TipoElevador tipo) {
         this.id = id;
         this.tipo = tipo;
-        this.ocupado = false;
     }
 
     public int getId() {
@@ -46,18 +44,9 @@ public class Elevador {
     public void setTipo(TipoElevador tipo) {
         this.tipo = tipo;
     }
-
-    public boolean isOcupado() {
-        return ocupado;
-    }
-
-    public void setOcupado(boolean ocupado) {
-        this.ocupado = ocupado;
-    }
     
     @Override
     public String toString() {
-        String status = ocupado ? "Ocupado" : "Livre";
-        return "Elevador | ID: " + id + " | Tipo: " + tipo + " | Status: " + status;
+        return "Elevador | ID: " + id + " | Tipo: " + tipo;
     }
 }

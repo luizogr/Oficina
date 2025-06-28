@@ -16,6 +16,8 @@ public class Veiculo implements Serializable{
     private int ano;
 
     public Veiculo(){
+        Cliente.incrementaContadorDeVeiculos();
+        Cliente.contadorDeVeiculos += 1;
     }
     
     /**

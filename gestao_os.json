@@ -1,44 +1,13 @@
 {
   "idPorOS" : {
-    "1" : {
-      "idOS" : 1,
-      "placaVeiculo" : "",
-      "idCliente" : 1,
-      "descricao" : "Venda de Balcão",
-      "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 5, 16, 408121200 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 5, 16, 424523500 ],
-      "idMecanico" : 0,
-      "statusOS" : "ENTREGUE",
-      "pecasUtilizadas" : {
-        "1" : 2
-      },
-      "servicosRealizados" : [ ]
-    },
     "2" : {
       "idOS" : 2,
       "placaVeiculo" : "",
-      "idCliente" : 3,
-      "descricao" : "Venda de Balcão",
-      "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 5, 16, 436340100 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 5, 16, 439339300 ],
-      "idMecanico" : 0,
-      "statusOS" : "ENTREGUE",
-      "pecasUtilizadas" : {
-        "2" : 4,
-        "3" : 1
-      },
-      "servicosRealizados" : [ ]
-    },
-    "3" : {
-      "idOS" : 3,
-      "placaVeiculo" : "",
       "idCliente" : 1,
       "descricao" : "Venda de Balcão",
       "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 9, 21, 405981400 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 9, 21, 417891800 ],
+      "dataInicio" : [ 2025, 6, 28, 1, 7, 7, 534784000 ],
+      "dataTermino" : [ 2025, 6, 28, 1, 7, 7, 546865800 ],
       "idMecanico" : 0,
       "statusOS" : "ENTREGUE",
       "pecasUtilizadas" : {
@@ -49,27 +18,11 @@
     "4" : {
       "idOS" : 4,
       "placaVeiculo" : "",
-      "idCliente" : 3,
+      "idCliente" : 2,
       "descricao" : "Venda de Balcão",
       "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 9, 21, 428576100 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 9, 21, 432568500 ],
-      "idMecanico" : 0,
-      "statusOS" : "ENTREGUE",
-      "pecasUtilizadas" : {
-        "2" : 4,
-        "3" : 1
-      },
-      "servicosRealizados" : [ ]
-    },
-    "5" : {
-      "idOS" : 5,
-      "placaVeiculo" : "",
-      "idCliente" : 1,
-      "descricao" : "Venda de Balcão",
-      "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 9, 53, 763371400 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 9, 53, 763371400 ],
+      "dataInicio" : [ 2025, 6, 28, 1, 15, 46, 829707200 ],
+      "dataTermino" : [ 2025, 6, 28, 1, 15, 46, 841255200 ],
       "idMecanico" : 0,
       "statusOS" : "ENTREGUE",
       "pecasUtilizadas" : {
@@ -83,23 +36,19 @@
       "idCliente" : 3,
       "descricao" : "Venda de Balcão",
       "idElevador" : 0,
-      "dataInicio" : [ 2025, 6, 27, 17, 9, 53, 783846100 ],
-      "dataTermino" : [ 2025, 6, 27, 17, 9, 53, 783846100 ],
+      "dataInicio" : [ 2025, 6, 28, 1, 18, 29, 783926300 ],
+      "dataTermino" : [ 2025, 6, 28, 1, 18, 29, 794023400 ],
       "idMecanico" : 0,
       "statusOS" : "ENTREGUE",
       "pecasUtilizadas" : {
-        "2" : 4,
-        "3" : 1
+        "1" : 2
       },
       "servicosRealizados" : [ ]
     }
   },
   "idOSPorIdCliente" : {
-    "1" : 1,
-    "2" : 3,
-    "3" : 1,
-    "4" : 3,
-    "5" : 1,
+    "2" : 1,
+    "4" : 2,
     "6" : 3
   }
 }

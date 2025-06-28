@@ -99,7 +99,7 @@ public class GestaoDeOrdemDeServico {
     }
     
     public OrdemDeServico iniciarOSdeServico(int idCliente, String placaVeiculo, String descricao) {
-        OrdemDeServico novaOS = new OrdemDeServico(); // O construtor já cria o ID
+        OrdemDeServico novaOS = new OrdemDeServico();
         novaOS.setIdCliente(idCliente);
         novaOS.setPlacaVeiculo(placaVeiculo);
         novaOS.setDescricao(descricao);

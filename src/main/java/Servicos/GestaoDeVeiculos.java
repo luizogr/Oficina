@@ -76,7 +76,7 @@ public class GestaoDeVeiculos {
             placasPorVeiculos.put(veiculo.getPlaca(), veiculo);
             placasPorCliente.put(veiculo.getPlaca(), id);
         } else{
-            throw new RuntimeException("Veiculo existe");
+            System.out.println("Veiculo existe");
         }  
     }
     

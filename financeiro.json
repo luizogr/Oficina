@@ -1,33 +1,73 @@
 {
   "lancamentos" : [ {
-    "descricao" : "Receita da OS #1",
-    "valor" : 150.0,
-    "data" : [ 2025, 6, 10 ],
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 28 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #2",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 28 ],
     "tipo" : "Receita",
     "categoria" : null
   }, {
-    "descricao" : "Pagamento Salário",
-    "valor" : 3500.0,
-    "data" : [ 2025, 6, 5 ],
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 28 ],
     "tipo" : "Despesa",
-    "categoria" : "Salario"
+    "categoria" : "Compra_De_Peca"
   }, {
-    "descricao" : "Material de Limpeza",
-    "valor" : 80.5,
-    "data" : [ 2025, 6, 15 ],
+    "descricao" : "Receita da OS #4",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 28 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 28 ],
     "tipo" : "Despesa",
-    "categoria" : "Uso"
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #6",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 28 ],
+    "tipo" : "Receita",
+    "categoria" : null
   } ],
   "notasFiscais" : [ {
-    "idOS" : 1,
-    "idCliente" : 101,
-    "data" : [ 2025, 6, 23, 19, 55, 48, 53680200 ],
+    "idOS" : 2,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 28, 1, 7, 7, 546865800 ],
     "itens" : [ {
-      "descricao" : "Troca de Óleo",
-      "quantidade" : 1,
-      "valorUnitario" : 150.0,
-      "valorTotal" : 150.0
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
     } ],
-    "total" : 150.0
+    "total" : 100.0
+  }, {
+    "idOS" : 4,
+    "idCliente" : 2,
+    "data" : [ 2025, 6, 28, 1, 15, 46, 841255200 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 6,
+    "idCliente" : 3,
+    "data" : [ 2025, 6, 28, 1, 18, 29, 794529000 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
   } ]
 }

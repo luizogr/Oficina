@@ -1,0 +1,28 @@
+{
+  "dataElevadorAgendamento" : {
+    "2025-07-10T15:00" : {
+      "1" : {
+        "idAgendamento" : 1,
+        "placaVeiculo" : "AAA-1111",
+        "idCliente" : 3,
+        "descricao" : "Troca de óleo",
+        "servicosNecessarios" : null,
+        "idElevador" : 1,
+        "status" : "Agendado",
+        "data" : [ 2025, 7, 10, 15, 0 ],
+        "preco" : 0.0
+      }
+    }
+  },
+  "todosAgendamentos" : [ {
+    "idAgendamento" : 1,
+    "placaVeiculo" : "AAA-1111",
+    "idCliente" : 3,
+    "descricao" : "Troca de óleo",
+    "servicosNecessarios" : null,
+    "idElevador" : 1,
+    "status" : "Agendado",
+    "data" : [ 2025, 7, 10, 15, 0 ],
+    "preco" : 0.0
+  } ]
+}

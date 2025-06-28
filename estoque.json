@@ -4,55 +4,19 @@
       "idFornecedor" : 1,
       "quantidade" : 24,
       "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 27 ]
+      "dataCompra" : [ 2025, 6, 28 ]
     } ],
     "2" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 38,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 27 ]
+      "quantidade" : 30,
+      "precoCusto" : 48.0,
+      "dataCompra" : [ 2025, 6, 28 ]
     } ],
     "3" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 7,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "4" : [ {
       "idFornecedor" : 1,
       "quantidade" : 30,
       "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "5" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "6" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "7" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "8" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 27 ]
-    } ],
-    "9" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 27 ]
+      "dataCompra" : [ 2025, 6, 28 ]
     } ]
   },
   "pecasPorId" : {
@@ -63,43 +27,13 @@
     },
     "2" : {
       "idPeca" : 2,
-      "nome" : "Vela",
-      "preco" : 45.0
+      "nome" : "Filtro de óleo",
+      "preco" : 50.0
     },
     "3" : {
       "idPeca" : 3,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "4" : {
-      "idPeca" : 4,
       "nome" : "Filtro de óleo",
       "preco" : 50.0
-    },
-    "5" : {
-      "idPeca" : 5,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "6" : {
-      "idPeca" : 6,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "7" : {
-      "idPeca" : 7,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "8" : {
-      "idPeca" : 8,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "9" : {
-      "idPeca" : 9,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
     }
   }
 }

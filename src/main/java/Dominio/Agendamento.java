@@ -50,6 +50,19 @@ public class Agendamento implements Serializable{
         this.status = StatusAgendamento.Agendado;
         this.data = data;
     }
+
+    public Agendamento(String placaVeiculo, int idCliente, String descricao, int idElevador, LocalDateTime data) {
+        Agendamento.contadorId += 1;
+        this.idAgendamento = contadorId;
+        this.placaVeiculo = placaVeiculo;
+        this.idCliente = idCliente;
+        this.descricao = descricao;
+        this.idElevador = idElevador;
+        this.status = StatusAgendamento.Agendado;
+        this.data = data;
+    }
+    
+    
     
     public boolean conflita(Agendamento agendamento2){
         return this.data.equals(agendamento2.getData()) && this.idElevador == agendamento2.getIdElevador();

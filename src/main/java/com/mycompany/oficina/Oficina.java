@@ -23,6 +23,8 @@ import Servicos.GestaoDeVeiculos;
 import java.util.ArrayList;
 import static Dominio.Cargo.Recepcionista;
 import Dominio.CategoriaDespesa;
+import Dominio.ComparaAgendamentoPorCliente;
+import Dominio.ComparaAgendamentoPorData;
 import Dominio.ComparaClientePorId;
 import Dominio.ComparaClientePorNome;
 import Dominio.Fornecedor;
@@ -1018,45 +1020,211 @@ public class Oficina {
 //        System.out.println(gOS.toString());
         
         //Questão 10
-        System.out.println("Questão 10");
-        System.out.println("--------------------------------------------");
+//        System.out.println("Questão 10");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 10");
+//        
+//        System.out.println("\n1. Cadastrando Ordem de serviço");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L)); 
+//        
+//        Veiculo veiculo = new Veiculo("Toyota Corolla", "XYZ7890", 2021);
+//        
+//        Peca p1 = new Peca("Filtro de óleo", 50);
+//        
+//        Fornecedor f1 = new Fornecedor("Autopecas 1");
+//        
+//        sO.getEstoque().adicionarLote(p1, 30, f1.getIdFornecedor(), 40);
+//
+//        Map<Integer, Integer> pecas = new HashMap<>();
+//        pecas.put(1, 2);
+//        sO.getGestaoOS().registrarVendaDireta(1, pecas);
+//        
+//        
+//        sO.getGestaoOS().iniciarOSdeServico(1, veiculo.getPlaca(), "Troca filtro de óleo");
+//        sO.getGestaoOS().adicionarServico(1, Servicos.TROCA_DE_OLEO);
+//        sO.getGestaoOS().finalizarEGerarNota(1);
+//        
+//        System.out.println("\n2. Mostrando Balanço e Notas fiscais salvas na gestão financeira");
+//        Gerente g = new Gerente("Ana", "ana.g", "123");
+//        sO.getGestaoFuncionarios().adicionarFuncionario(g);
+//        sO.getGestaoFinanceira().gerarBalancoMes(Month.JUNE, 2025, g);
+//        sO.getGestaoFinanceira().imprimirNotasPorCliente(1);
+
+
+        //Questão 11
+//        System.out.println("Questão 11");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 11");
+//        
+//        System.out.println("\n1. Quantidade inicial dos contadores de veiculos pelas variaveis de classe");
+//        
+//        System.out.println("Contagem inicial de veículos (private): " + Cliente.getContadorDeVeiculos());
+//        System.out.println("Contagem inicial de veículos (protected): " + Cliente.getContadorDeVeiculosProtected());
+//
+//        System.out.println("\n2. Criando 3 veiculos");
+//        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
+//        Veiculo v1 = new Veiculo("Chevrolet Onix", "BBB-2222", 2018);
+//        Veiculo v2 = new Veiculo("Ford Ka", "CCC-3333", 2020);
+//
+//        System.out.println("\n3. Quantidade final dos contadores de veiculos pelas variaveis de classe");
+//        System.out.println("\nContagem final de veículos (private): " + Cliente.getContadorDeVeiculos());
+//        System.out.println("Contagem final de veículos (protected): " + Cliente.getContadorDeVeiculosProtected());
         
-        System.out.println("TESTE DA QUESTÃO 10");
         
-        System.out.println("\n1. Cadastrando Ordem de serviço");
-        SistemaOficina sO = new SistemaOficina();
+        //Questão 12
+//        System.out.println("Questão 12");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 12");
+//        
+//        System.out.println("\n1. Metodo de classe para retornar quantas instancias de veiculos criadas");
+//        
+//        System.out.println("Contagem inicial de veículos pelo metodo de classe): " + Cliente.getContadorDeVeiculos());
+//
+//        System.out.println("\n2. Criando 3 veiculos");
+//        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
+//        Veiculo v1 = new Veiculo("Chevrolet Onix", "BBB-2222", 2018);
+//        Veiculo v2 = new Veiculo("Ford Ka", "CCC-3333", 2020);
+//
+//        System.out.println("\n3. retornar quantas instancias de veiculos criadas apos novos veiculos");
+//        System.out.println("\nContagem final de veículos pelo metodo de classe: " + Cliente.getContadorDeVeiculos());
         
         
-        Peca p1 = new Peca("Filtro de óleo", 50);
-        Peca p2 = new Peca("Vela", 45);
-        Peca p3 = new Peca("Liquido de arrefecimento", 70);
-        
-        Fornecedor f1 = new Fornecedor("Autopecas 1");
-        Fornecedor f2 = new Fornecedor("Autopecas 2");
-        
-        sO.getEstoque().adicionarLote(p1, 30, 1, 40);
-        sO.getEstoque().adicionarLote(p2, 50, 1, 30);
-        sO.getEstoque().adicionarLote(p3, 10, 2, 55);
-        System.out.println(sO.getEstoque().toString());
-        
-        Map<Integer, Integer> pecas = new HashMap<>();
-        pecas.put(1, 2);
-        Map<Integer, Integer> pecas2 = new HashMap<>();
-        pecas2.put(2, 4);
-        pecas2.put(3, 1);
-        
-        sO.getGestaoOS().registrarVendaDireta(1, pecas);
-        sO.getGestaoOS().registrarVendaDireta(3, pecas2);
-        
-        System.out.println("\n2. Criando novas instâncias de GestaoClientes, Estoque e GestaoDeOrdemDeServico");
-        GestaoClientes gC = GestaoClientes.carregarDoArquivo();
-        System.out.println(gC.toString());
-        
-        Estoque e = Estoque.carregarDoArquivo(sO.getGestaoFinanceira());
-        System.out.println(e.toString());
-        
-        GestaoDeOrdemDeServico gOS = GestaoDeOrdemDeServico.carregarDoArquivo(e, sO.getGestaoFinanceira());
-        System.out.println(gOS.toString());
+        //Questão 13
+//        System.out.println("Questão 13");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 13");
+//        
+//        System.out.println("\n1. Adiciona clientes a lista");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));    
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        
+//        System.out.println("\n2. Lista Original (Desordenada)");
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n3. Ordenando por NOME");
+//        
+//        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorNome());
+//        
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n4. Ordenando por ID");
+//        
+//        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorId());
+//
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n5. Criando 3 veiculos");
+//        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
+//        Veiculo v1 = new Veiculo("Chevrolet Onix", "BBB-2222", 2018);
+//        Veiculo v2 = new Veiculo("Ford Ka", "CCC-3333", 2020);
+//        
+//        sO.getAgenda().agendar(new Agendamento(v.getPlaca(), 1, "Alinhamento", 1, LocalDateTime.of(2025, 7, 10, 14, 0)));
+//        sO.getAgenda().agendar(new Agendamento(v1.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 10, 0)));
+//        sO.getAgenda().agendar(new Agendamento(v2.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 12, 0)));
+//        sO.getAgenda().salvar();
+//        
+//        System.out.println("\n6. Lista Original (Desordenada)");
+//        sO.getAgenda().imprimirAgenda();
+//
+//        System.out.println("\n3. Ordenando por Data");
+//        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorData());
+//        sO.getAgenda().imprimirAgenda();
+//        
+//        System.out.println("\n4. Ordenando por ID");
+//        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorCliente());
+//        sO.getAgenda().imprimirAgenda();
+
+
+        //Questão 14
+//        System.out.println("Questão 14");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 14");
+//        
+//        System.out.println("\n1. Criando e salvaldo instancias em cada gestão");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        Gerente g = new Gerente("Davi", "davi", "1234", 4000);
+//        Mecanico m = new Mecanico("Marcos", "marcos", "12345", 5000, "Eletrica");
+//        Recepcionista r = new Recepcionista("Maria", "maria", "123", 3000);
+//        
+//        sO.getGestaoFuncionarios().adicionarFuncionario(g);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(m);
+//        sO.getGestaoFuncionarios().adicionarFuncionario(r);
+//        sO.getGestaoFuncionarios().salvarFuncionarios();
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+//        
+//        Cliente c = new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L);
+//        sO.getGestaoClientes().adicionaCliente(c);  
+//        System.out.println( sO.getGestaoClientes().toString());
+//
+//        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
+//        sO.getGestaoVeiculos().adicionarVeiculo(c.getIdCliente(), v);
+//        sO.getGestaoVeiculos().salvar();
+//        System.out.println(sO.getGestaoVeiculos().toString());
+//        
+//        Peca p1 = new Peca("Filtro de óleo", 50);
+//        
+//        Fornecedor f1 = new Fornecedor("Autopecas 1");
+//        
+//        sO.getEstoque().adicionarLote(p1, 30, f1.getIdFornecedor(), 40);
+//        System.out.println(sO.getEstoque().toString());
+//        
+//        Map<Integer, Integer> pecas = new HashMap<>();
+//        pecas.put(1, 2);
+//        
+//        sO.getAgenda().agendar(new Agendamento(v.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 15, 0)));
+//        sO.getAgenda().salvar();
+//        sO.getAgenda().imprimirAgenda();
+//        
+//        sO.getAgenda().IniciarServico(1, m.getIdFuncionario());
+//        
+//        sO.getGestaoOS().registrarVendaDireta(c.getIdCliente(), pecas);
+//        
+//        System.out.println(sO.getGestaoFinanceira().toString());
+//        
+//        System.out.println("\n1. recuperando dados de cada gestão");
+//        
+//        FuncionarioService gf = FuncionarioService.carregarDoArquivo();
+//        System.out.println(gf.toString());
+//        
+//        GestaoClientes gc = GestaoClientes.carregarDoArquivo();
+//        System.out.println(gc.toString());
+//        
+//        GestaoDeVeiculos gv = GestaoDeVeiculos.carregarDoArquivo();
+//        System.out.println(gv.toString()); 
+//        
+//        GestaoFinanceira gfi = GestaoFinanceira.carregarDoArquivo();
+//        System.out.println(gfi.toString());
+//        
+//        Estoque e = Estoque.carregarDoArquivo(gfi);
+//        System.out.println(e.toString()); 
+//        
+//        Agenda a = Agenda.carregarDoArquivo();
+//        System.out.println(a.toString());
+//        
+//        GestaoDeOrdemDeServico gos = GestaoDeOrdemDeServico.carregarDoArquivo(e, gfi);
+//        System.out.println(gos.toString());
+
+
+//        System.out.println("\n3. retornar quantas instancias de veiculos criadas apos novos veiculos");
+//        System.out.println("\nContagem final de veículos pelo metodo de classe: " + Cliente.getContadorDeVeiculos());
+
 
 
         // Questão 15

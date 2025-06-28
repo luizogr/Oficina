@@ -79,6 +79,7 @@ public class GestaoFinanceira {
      */
     public void adicionarLancamento(Lancamento lancamento){
         lancamentos.add(lancamento);
+        salvar();
     }
     
     /**
@@ -87,6 +88,7 @@ public class GestaoFinanceira {
      */
     public void adicionarNotaFiscal(NotaFiscal nota) {
         this.notasFiscais.add(nota);
+        salvar();
     }
     
     /**
@@ -123,6 +125,40 @@ public class GestaoFinanceira {
             System.out.println("-----------------------------------------------------");
             System.out.printf("Balanço do Mês: R$ %.2f\n", balanco);
             System.out.println("=====================================================\n");
+        }
+    }
+    
+    /**
+     * 
+     * @param idCliente
+     * @return 
+     */
+    public ArrayList<NotaFiscal> buscarNotasPorCliente(int idCliente){
+        ArrayList<NotaFiscal> notasDoCliente = new ArrayList<>();
+        for(NotaFiscal nota : notasFiscais){
+            if(nota.getIdCliente() == idCliente){
+                notasDoCliente.add(nota);
+            }
+        }
+        if(notasDoCliente.isEmpty()){
+            System.out.println("O cliente não possui notas fiscais");
+        }
+        return notasDoCliente;
+    }
+    
+    /**
+     * 
+     * @param idCliente 
+     */
+    public void imprimirNotasPorCliente(int idCliente) {
+        ArrayList<NotaFiscal> notas = buscarNotasPorCliente(idCliente);
+        if (notas.isEmpty()) {
+            System.out.println("Nenhuma nota fiscal encontrada para este cliente.");
+        } else {
+            System.out.println("Notas fiscais do cliente ID " + idCliente + ":");
+            for (NotaFiscal nota : notas) {
+                System.out.println(nota);
+            }
         }
     }
 

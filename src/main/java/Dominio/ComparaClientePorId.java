@@ -13,6 +13,12 @@ import java.util.Comparator;
 public class ComparaClientePorId implements Comparator<Cliente>{
     @Override
     public int compare(Cliente c1, Cliente c2) {
-        return Integer.compare(c1.getIdCliente(), c2.getIdCliente()); // Mudar para logica propria
+        if(c1.getIdCliente() < c2.getIdCliente()){
+            return -1;
+        }
+        if(c1.getIdCliente() > c2.getIdCliente()){
+            return 1;
+        }
+        return 0;
     }
 }
