@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Enum que define os cargos possíveis para os funcionários da oficina
  * @author luizp
  */
 public enum Cargo {

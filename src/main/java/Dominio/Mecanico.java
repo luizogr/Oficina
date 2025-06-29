@@ -39,11 +39,23 @@ public class Mecanico extends Funcionario implements Observer{
         super(nome, Cargo.Mecanico, login, senha);
     }
 
+    /**
+     * Construtor da classe mecanico
+     * @param nome
+     * @param login
+     * @param senha
+     * @param salario
+     * @param especialidade 
+     */
     public Mecanico(String nome, String login, String senha, double salario, String especialidade) {
         super(nome, Cargo.Mecanico, login, senha, salario);
         this.especialidade = especialidade;
     }
 
+    /**
+     * Define como o Mecânico reage ao ser notificado por um Subject
+     * @param mensagem 
+     */
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Mecânico " + getNome() + " ---");
@@ -67,6 +79,10 @@ public class Mecanico extends Funcionario implements Observer{
         this.especialidade = especialidade;
     }
 
+    /**
+     * Retorna uma representação textual do objeto Mecanico
+     * @return 
+     */
     @Override
     public String toString() {
         return super.toString() + " | Especialidade: " + especialidade;

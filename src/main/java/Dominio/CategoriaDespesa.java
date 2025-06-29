@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Enum que define as categorias para os lançamentos de despesas da oficina
  * @author luizp
  */
 public enum CategoriaDespesa {

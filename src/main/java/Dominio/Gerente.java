@@ -5,11 +5,14 @@
 package Dominio;
 
 /**
- *
+ * Representa um funcionário com o cargo de Gerente
  * @author luizp
  */
 public class Gerente extends Funcionario implements Observer{
 
+    /**
+     * Construtor padrão
+     */
     public Gerente() {
     }
     
@@ -36,6 +39,10 @@ public class Gerente extends Funcionario implements Observer{
         super(nome, Cargo.Gerente, login, senha, salario);
     }
 
+    /**
+     * Define como o Gerente reage ao ser notificado por um Subject
+     * @param mensagem 
+     */
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Gerente " + getNome() + " ---");
@@ -43,6 +50,10 @@ public class Gerente extends Funcionario implements Observer{
         System.out.println("----------------------------------------------\n");
     }
     
+    /**
+     * Retorna uma representação textual do objeto Gerente
+     * @return 
+     */
     @Override
     public String toString() {
         return super.toString();

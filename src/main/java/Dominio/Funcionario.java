@@ -59,6 +59,12 @@ public class Funcionario implements Serializable{
         this.salario = salario;
     }
 
+    /**
+     * Construtor da classe funcionario
+     * @param nome
+     * @param login
+     * @param senha 
+     */
     public Funcionario(String nome, String login, String senha) {
         Funcionario.contadorId += 1;
         this.idFuncionario = contadorId;
@@ -67,58 +73,114 @@ public class Funcionario implements Serializable{
         this.senha = senha;
     }    
 
+    /**
+     * 
+     * @return 
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * 
+     * @param nome 
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Cargo getCargo() {
         return cargo;
     }
 
+    /**
+     * 
+     * @param cargo 
+     */
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static int getContadorId() {
         return contadorId;
     }
 
+    /**
+     * 
+     * @param contadorId 
+     */
     public static void setContadorId(int contadorId) {
         Funcionario.contadorId = contadorId;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdFuncionario() {
         return idFuncionario;
     }
 
+    /**
+     * 
+     * @param idFuncionario 
+     */
     public void setIdFuncionario(int idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getLogin() {
         return login;
     }
 
+    /**
+     * 
+     * @param login 
+     */
     public void setLogin(String login) {
         this.login = login;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getSenha() {
         return senha;
     }
 
+    /**
+     * 
+     * @param senha 
+     */
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getSalario() {
         return salario;
     }
 
+    /**
+     * 
+     * @param salario 
+     */
     public void setSalario(double salario) {
         this.salario = salario;
     }

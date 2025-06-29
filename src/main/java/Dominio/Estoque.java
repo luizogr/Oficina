@@ -31,6 +31,10 @@ public class Estoque {
     private static final String CAMINHO_ARQUIVO = "estoque.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Construtor para Estoque
+     * @param gestaoFinanceira 
+     */
     public Estoque(GestaoFinanceira gestaoFinanceira) {
         this.gestaoFinanceira = gestaoFinanceira;
         this.lotesPorPeca = new HashMap<>();
@@ -39,6 +43,9 @@ public class Estoque {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
+    /**
+     * Construtor padrão
+     */
     public Estoque() {
         this.lotesPorPeca = new HashMap<>();
         this.pecasPorId = new HashMap<>();
@@ -47,7 +54,7 @@ public class Estoque {
     }
     
     /**
-     * 
+     * Verifica se uma peça, dado seu ID, existe no catálogo de peças do estoque
      * @param id
      * @return 
      */
@@ -55,6 +62,12 @@ public class Estoque {
         return lotesPorPeca.containsKey(id);
     }
     
+    /**
+     * Verifica se a quantidade total de uma peça em estoque é suficiente para atender a uma determinada demanda
+     * @param id
+     * @param quantidade
+     * @return 
+     */
     public boolean quantidadeSuficiente(int id, int quantidade){
         if (!contemPeca(id)) return false;
         
@@ -66,7 +79,7 @@ public class Estoque {
     }
     
     /**
-     * 
+     * Busca e retorna um objeto Peca pelo seu ID
      * @param id
      * @return 
      */
@@ -106,6 +119,9 @@ public class Estoque {
         return new Estoque(gestaoFinanceira);
     }
 
+    /**
+     * Salva o estado atual do estoque em um arquivo JSON
+     */
     public void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -115,12 +131,12 @@ public class Estoque {
     }
     
     /**
-     * 
-     * @param peca
-     * @param quantidade
-     * @param idFornecedor
-     * @param precoUnitario
-     * @return 
+     * Adiciona um novo lote de peças ao estoque e registra a compra como uma despesa
+     * @param peca tipo de peça que está sendo recebido
+     * @param quantidade quantidade de peças recebidas
+     * @param idFornecedor O ID do fornecedor
+     * @param precoUnitario preço de custo de cada peça neste lote
+     * @return true se o lote foi adicionado com sucesso, false caso contrário
      */
     public boolean adicionarLote(Peca peca, int quantidade, int idFornecedor, double precoUnitario) {
         if (quantidade <= 0 || precoUnitario <= 0) {
@@ -153,10 +169,10 @@ public class Estoque {
     }
     
     /**
-     *  Remove uma certa quantidade de uma peça do estoque.
-     * @param id
-     * @param quantidade
-     * @return 
+     *  Remove uma certa quantidade de uma peça do estoque, utilizando a estratégia FIFO
+     * @param id ID da peça a ser removida
+     * @param quantidade A quantidade a ser removida
+     * @return true se a remoção foi bem-sucedida
      */
     public boolean removerPeca(int id, int quantidade){
         if(quantidade <= 0){
@@ -212,11 +228,22 @@ public class Estoque {
         return true;
     }
     
+    /**
+     * Calcula a quantidade total de uma peça somando todos os seus lotes
+     * @param id O ID da peça
+     * @return A quantidade total em estoque
+     */
     public int getQuantidadeTotal(int id) {
         if (!lotesPorPeca.containsKey(id)) return 0;
         return lotesPorPeca.get(id).stream().mapToInt(LotePeca::getQuantidade).sum();
     }
     
+    /**
+     * Edita o nome de um tipo de peça no catálogo
+     * @param id
+     * @param nome
+     * @return 
+     */
     public boolean editarNome(int id, String nome){
         boolean pecaExiste = contemPeca(id);
         if(pecaExiste == false){
@@ -230,7 +257,13 @@ public class Estoque {
         }  
     }
     
-        public boolean editarPreco(int id, double preco){
+    /**
+     * Edita o preço de venda de um tipo de peça no catálogo
+     * @param id
+     * @param preco
+     * @return 
+     */
+    public boolean editarPreco(int id, double preco){
         boolean pecaExiste = contemPeca(id);
         if(pecaExiste == false){
             System.out.println("Peça não está em estoque");
@@ -243,6 +276,10 @@ public class Estoque {
         }  
     }
     
+    /**
+     * Imprime um relatório detalhado do estoque, mostrando cada lote e seu fornecedor
+     * @param fornecedoresCadastrados 
+     */
     public void imprimirEstoque(Map<Integer, Fornecedor> fornecedoresCadastrados) {
         if (lotesPorPeca.isEmpty()) {
             System.out.println("Estoque vazio.");
@@ -276,34 +313,75 @@ public class Estoque {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoFinanceira getGestaoFinanceira() {
         return gestaoFinanceira;
     }
 
+    /**
+     * 
+     * @param gestaoFinanceira 
+     */
     public void setGestaoFinanceira(GestaoFinanceira gestaoFinanceira) {
         this.gestaoFinanceira = gestaoFinanceira;
     }
 
-    
-
+    /**
+     * 
+     * @return 
+     */
     public Map<Integer, List<LotePeca>> getLotesPorPeca() {
         return lotesPorPeca;
     }
 
+    /**
+     * 
+     * @param lotesPorPeca 
+     */
     public void setLotesPorPeca(Map<Integer, List<LotePeca>> lotesPorPeca) {
         this.lotesPorPeca = lotesPorPeca;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<Integer, Peca> getPecasPorId() {
         return pecasPorId;
     }
 
+    /**
+     * Gera uma representação textual simples do estado atual do estoque
+     * @param pecasPorId 
+     */
     public void setPecasPorId(Map<Integer, Peca> pecasPorId) {
         this.pecasPorId = pecasPorId;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Estoque{" + "lotesPorPeca=" + lotesPorPeca + ", pecasPorId=" + pecasPorId + ", gestaoFinanceira=" + gestaoFinanceira + '}';
+        if (pecasPorId.isEmpty()) {
+            return "Estoque Vazio.";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Resumo do Estoque ---\n");
+        
+        for (Peca peca : pecasPorId.values()) {
+            int quantidadeTotal = getQuantidadeTotal(peca.getIdPeca());
+            sb.append("- ").append(peca.getNome())
+              .append(" (ID: ").append(peca.getIdPeca()).append(")")
+              .append(": ").append(quantidadeTotal).append(" unidades\n");
+        }
+        
+        sb.append("-------------------------");
+        return sb.toString();
     }
 }

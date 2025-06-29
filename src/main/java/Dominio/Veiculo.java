@@ -7,7 +7,7 @@ package Dominio;
 import java.io.Serializable;
 
 /**
- *
+ * Representa um veiculo
  * @author Hudson
  */
 public class Veiculo implements Serializable{
@@ -15,6 +15,9 @@ public class Veiculo implements Serializable{
     private String placa;
     private int ano;
 
+    /**
+     * Construtor padrão
+     */
     public Veiculo(){
         Cliente.incrementaContadorDeVeiculos();
         Cliente.contadorDeVeiculos += 1;
@@ -50,24 +53,44 @@ public class Veiculo implements Serializable{
         return modelo;
     }
     
+    /**
+     * 
+     * @param placa 
+     */
     public void setPlaca(String placa) {
         this.placa = placa;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getPlaca(){
         return placa;
     }
     
+    /**
+     * 
+     * @param ano 
+     */
     public void setAno(int ano) {
         this.ano = ano;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int getAno() {
         return ano;
     }
 
+    /**
+     * Retorna uma representação textual do veiculo
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Veiculo{" + "modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + '}';
+        return "Modelo: " + modelo + "| Placa: " + placa + "| Ano: " + ano;
     }
 }

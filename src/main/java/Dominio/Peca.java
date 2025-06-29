@@ -7,7 +7,7 @@ package Dominio;
 import java.io.Serializable;
 
 /**
- *
+ * Representa uma Peça
  * @author luizp
  */
 public class Peca implements Serializable{
@@ -36,48 +36,76 @@ public class Peca implements Serializable{
         //this.quantide = quantide;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * 
+     * @param nome 
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getPreco() {
         return precoVenda;
     }
 
+    /**
+     * 
+     * @param preco 
+     */
     public void setPreco(double preco) {
         this.precoVenda = preco;
     }
 
-//    public int getQuantide() {
-//        return quantide;
-//    }
-//
-//    public void setQuantide(int quantide) {
-//        this.quantide = quantide;
-//    }
-
+    /**
+     * 
+     * @return 
+     */
     public static int getContadorPeca() {
         return contadorPeca;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdPeca() {
         return idPeca;
     }
 
+    /**
+     * 
+     * @param contadorPeca 
+     */
     public static void setContadorPeca(int contadorPeca) {
         Peca.contadorPeca = contadorPeca;
     }
 
+    /**
+     * 
+     * @param idPeca 
+     */
     public void setIdPeca(int idPeca) {
         this.idPeca = idPeca;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Peca{" + "nome=" + nome + ", preco=" + precoVenda + ", quantide=" + '}';
+        return "Peça | ID #" + idPeca + " | Nome: " + nome + " | Preço: R$" + String.format("%.2f", precoVenda);
     }
 }

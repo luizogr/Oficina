@@ -23,12 +23,21 @@ public class Recepcionista extends Funcionario implements Observer{
         super(nome, Cargo.Recepcionista, login, senha);
     }
 
+    /**
+     * Construtor para criar um Recepcionista
+     * @param nome
+     * @param login
+     * @param senha
+     * @param salario 
+     */
     public Recepcionista(String nome, String login, String senha, double salario) {
         super(nome, Cargo.Recepcionista, login, senha, salario);
     }
     
-    
-
+    /**
+     * Recebe atualização e exibe uma notificação no console
+     * @param mensagem 
+     */
     @Override
     public void atualizar(String mensagem) {
         System.out.println("--- Alerta para o Recepcionista " + getNome() + " ---");
@@ -43,6 +52,10 @@ public class Recepcionista extends Funcionario implements Observer{
         
     }
     
+    /**
+     * Retorna a representação textual do funcionário
+     * @return 
+     */
     @Override
     public String toString() {
         return super.toString();

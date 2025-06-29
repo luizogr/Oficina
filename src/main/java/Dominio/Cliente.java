@@ -26,6 +26,9 @@ public class Cliente implements Serializable{
     private String email;
     private long cpf;
 
+    /**
+     * Construtor padrão
+     */
     public Cliente() {
     }
     
@@ -56,87 +59,166 @@ public class Cliente implements Serializable{
         return "A quantidade de clientes instânciados no sistema é: " + contadorClientes;
     }
      
+    /**
+     * 
+     * @param nome 
+     */
     public void setNome(String nome){
         this.nome = nome;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getNome() {
         return nome;
     }
     
+    /**
+     * 
+     * @param endereco 
+     */
     public void setEndereco(String endereco){
         this.endereco = endereco;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getEndereco(){
         return endereco;
     }
     
+    /**
+     * 
+     * @param telefone 
+     */
     public void setTelefone(String telefone){
         this.telefone = telefone;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getTelefone() {
         return telefone;
     }
     
+    /**
+     * 
+     * @param email 
+     */
     public void setEmail(String email) {
         this.email = email;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getEmail() {
         return email;
     }
     
+    /**
+     * 
+     * @param cpf 
+     */
     public void setCpf(long cpf) {
         this.cpf = cpf;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public long getCpf() {
         return cpf;
     }
+    /**
+     * Retorna o CPF de forma pseudo-anonimizada
+     * @return 
+     */
     @JsonIgnore
     public String getCpfAnonimizado() {
         String cpfStr = String.format("%011d", cpf);
         return "***.***." + cpfStr.substring(6, 9) + "-" + cpfStr.substring(9);
     }
 
+    /**
+     * 
+     * @return 
+     */
     @JsonIgnore
     public static int getContadorClientes() {
         return contadorClientes;
     }
 
+    /**
+     * 
+     * @param contadorClientes 
+     */
     @JsonIgnore
     public static void setContadorClientes(int contadorClientes) {
         Cliente.contadorClientes = contadorClientes;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdCliente() {
         return idCliente;
     }
 
+    /**
+     * 
+     * @param idCliente 
+     */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
+    /**
+     * Incrementa o contador de veículos de forma segura
+     */
     public static void incrementaContadorDeVeiculos(){
         contadorDeVeiculosPrivate += 1;
     }
     
+    /**
+     * Retorna a contagem de veículos
+     * @return 
+     */
     public static int getContadorDeVeiculos(){
         return contadorDeVeiculosPrivate;
     }
 
+    /**
+     * Define a contagem de veículos
+     * @param contadorDeVeiculosPrivate 
+     */
     public static void setContadorDeVeiculosPrivate(int contadorDeVeiculosPrivate) {
         Cliente.contadorDeVeiculosPrivate = contadorDeVeiculosPrivate;
     }
     
+    /**
+     * Retorna a contagem de veículos do contador protected
+     * @return 
+     */
     public static int getContadorDeVeiculosProtected() {
         return contadorDeVeiculos;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", cpf=" + getCpfAnonimizado() + '}';
+        return "Cliente | ID: " + idCliente + " | Nome: " + nome + " | CPF: " + getCpfAnonimizado();
     }    
 }

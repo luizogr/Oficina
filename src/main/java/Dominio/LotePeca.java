@@ -18,6 +18,13 @@ public class LotePeca implements Serializable{
     private double precoCusto;
     private LocalDate dataCompra;
 
+    /**
+     * Construtor para criar um novo lote de peças
+     * @param idFornecedor
+     * @param quantidade
+     * @param precoCusto
+     * @param dataCompra 
+     */
     public LotePeca(int idFornecedor, int quantidade, double precoCusto, LocalDate dataCompra) {
         this.idFornecedor = idFornecedor;
         this.quantidade = quantidade;
@@ -25,31 +32,58 @@ public class LotePeca implements Serializable{
         this.dataCompra = dataCompra;
     }
 
+    /**
+     * Construtor padrão
+     */
     public LotePeca() {
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdFornecedor() {
         return idFornecedor;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getPrecoCusto() {
         return precoCusto;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public LocalDate getDataCompra() {
         return dataCompra;
     }
 
+    /**
+     * Retorna a quantidade de peças restantes neste lote
+     * @return 
+     */
     public int getQuantidade() {
         return quantidade;
     }
 
+    /**
+     * 
+     * @param quantidade 
+     */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
+    /**
+     * Retorna uma representação textual do objeto LotePeca
+     * @return 
+     */
     @Override
     public String toString() {
-        return "LotePeca{" + "idFornecedor=" + idFornecedor + ", quantidade=" + quantidade + ", precoCusto=" + precoCusto + ", dataCompra=" + dataCompra + '}';
+        return String.format("Lote | Fornecedor ID: %d | Qtd: %d | Custo: R$%.2f | Data: %s", idFornecedor, quantidade, precoCusto, dataCompra);
     }
 }

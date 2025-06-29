@@ -10,7 +10,7 @@ import Dominio.ItemNota;
 import java.io.Serializable;
 
 /**
- *
+ * Representa a nota fiscal ou o extrato de uma Ordem de Serviço finalizada
  * @author luizp
  */
 public class NotaFiscal implements Serializable{
@@ -20,9 +20,17 @@ public class NotaFiscal implements Serializable{
     private ArrayList<ItemNota> itens;
     private double total = 0;
 
+    /**
+     * Construtor padrão
+     */
     public NotaFiscal() {
     }
     
+    /**
+     * Construtor para criar uma nova nota fiscal
+     * @param idOS
+     * @param idCliente 
+     */
     public NotaFiscal(int idOS, int idCliente) {
         this.idOS = idOS;
         this.idCliente = idCliente;
@@ -30,12 +38,21 @@ public class NotaFiscal implements Serializable{
         this.itens = new ArrayList<>();
     }
     
+    /**
+     * diciona um novo item
+     * @param descricao
+     * @param quantidade
+     * @param valorUnitario 
+     */
     public void adicionarItem(String descricao, int quantidade, double valorUnitario){
         ItemNota item = new ItemNota(descricao, quantidade, valorUnitario);
         itens.add(item);
         this.total += item.getValorTotal();
     }
     
+    /**
+     * Imprime uma representação formatada da nota fiscal no console
+     */
     public void imprimir() {
         System.out.println("\n================ NOTA FISCAL / EXTRATO ================");
         System.out.println("Ordem de Serviço Nº: " + idOS);
@@ -52,46 +69,90 @@ public class NotaFiscal implements Serializable{
         System.out.println("=====================================================\n");
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdOS() {
         return idOS;
     }
 
+    /**
+     * 
+     * @param idOS 
+     */
     public void setIdOS(int idOS) {
         this.idOS = idOS;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdCliente() {
         return idCliente;
     }
 
+    /**
+     * 
+     * @param idCliente 
+     */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public LocalDateTime getData() {
         return data;
     }
 
+    /**
+     * 
+     * @param data 
+     */
     public void setData(LocalDateTime data) {
         this.data = data;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<ItemNota> getItens() {
         return itens;
     }
 
+    /**
+     * 
+     * @param itens 
+     */
     public void setItens(ArrayList<ItemNota> itens) {
         this.itens = itens;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getTotal() {
         return total;
     }
 
+    /**
+     * 
+     * @param total 
+     */
     public void setTotal(double total) {
         this.total = total;
     }
 
+    /**
+     * Retorna uma representação textual do objeto NotaFiscal
+     * @return 
+     */
     @Override
     public String toString() {
         return "NotaFiscal | OS #" + idOS + " | Cliente ID: " + idCliente + " | Valor Total: R$" + String.format("%.2f", total);

@@ -8,10 +8,16 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 
 /**
- *
+ * Implementa a interface Comparator para comparar dois objetos Agendamento com base na data do agendamento
  * @author luizp
  */
 public class ComparaAgendamentoPorData implements Comparator<Agendamento>{
+    /**
+     * Compara dois agendamentos com base na data e hora
+     * @param a1 primeiro agendamento
+     * @param a2 segundo agendamento
+     * @return 
+     */
     @Override
     public int compare(Agendamento a1, Agendamento a2) {
         LocalDateTime data1 = a1.getData();
