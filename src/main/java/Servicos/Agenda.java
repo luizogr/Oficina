@@ -243,6 +243,12 @@ public class Agenda {
      */
     @Override
     public String toString() {
-        return "Agenda{" + "dataElevadorAgendamento=" + dataElevadorAgendamento + ", todosAgendamentos=" + todosAgendamentos + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Relatório de Agendamentos ---\n");
+        for (Agendamento ag : todosAgendamentos) {
+            sb.append(ag.toString()).append("\n");
+        }
+        sb.append("---------------------------------");
+        return sb.toString();
     }
 }

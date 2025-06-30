@@ -315,7 +315,18 @@ public class SistemaOficina {
      */
     @Override
     public String toString() {
-        return "SistemaOficina{" + "funcionarioLogado=" + funcionarioLogado + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n=== Resumo do Estado do SistemaOficina ===\n");
+        if (funcionarioLogado != null) {
+            sb.append("Funcionário Logado: ").append(funcionarioLogado.getNome())
+              .append(" (ID: ").append(funcionarioLogado.getIdFuncionario()).append(")\n");
+        } else {
+            sb.append("Funcionário Logado: Ninguém\n");
+        }
+        sb.append("Clientes Cadastrados: ").append(gestaoClientes.getClientes().size()).append("\n");
+        sb.append("Funcionários Cadastrados: ").append(gestaoFuncionarios.getFuncionarios().size()).append("\n");
+        sb.append("==========================================");
+        return sb.toString();
     }
     
 }

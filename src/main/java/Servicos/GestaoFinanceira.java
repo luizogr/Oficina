@@ -219,7 +219,26 @@ public class GestaoFinanceira {
      */
     @Override
     public String toString() {
-        return "GestaoFinanceira{" + "lancamentos=" + lancamentos + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== Relatório Financeiro Completo ===\n");
+        sb.append("\n--- Lançamentos Financeiros ---\n");
+        if (lancamentos.isEmpty()) {
+            sb.append("Nenhum lançamento registrado.\n");
+        } else {
+            for (Lancamento l : lancamentos) {
+                sb.append(l.toString()).append("\n");
+            }
+        }
+        sb.append("\n--- Notas Fiscais Armazenadas ---\n");
+        if (notasFiscais.isEmpty()) {
+            sb.append("Nenhuma nota fiscal armazenada.\n");
+        } else {
+            for (NotaFiscal n : notasFiscais) {
+                sb.append(n.toString()).append("\n");
+            }
+        }
+        sb.append("===================================");
+        return sb.toString();
     }
     
 }

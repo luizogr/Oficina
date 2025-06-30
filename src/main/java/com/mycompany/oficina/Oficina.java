@@ -840,6 +840,43 @@ public class Oficina {
 //        financeiro.gerarBalancoMes(Month.JUNE, 2025, sistema.getFuncionarioLogado());
 
 
+        //Questão 1 e 3
+//        System.out.println("Questão 1 e 3");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 1 e 3");
+//        
+//        
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        System.out.println("\n1. Criando funcionarios");
+//        Gerente g = new Gerente("Davi", "davi", "1234", 4000);
+//        Mecanico m = new Mecanico("Marcos", "marcos", "12345", 5000, "Eletrica");
+//        Recepcionista r = new Recepcionista("Maria", "maria", "123", 3000);
+//        
+//        System.out.println("\n2. Mostrando toString de Cliente e GestaoClientes");
+//        System.out.println(g.toString());
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+
+        //Questão 2
+//        System.out.println("Questão 2");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 2");
+//        
+//        
+//        SistemaOficina sO = new SistemaOficina();
+//        sO.menuPrincipal();
+        
+//        System.out.println("\n1. Criando funcionarios");
+//        Gerente g = new Gerente("Davi", "davi", "1234", 4000);
+//        Mecanico m = new Mecanico("Marcos", "marcos", "12345", 5000, "Eletrica");
+//        Recepcionista r = new Recepcionista("Maria", "maria", "123", 3000);
+//        
+//        System.out.println("\n2. Mostrando toString de Cliente e GestaoClientes");
+//        System.out.println(g.toString());
+//        System.out.println(sO.getGestaoFuncionarios().toString());
+
         //Questão 4
 //        System.out.println("Questão 4");
 //        System.out.println("--------------------------------------------");
@@ -1089,59 +1126,59 @@ public class Oficina {
         
         
         //Questão 13
-        System.out.println("Questão 13");
-        System.out.println("--------------------------------------------");
-        
-        System.out.println("TESTE DA QUESTÃO 13");
-        
-        System.out.println("\n1. Adiciona clientes a lista");
-        SistemaOficina sO = new SistemaOficina();
-        
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));    
-        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
-        
-        System.out.println("\n2. Lista Original (Desordenada)");
-        for (Cliente c : sO.getGestaoClientes().getClientes()) {
-            System.out.println(c);
-        }
-        
-        System.out.println("\n3. Ordenando por NOME");
-        
-        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorNome());
-        
-        for (Cliente c : sO.getGestaoClientes().getClientes()) {
-            System.out.println(c);
-        }
-        
-        System.out.println("\n4. Ordenando por ID");
-        
-        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorId());
-
-        for (Cliente c : sO.getGestaoClientes().getClientes()) {
-            System.out.println(c);
-        }
-        
-        System.out.println("\n5. Criando 3 veiculos");
-        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
-        Veiculo v1 = new Veiculo("Chevrolet Onix", "BBB-2222", 2018);
-        Veiculo v2 = new Veiculo("Ford Ka", "CCC-3333", 2020);
-        
-        sO.getAgenda().agendar(new Agendamento(v.getPlaca(), 1, "Alinhamento", 1, LocalDateTime.of(2025, 7, 10, 14, 0)));
-        sO.getAgenda().agendar(new Agendamento(v1.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 10, 0)));
-        sO.getAgenda().agendar(new Agendamento(v2.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 15, 0)));
-        sO.getAgenda().salvar();
-        
-        System.out.println("\n6. Lista Original (Desordenada)");
-        sO.getAgenda().imprimirAgenda();
-
-        System.out.println("\n3. Ordenando por Data");
-        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorData());
-        sO.getAgenda().imprimirAgenda();
-        
-        System.out.println("\n4. Ordenando por ID");
-        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorCliente());
-        sO.getAgenda().imprimirAgenda();
+//        System.out.println("Questão 13");
+//        System.out.println("--------------------------------------------");
+//        
+//        System.out.println("TESTE DA QUESTÃO 13");
+//        
+//        System.out.println("\n1. Adiciona clientes a lista");
+//        SistemaOficina sO = new SistemaOficina();
+//        
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Carlos", "Rua A", "111111", "carlos@gmail",333L));   
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Ana", "Rua B", "2222222", "ana@gmail", 111L));    
+//        sO.getGestaoClientes().adicionaCliente(new Cliente("Bruno", "Rua C", "3333333", "bruno@gmail", 222L));
+//        
+//        System.out.println("\n2. Lista Original (Desordenada)");
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n3. Ordenando por NOME");
+//        
+//        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorNome());
+//        
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n4. Ordenando por ID");
+//        
+//        Collections.sort(sO.getGestaoClientes().getClientes(), new ComparaClientePorId());
+//
+//        for (Cliente c : sO.getGestaoClientes().getClientes()) {
+//            System.out.println(c);
+//        }
+//        
+//        System.out.println("\n5. Criando 3 veiculos");
+//        Veiculo v = new Veiculo("Fiat Uno", "AAA-1111", 2010);
+//        Veiculo v1 = new Veiculo("Chevrolet Onix", "BBB-2222", 2018);
+//        Veiculo v2 = new Veiculo("Ford Ka", "CCC-3333", 2020);
+//        
+//        sO.getAgenda().agendar(new Agendamento(v.getPlaca(), 1, "Alinhamento", 1, LocalDateTime.of(2025, 7, 10, 14, 0)));
+//        sO.getAgenda().agendar(new Agendamento(v1.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 10, 0)));
+//        sO.getAgenda().agendar(new Agendamento(v2.getPlaca(), 3, "Troca de óleo", 1, LocalDateTime.of(2025, 7, 10, 15, 0)));
+//        sO.getAgenda().salvar();
+//        
+//        System.out.println("\n6. Lista Original (Desordenada)");
+//        sO.getAgenda().imprimirAgenda();
+//
+//        System.out.println("\n3. Ordenando por Data");
+//        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorData());
+//        sO.getAgenda().imprimirAgenda();
+//        
+//        System.out.println("\n4. Ordenando por ID");
+//        Collections.sort(sO.getAgenda().getTodosAgendamentos(), new ComparaAgendamentoPorCliente());
+//        sO.getAgenda().imprimirAgenda();
 
 
         //Questão 14

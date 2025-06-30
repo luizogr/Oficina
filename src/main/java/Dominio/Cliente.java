@@ -219,6 +219,6 @@ public class Cliente implements Serializable{
      */
     @Override
     public String toString() {
-        return "Cliente | ID: " + idCliente + " | Nome: " + nome + " | CPF: " + getCpfAnonimizado();
+        return "Cliente | ID: " + idCliente + " | Nome: " + nome + " | E-mail: " + email + " | Endereço: " + endereco + " | CPF: " + getCpfAnonimizado();
     }    
 }

@@ -191,6 +191,18 @@
     "data" : [ 2025, 6, 29 ],
     "tipo" : "Receita",
     "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #31",
+    "valor" : 0.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
   } ],
   "notasFiscais" : [ {
     "idOS" : 2,
@@ -438,5 +450,11 @@
       "valorTotal" : 100.0
     } ],
     "total" : 100.0
+  }, {
+    "idOS" : 31,
+    "idCliente" : 4,
+    "data" : [ 2025, 6, 29, 22, 41, 48, 876088100 ],
+    "itens" : [ ],
+    "total" : 0.0
   } ]
 }

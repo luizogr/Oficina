@@ -209,6 +209,17 @@ public class GestaoDeVeiculos {
      */
     @Override
     public String toString() {
-        return "GestaoDeVeiculos{" + "placasPorVeiculos=" + placasPorVeiculos + ", placasPorCliente=" + placasPorCliente + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Relatório de Veículos Cadastrados ---\n");
+        for (Map.Entry<String, Veiculo> entry : placasPorVeiculos.entrySet()) {
+            String placa = entry.getKey();
+            Veiculo veiculo = entry.getValue();
+            Integer idCliente = placasPorCliente.get(placa);
+            sb.append(veiculo.toString());
+            sb.append(" | Proprietário ID: ").append(idCliente != null ? idCliente : "N/A");
+            sb.append("\n");
+        }
+        sb.append("------------------------------------------");
+        return sb.toString();
     }
 }

@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Realiza a gestão completa das Ordens de Serviço
  * @author luizp
  */
 public class GestaoDeOrdemDeServico {
@@ -38,6 +38,11 @@ public class GestaoDeOrdemDeServico {
     private static final String CAMINHO_ARQUIVO = "gestao_os.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Construtor da classe GestaoDeOrdemDeServico
+     * @param estoque
+     * @param gestaoFinanceira 
+     */
     public GestaoDeOrdemDeServico(Estoque estoque, GestaoFinanceira gestaoFinanceira) {
         this.gestaoFinanceira = gestaoFinanceira;
         this.estoque = estoque;
@@ -47,13 +52,19 @@ public class GestaoDeOrdemDeServico {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
+    /**
+     * Construtor padrão
+     */
     public GestaoDeOrdemDeServico() {
         this.idPorOS = new HashMap<>();
         this.idOSPorIdCliente = new HashMap<>();
         mapper.registerModule(new JavaTimeModule());
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
-    
+   
+    /**
+     * Salva o estado atual da gestão de OS em um arquivo JSON
+     */
     public void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -63,6 +74,12 @@ public class GestaoDeOrdemDeServico {
         }
     }
     
+    /**
+     * Carrega os dados da gestão de OS de um arquivo JSON
+     * @param estoque
+     * @param gestaoFinanceira
+     * @return 
+     */
     public static GestaoDeOrdemDeServico carregarDoArquivo(Estoque estoque, GestaoFinanceira gestaoFinanceira) {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
@@ -90,14 +107,31 @@ public class GestaoDeOrdemDeServico {
         return new GestaoDeOrdemDeServico(estoque, gestaoFinanceira);
     }
     
+    /**
+     * Verifica se uma Ordem de Serviço com o ID especificado existe
+     * @param id
+     * @return 
+     */
     public boolean ordemDeServicoExiste(int id){
         return idPorOS.containsKey(id);
     }
     
+    /**
+     * Busca e retorna uma Ordem de Serviço pelo seu ID
+     * @param id
+     * @return 
+     */
     public OrdemDeServico buscarOSPorId(int id){
         return idPorOS.get(id);
     }
     
+    /**
+     * Inicia uma nova Ordem de Serviço e a adiciona ao sistema
+     * @param idCliente
+     * @param placaVeiculo
+     * @param descricao
+     * @return 
+     */
     public OrdemDeServico iniciarOSdeServico(int idCliente, String placaVeiculo, String descricao) {
         OrdemDeServico novaOS = new OrdemDeServico();
         novaOS.setIdCliente(idCliente);
@@ -111,6 +145,11 @@ public class GestaoDeOrdemDeServico {
         return novaOS;
     }
     
+    /**
+     * Finaliza uma OS, gera a nota fiscal e registra a receita
+     * @param idOS
+     * @return 
+     */
     public NotaFiscal finalizarEGerarNota(int idOS) {
         OrdemDeServico os = buscarOSPorId(idOS);
         if (os == null) {
@@ -144,6 +183,12 @@ public class GestaoDeOrdemDeServico {
         return nota;
     }
     
+    /**
+     * Registra uma venda direta de peças, criando uma OS específica para isso
+     * @param idCliente
+     * @param pecasVendidas
+     * @return 
+     */
     public OrdemDeServico registrarVendaDireta(int idCliente, Map<Integer, Integer> pecasVendidas) {
         OrdemDeServico osVenda = iniciarOSdeServico(idCliente, "", "Venda de Balcão");
 
@@ -155,6 +200,10 @@ public class GestaoDeOrdemDeServico {
         return osVenda;
     }
     
+    /**
+     * Adiciona uma Ordem de Serviço ao sistema de gestão
+     * @param ordemDeServico 
+     */
     public void adicionarOS(OrdemDeServico ordemDeServico){
         int id = ordemDeServico.getIdOS();
         if(ordemDeServicoExiste(id) == false){
@@ -165,6 +214,11 @@ public class GestaoDeOrdemDeServico {
         }
     }
     
+    /**
+     * Busca as OS de um cliente específico com base em seu ID
+     * @param idCliente
+     * @return 
+     */
     public ArrayList<OrdemDeServico> buscarOSPorCliente(int idCliente){
         ArrayList<OrdemDeServico> veiculosCliente = new ArrayList<>();
         for(Map.Entry<Integer, Integer> entry : idOSPorIdCliente.entrySet()){
@@ -178,6 +232,10 @@ public class GestaoDeOrdemDeServico {
         return veiculosCliente;
     }
     
+    /**
+     * Imprime as OSs de um cliente pelo seu ID
+     * @param idCliente 
+     */
     public void imprimirOSDoCliente(int idCliente) {
         System.out.println("\n--- Ordens de Serviço para o Cliente ID: " + idCliente + " ---");
         ArrayList<OrdemDeServico> osDoCliente = buscarOSPorCliente(idCliente);
@@ -189,6 +247,11 @@ public class GestaoDeOrdemDeServico {
         System.out.println("----------------------------------------------");
     }
     
+    /**
+     * Remove uma OS do sistema de gestão
+     * @param id
+     * @return 
+     */
     public boolean removerOS(int id){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null){
@@ -199,6 +262,13 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Adiciona uma quantidade de peças a lista de peças de uma OS
+     * @param idOS
+     * @param idPeca
+     * @param quantidade
+     * @return 
+     */
     public boolean adicionarPeca(int idOS, int idPeca, int quantidade){
         OrdemDeServico oS = buscarOSPorId(idOS);
         if(oS == null){
@@ -211,6 +281,13 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Remove peças da lista de peças da OS
+     * @param idOS
+     * @param idPeca
+     * @param quantidade
+     * @return 
+     */
     public boolean removerPeca(int idOS, int idPeca, int quantidade){
         OrdemDeServico oS = buscarOSPorId(idOS);
         if(oS == null){
@@ -225,6 +302,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Adiciona um serviço realizado a lista de serviços de uma OS
+     * @param idOS
+     * @param servico
+     * @return 
+     */
     public boolean adicionarServico(int idOS, Servicos servico) {
         OrdemDeServico os = buscarOSPorId(idOS);
         if (os == null) {
@@ -235,6 +318,12 @@ public class GestaoDeOrdemDeServico {
         }
     }
     
+    /**
+     * Remove serviço da lista de serviços de uma OS
+     * @param idOS
+     * @param servico
+     * @return 
+     */
     public boolean removerServico(int idOS, Servicos servico) {
         OrdemDeServico os = buscarOSPorId(idOS);
         if (os == null) {
@@ -245,6 +334,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Edita a descrição de uma OS
+     * @param id
+     * @param descricao
+     * @return 
+     */
     public boolean editarDescricao(int id, String descricao){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null){
@@ -254,6 +349,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Edita o elevador de uma OS
+     * @param id
+     * @param idElevador
+     * @return 
+     */
     public boolean editarElevador(int id, int idElevador){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null){
@@ -263,6 +364,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Altera o mecânico que realizou a OS
+     * @param id
+     * @param idMecanico
+     * @return 
+     */
     public boolean alterarMecanico(int id, int idMecanico){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null){
@@ -272,6 +379,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Altera o Status da OS
+     * @param id
+     * @param novoStatus
+     * @return 
+     */
     public boolean alterarStatus(int id, StatusOS novoStatus){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null && novoStatus != o.getStatusOS()){
@@ -283,6 +396,12 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
     
+    /**
+     * Altera a data de termino da OS
+     * @param id
+     * @param dataTermino
+     * @return 
+     */
     public boolean alterarDataDeTermino(int id, LocalDateTime dataTermino){
         OrdemDeServico o = buscarOSPorId(id);
         if(o != null){
@@ -296,43 +415,83 @@ public class GestaoDeOrdemDeServico {
         return false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Estoque getEstoque() {
         return estoque;
     }
 
+    /**
+     * 
+     * @param estoque 
+     */
     public void setEstoque(Estoque estoque) {
         this.estoque = estoque;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoFinanceira getGestaoFinanceira() {
         return gestaoFinanceira;
     }
 
+    /**
+     * 
+     * @param gestaoFinanceira 
+     */
     public void setGestaoFinanceira(GestaoFinanceira gestaoFinanceira) {
         this.gestaoFinanceira = gestaoFinanceira;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<Integer, OrdemDeServico> getIdPorOS() {
         return idPorOS;
     }
 
+    /**
+     * 
+     * @param idPorOS 
+     */
     public void setIdPorOS(Map<Integer, OrdemDeServico> idPorOS) {
         this.idPorOS = idPorOS;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<Integer, Integer> getIdOSPorIdCliente() {
         return idOSPorIdCliente;
     }
 
+    /**
+     * 
+     * @param idOSPorIdCliente 
+     */
     public void setIdOSPorIdCliente(Map<Integer, Integer> idOSPorIdCliente) {
         this.idOSPorIdCliente = idOSPorIdCliente;
     }
     
-    
-
+    /**
+     * Retorna uma representação textual da gestão de OS
+     * @return 
+     */
     @Override
     public String toString() {
-        return "GestaoDeOrdemDeServico{" + "estoque=" + estoque + ", gestaoFinanceira=" + gestaoFinanceira + ", idPorOS=" + idPorOS + ", idOSPorIdCliente=" + idOSPorIdCliente + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Relatório de Ordens de Serviço ---\n");
+        for (OrdemDeServico os : idPorOS.values()) {
+            sb.append(os.toString()).append("\n");
+        }
+        sb.append("------------------------------------");
+        return sb.toString();
     }
     
 }

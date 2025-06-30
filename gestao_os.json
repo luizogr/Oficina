@@ -391,6 +391,21 @@
         "1" : 2
       },
       "servicosRealizados" : [ ]
+    },
+    "31" : {
+      "idOS" : 31,
+      "placaVeiculo" : "",
+      "idCliente" : 4,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 29, 22, 41, 48, 864557200 ],
+      "dataTermino" : [ 2025, 6, 29, 22, 41, 48, 876088100 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "1" : 2
+      },
+      "servicosRealizados" : [ ]
     }
   },
   "idOSPorIdCliente" : {
@@ -421,6 +436,7 @@
     "26" : 1,
     "27" : 1,
     "28" : 2,
-    "29" : 1
+    "29" : 1,
+    "31" : 4
   }
 }
