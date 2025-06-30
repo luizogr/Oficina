@@ -175,24 +175,28 @@ public class Estoque {
      * @return true se a remoção foi bem-sucedida
      */
     public boolean removerPeca(int id, int quantidade){
+        //Verifica se a quantidade é valida
         if(quantidade <= 0){
             throw new IllegalArgumentException("A quantidade deve ser positiva");
         }
-       
+        //Verifica se a peça tem no estoque
         if(contemPeca(id) == false){
             throw new IllegalArgumentException("A peça não existe no estoque");
         }
         
+        //Verifica a quantidade de uma determinada peça no estoque, somando os seus lotes
         List<LotePeca> lotes = lotesPorPeca.get(id);
         int totalDisponivel = 0;
         for (int i = 0; i < lotes.size(); i++) {
             totalDisponivel += lotes.get(i).getQuantidade();
         }
+        //Verifica se a quantidade a ser retirada está disponivel no estoque
         if(quantidade > totalDisponivel){
             System.out.println("Impossivel remover, pois quantidade a ser removida " + quantidade + " é maior que a quantidade em estoque: " + totalDisponivel);
             return false;
         } 
         
+        //Retira a quantidade e calcula o restante da peça no estoque
         int restante = quantidade;
         for (int i = 0; i < lotes.size(); i++) {
             if (restante <= 0) break;
@@ -208,14 +212,14 @@ public class Estoque {
                 restante = 0;
             }
         }
-        
+       
         for (int i = 0; i < lotes.size(); i++) {
             if (lotes.get(i).getQuantidade() == 0) {
                 lotes.remove(i);
                 i--; 
             }
         }
-        
+        //Remove caso não tenha mais peças
         if (lotes.isEmpty()) {
             lotesPorPeca.remove(id);
             pecasPorId.remove(id);

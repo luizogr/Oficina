@@ -63,15 +63,19 @@ public class Agenda {
                 ObjectMapper localMapper = new ObjectMapper();
                 localMapper.registerModule(new JavaTimeModule());
                 Agenda agenda = localMapper.readValue(arquivo, Agenda.class);
-                agenda.reconstruirMapaDeConflitos(); //Reconstrói o mapa de conflitos após carregar
+                
+                agenda.reconstruirMapaDeConflitos(); 
                 
                 int maxIdAgendamento = 0;
                 if (agenda.getTodosAgendamentos() != null) {
                     for(Agendamento a : agenda.getTodosAgendamentos()){
-                        if(a.getIdAgendamento() > maxIdAgendamento){ maxIdAgendamento = a.getIdAgendamento(); }
+                        if(a.getIdAgendamento() > maxIdAgendamento){ 
+                            maxIdAgendamento = a.getIdAgendamento(); 
+                        }
                     }
                 }
                 Agendamento.setContadorId(maxIdAgendamento);
+                
                 return agenda;
             }
         } catch (IOException e) {
@@ -137,6 +141,7 @@ public class Agenda {
             todosAgendamentos.add(a);
             return true;
         }
+        System.out.println("Horario Ocupado");
         return false;
     }
     

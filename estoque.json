@@ -1,156 +1,72 @@
 {
   "lotesPorPeca" : {
+    "1" : [ {
+      "idFornecedor" : 1,
+      "quantidade" : 20,
+      "precoCusto" : 48.0,
+      "dataCompra" : [ 2025, 6, 30 ]
+    } ],
     "2" : [ {
       "idFornecedor" : 1,
       "quantidade" : 22,
       "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 28 ]
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "3" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 28,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 28 ]
+      "quantidade" : 48,
+      "precoCusto" : 36.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "4" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "idFornecedor" : 2,
+      "quantidade" : 10,
+      "precoCusto" : 66.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "5" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "quantidade" : 30,
+      "precoCusto" : 48.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "6" : [ {
+      "idFornecedor" : 1,
+      "quantidade" : 50,
+      "precoCusto" : 36.0,
+      "dataCompra" : [ 2025, 6, 30 ]
+    } ],
+    "7" : [ {
       "idFornecedor" : 2,
       "quantidade" : 10,
       "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 29 ]
-    } ],
-    "7" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "8" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "quantidade" : 30,
+      "precoCusto" : 48.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "9" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "idFornecedor" : 1,
+      "quantidade" : 30,
+      "precoCusto" : 48.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "10" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 30,
+      "quantidade" : 26,
       "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "11" : [ {
       "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 29 ]
+      "quantidade" : 49,
+      "precoCusto" : 36.0,
+      "dataCompra" : [ 2025, 6, 30 ]
     } ],
     "12" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 29 ]
-    } ],
-    "13" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "14" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "15" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "16" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "17" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "18" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "19" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 30,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "20" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 50,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "21" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 10,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "22" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 26,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "23" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 49,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "24" : [ {
-      "idFornecedor" : 2,
-      "quantidade" : 3,
-      "precoCusto" : 66.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "25" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 26,
-      "precoCusto" : 48.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "26" : [ {
-      "idFornecedor" : 1,
-      "quantidade" : 49,
-      "precoCusto" : 36.0,
-      "dataCompra" : [ 2025, 6, 30 ]
-    } ],
-    "27" : [ {
       "idFornecedor" : 2,
       "quantidade" : 3,
       "precoCusto" : 66.0,
@@ -158,6 +74,11 @@
     } ]
   },
   "pecasPorId" : {
+    "1" : {
+      "idPeca" : 1,
+      "nome" : "Filtro de óleo",
+      "preco" : 50.0
+    },
     "2" : {
       "idPeca" : 2,
       "nome" : "Filtro de óleo",
@@ -165,38 +86,38 @@
     },
     "3" : {
       "idPeca" : 3,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
+      "nome" : "Vela",
+      "preco" : 45.0
     },
     "4" : {
       "idPeca" : 4,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
+      "nome" : "Liquido de arrefecimento",
+      "preco" : 70.0
     },
     "5" : {
       "idPeca" : 5,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "6" : {
-      "idPeca" : 6,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "7" : {
-      "idPeca" : 7,
       "nome" : "Filtro de óleo",
       "preco" : 50.0
     },
-    "8" : {
-      "idPeca" : 8,
+    "6" : {
+      "idPeca" : 6,
       "nome" : "Vela",
       "preco" : 45.0
     },
-    "9" : {
-      "idPeca" : 9,
+    "7" : {
+      "idPeca" : 7,
       "nome" : "Liquido de arrefecimento",
       "preco" : 70.0
+    },
+    "8" : {
+      "idPeca" : 8,
+      "nome" : "Filtro de óleo",
+      "preco" : 50.0
+    },
+    "9" : {
+      "idPeca" : 9,
+      "nome" : "Filtro de óleo",
+      "preco" : 50.0
     },
     "10" : {
       "idPeca" : 10,
@@ -205,86 +126,11 @@
     },
     "11" : {
       "idPeca" : 11,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
+      "nome" : "Vela",
+      "preco" : 45.0
     },
     "12" : {
       "idPeca" : 12,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "13" : {
-      "idPeca" : 13,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "14" : {
-      "idPeca" : 14,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "15" : {
-      "idPeca" : 15,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "16" : {
-      "idPeca" : 16,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "17" : {
-      "idPeca" : 17,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "18" : {
-      "idPeca" : 18,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "19" : {
-      "idPeca" : 19,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "20" : {
-      "idPeca" : 20,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "21" : {
-      "idPeca" : 21,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "22" : {
-      "idPeca" : 22,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "23" : {
-      "idPeca" : 23,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "24" : {
-      "idPeca" : 24,
-      "nome" : "Liquido de arrefecimento",
-      "preco" : 70.0
-    },
-    "25" : {
-      "idPeca" : 25,
-      "nome" : "Filtro de óleo",
-      "preco" : 50.0
-    },
-    "26" : {
-      "idPeca" : 26,
-      "nome" : "Vela",
-      "preco" : 45.0
-    },
-    "27" : {
-      "idPeca" : 27,
       "nome" : "Liquido de arrefecimento",
       "preco" : 70.0
     }

@@ -101,6 +101,9 @@ public class GestaoFinanceira {
      * @param funcionario 
      */
     public void adicionarDespesa(String descricao, double valor, CategoriaDespesa categoria, Funcionario funcionario){
+        if(funcionario == null){
+            System.out.println("Necessario um funcionario");
+        }
         if(funcionario.getCargo() == Cargo.Gerente){
             Lancamento despesa = new Lancamento(descricao, valor, LocalDate.now(), TipoLancamento.Despesa, categoria);
             adicionarLancamento(despesa);
@@ -117,6 +120,9 @@ public class GestaoFinanceira {
      * @param funcionario 
      */
     public void gerarBalancoMes(Month mes, int ano, Funcionario funcionario){
+        if(funcionario == null){
+            System.out.println("Necessario um funcionario");
+        }
         if(funcionario.getCargo() != Cargo.Gerente){
             System.out.println("Usuario sem permissão para gerar balanço");
         } else{

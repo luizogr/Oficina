@@ -106,6 +106,22 @@ public class Agendamento implements Serializable{
      * 
      * @return 
      */
+    public static int getContadorId() {
+        return contadorId;
+    }
+    
+    /**
+     * 
+     * @param contador 
+     */
+    public static void setContadorId(int contador) { 
+        Agendamento.contadorId = contador; 
+    }
+
+    /**
+     * 
+     * @return 
+     */
     public int getIdAgendamento() {
         return idAgendamento;
     }
@@ -116,14 +132,6 @@ public class Agendamento implements Serializable{
      */
     public void setIdAgendamento(int idAgendamento) {
         this.idAgendamento = idAgendamento;
-    }
-
-    /**
-     * 
-     * @param contadorId 
-     */
-    public static void setContadorId(int contadorId) {
-        Agendamento.contadorId = contadorId;
     }
 
     /**
