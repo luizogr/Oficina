@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Representa um conjunto de serviços que podem ser realizados
  * @author luizp
  */
 public enum Servicos {
@@ -19,15 +19,28 @@ public enum Servicos {
     private String descricao;
     private double preco;
     
+    /**
+     * Construtor privado para inicializar cada constante do enum com sua descrição e preço
+     * @param descricao
+     * @param preco 
+     */
     Servicos(String descricao, double preco){
         this.descricao = descricao;
         this.preco = preco;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getDescricao() {
         return descricao;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getPreco() {
         return preco;
     }

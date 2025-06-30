@@ -144,30 +144,6 @@ public class GestaoDeOrdemDeServico {
         return nota;
     }
     
-//    public NotaFiscal gerarNotaFiscal(int idOS){
-//        OrdemDeServico os = buscarOSPorId(idOS);
-//        if(os == null){
-//            System.err.println("OS não encontrada");
-//            return null;
-//        }
-//        
-//        NotaFiscal nota = new NotaFiscal(os.getIdOS(), os.getIdCliente());
-//        for(Servicos servico : os.getServicosRealizados()){
-//            nota.adicionarItem(servico.getDescricao(), 1, servico.getPreco());
-//        }
-//        
-//        for(Map.Entry<Integer, Integer> entry : os.getPecasUtilizadas().entrySet()){
-//            int idPeca = entry.getKey();
-//            int quantidade = entry.getValue();
-//            Peca peca = estoque.buscarPecaPorId(idPeca);
-//            nota.adicionarItem(peca.getNome(), quantidade, peca.getPreco());
-//        }
-//        nota.imprimir(); // questão 8 olhar se é isso
-//        Lancamento receita = new Lancamento("Receita da OS #" + idOS, nota.getTotal(), LocalDate.now(), TipoLancamento.Receita, null);
-//        gestaoFinanceira.adicionarLancamento(receita);
-//        return nota;
-//    }
-    
     public OrdemDeServico registrarVendaDireta(int idCliente, Map<Integer, Integer> pecasVendidas) {
         OrdemDeServico osVenda = iniciarOSdeServico(idCliente, "", "Venda de Balcão");
 

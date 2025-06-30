@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Gerencia o cadastro e a relação de veículos e seus respectivos proprietários
  * @author luizp
  */
 public class GestaoDeVeiculos {
@@ -26,12 +26,19 @@ public class GestaoDeVeiculos {
     private static final String CAMINHO_CONTADOR = "contador_veiculos.json";
     private static final ObjectMapper mapper = new ObjectMapper();
     
+    /**
+     * Construtor padrão
+     */
     public GestaoDeVeiculos(){
         this.placasPorVeiculos = new HashMap<>();
         this.placasPorCliente = new HashMap<>();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
+    /**
+     * Carrega os dados da gestão de veículos a partir de arquivos JSON
+     * @return 
+     */
     public static GestaoDeVeiculos carregarDoArquivo() {
         File arquivoVeiculos = new File(CAMINHO_ARQUIVO);
         File arquivoContador = new File(CAMINHO_CONTADOR);
@@ -51,6 +58,9 @@ public class GestaoDeVeiculos {
         return new GestaoDeVeiculos();
     }
 
+    /**
+     * Salva o estado atual da gestão de veículos no arquivo JSON
+     */
     private void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -58,19 +68,37 @@ public class GestaoDeVeiculos {
             System.out.println("Erro ao salvar estoque: " + e.getMessage());
         }
     }
-    
+   
+    /**
+     * Metodo publico para salvar alterações
+     */
     public void salvar(){
         salvarNoArquivo();
     }
-        
+    
+    /**
+     * Verifica se um veículo com a placa especificada já está cadastrado
+     * @param placa
+     * @return 
+     */
     public boolean veiculoExiste(String placa){
         return placasPorVeiculos.containsKey(placa);
     }
     
+    /**
+     * Busca e retorna um veículo com base na sua placa
+     * @param placa
+     * @return 
+     */
     public Veiculo buscarVeiculoPorPlaca(String placa){
         return placasPorVeiculos.get(placa);
     }
     
+    /**
+     * Adiciona um novo veículo ao sistema
+     * @param id
+     * @param veiculo 
+     */
     public void adicionarVeiculo(int id, Veiculo veiculo){
         if(veiculoExiste(veiculo.getPlaca()) == false){
             placasPorVeiculos.put(veiculo.getPlaca(), veiculo);
@@ -80,6 +108,11 @@ public class GestaoDeVeiculos {
         }  
     }
     
+    /**
+     * Retorna uma lista de todos os veículos pertencentes a um cliente
+     * @param id
+     * @return 
+     */
     public ArrayList<Veiculo> buscarVeiculosDoProprietario(int id){
         ArrayList<Veiculo> veiculosCliente = new ArrayList<>();
         for(Map.Entry<String, Integer> entry : placasPorCliente.entrySet()){
@@ -93,6 +126,11 @@ public class GestaoDeVeiculos {
         return veiculosCliente;
     }
     
+    /**
+     * Remove um veículo do sistema com base na sua placa
+     * @param placa
+     * @return 
+     */
     public boolean removerVeiculo(String placa){
         Veiculo v = buscarVeiculoPorPlaca(placa);
         if(v != null){
@@ -103,6 +141,12 @@ public class GestaoDeVeiculos {
         return false;
     }
     
+    /**
+     * Edita o modelo de um veículo existente
+     * @param placa
+     * @param modelo
+     * @return 
+     */
     public boolean editarModelo(String placa, String modelo){
         Veiculo v = buscarVeiculoPorPlaca(placa);
         if(v != null){
@@ -112,6 +156,12 @@ public class GestaoDeVeiculos {
         return false;
     }
     
+    /**
+     * Edita o ano de um veículo existente
+     * @param placa
+     * @param ano
+     * @return 
+     */
     public boolean editarAno(String placa, int ano){
         Veiculo v = buscarVeiculoPorPlaca(placa);
         if(v != null){
@@ -121,22 +171,42 @@ public class GestaoDeVeiculos {
         return false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<String, Veiculo> getPlacasPorVeiculos() {
         return placasPorVeiculos;
     }
 
+    /**
+     * 
+     * @param placasPorVeiculos 
+     */
     public void setPlacasPorVeiculos(Map<String, Veiculo> placasPorVeiculos) {
         this.placasPorVeiculos = placasPorVeiculos;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<String, Integer> getPlacasPorCliente() {
         return placasPorCliente;
     }
 
+    /**
+     * 
+     * @param placasPorCliente 
+     */
     public void setPlacasPorCliente(Map<String, Integer> placasPorCliente) {
         this.placasPorCliente = placasPorCliente;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
         return "GestaoDeVeiculos{" + "placasPorVeiculos=" + placasPorVeiculos + ", placasPorCliente=" + placasPorCliente + '}';

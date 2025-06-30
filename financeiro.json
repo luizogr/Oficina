@@ -35,6 +35,162 @@
     "data" : [ 2025, 6, 28 ],
     "tipo" : "Receita",
     "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #3",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #6",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #9",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Compra de 50x Vela",
+    "valor" : 1800.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Compra de 10x Liquido de arrefecimento",
+    "valor" : 660.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #10",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #11",
+    "valor" : 250.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Compra de 50x Vela",
+    "valor" : 1800.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Compra de 10x Liquido de arrefecimento",
+    "valor" : 660.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #12",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #13",
+    "valor" : 250.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #14",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #1",
+    "valor" : 250.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Compra de 30x Filtro de óleo",
+    "valor" : 1440.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Despesa",
+    "categoria" : "Compra_De_Peca"
+  }, {
+    "descricao" : "Receita da OS #17",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #20",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #23",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #24",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #25",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #26",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #27",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #28",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
+  }, {
+    "descricao" : "Receita da OS #29",
+    "valor" : 100.0,
+    "data" : [ 2025, 6, 29 ],
+    "tipo" : "Receita",
+    "categoria" : null
   } ],
   "notasFiscais" : [ {
     "idOS" : 2,
@@ -62,6 +218,219 @@
     "idOS" : 6,
     "idCliente" : 3,
     "data" : [ 2025, 6, 28, 1, 18, 29, 794529000 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 3,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 0, 3, 218505700 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 6,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 1, 9, 292763300 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 9,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 1, 16, 256706700 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 10,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 1, 42, 187387400 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 11,
+    "idCliente" : 3,
+    "data" : [ 2025, 6, 29, 22, 1, 42, 202412900 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 4,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 200.0
+    }, {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 1,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 50.0
+    } ],
+    "total" : 250.0
+  }, {
+    "idOS" : 12,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 2, 25, 524841700 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 13,
+    "idCliente" : 3,
+    "data" : [ 2025, 6, 29, 22, 2, 25, 541145100 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 4,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 200.0
+    }, {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 1,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 50.0
+    } ],
+    "total" : 250.0
+  }, {
+    "idOS" : 14,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 5, 10, 957950500 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 1,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 5, 10, 979009700 ],
+    "itens" : [ {
+      "descricao" : "Alinhamento do veiculo",
+      "quantidade" : 1,
+      "valorUnitario" : 100.0,
+      "valorTotal" : 100.0
+    }, {
+      "descricao" : "Troca de óleo",
+      "quantidade" : 1,
+      "valorUnitario" : 150.0,
+      "valorTotal" : 150.0
+    } ],
+    "total" : 250.0
+  }, {
+    "idOS" : 17,
+    "idCliente" : 11,
+    "data" : [ 2025, 6, 29, 22, 14, 43, 440880400 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 20,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 21, 8, 932006900 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 23,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 22, 2, 272684300 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 24,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 24, 4, 281476200 ],
+    "itens" : [ {
+      "descricao" : "Alinhamento do veiculo",
+      "quantidade" : 1,
+      "valorUnitario" : 100.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 25,
+    "idCliente" : 2,
+    "data" : [ 2025, 6, 29, 22, 24, 4, 310590500 ],
+    "itens" : [ {
+      "descricao" : "Alinhamento do veiculo",
+      "quantidade" : 1,
+      "valorUnitario" : 100.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 26,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 24, 4, 339074300 ],
+    "itens" : [ {
+      "descricao" : "Filtro de óleo",
+      "quantidade" : 2,
+      "valorUnitario" : 50.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 27,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 24, 57, 467080900 ],
+    "itens" : [ {
+      "descricao" : "Alinhamento do veiculo",
+      "quantidade" : 1,
+      "valorUnitario" : 100.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 28,
+    "idCliente" : 2,
+    "data" : [ 2025, 6, 29, 22, 24, 57, 493481500 ],
+    "itens" : [ {
+      "descricao" : "Alinhamento do veiculo",
+      "quantidade" : 1,
+      "valorUnitario" : 100.0,
+      "valorTotal" : 100.0
+    } ],
+    "total" : 100.0
+  }, {
+    "idOS" : 29,
+    "idCliente" : 1,
+    "data" : [ 2025, 6, 29, 22, 24, 57, 521866800 ],
     "itens" : [ {
       "descricao" : "Filtro de óleo",
       "quantidade" : 2,

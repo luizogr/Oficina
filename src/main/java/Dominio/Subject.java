@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Define o contrato para objetos que tem um estado que possa ser observado
  * @author luizp
  */
 public interface Subject {

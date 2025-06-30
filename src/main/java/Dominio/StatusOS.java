@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Representa os Status que uma Ordem de Serviço pode passar
  * @author luizp
  */
 public enum StatusOS {

@@ -45,25 +45,26 @@
     "salario" : 3000.0
   } ], [ "Dominio.Gerente", {
     "idFuncionario" : 7,
-    "nome" : "Davi",
+    "nome" : "Ana",
     "cargo" : "Gerente",
-    "login" : "davi",
-    "senha" : "1234",
-    "salario" : 4000.0
+    "login" : "ana.g",
+    "senha" : "123",
+    "salario" : 0.0
   } ], [ "Dominio.Mecanico", {
     "idFuncionario" : 8,
-    "nome" : "Marcos",
+    "nome" : "Bruno",
     "cargo" : "Mecanico",
-    "login" : "marcos",
-    "senha" : "12345",
-    "salario" : 5000.0,
-    "especialidade" : "Eletrica"
-  } ], [ "Dominio.Recepcionista", {
+    "login" : "bruno.m",
+    "senha" : "456",
+    "salario" : 0.0,
+    "especialidade" : "Motor"
+  } ], [ "Dominio.Mecanico", {
     "idFuncionario" : 9,
-    "nome" : "Maria",
-    "cargo" : "Recepcionista",
-    "login" : "maria",
-    "senha" : "123",
-    "salario" : 3000.0
+    "nome" : "Carlos",
+    "cargo" : "Mecanico",
+    "login" : "carlos.m",
+    "senha" : "789",
+    "salario" : 0.0,
+    "especialidade" : "Suspensão"
   } ] ] ]
 } ]

@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Representa os Status que um agendamento pode passar
  * @author luizp
  */
 public enum StatusAgendamento {

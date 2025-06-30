@@ -5,7 +5,7 @@
 package Dominio;
 
 /**
- *
+ * Define os tipos de um lançamento
  * @author luizp
  */
 public enum TipoLancamento {

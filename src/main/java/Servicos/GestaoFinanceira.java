@@ -5,6 +5,7 @@
 package Servicos;
 
 import Dominio.Cargo;
+import Dominio.CategoriaDespesa;
 import Dominio.Funcionario;
 import Dominio.Lancamento;
 import Dominio.NotaFiscal;
@@ -14,11 +15,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
 /**
- *
+ * Gerencia todas as operações financeiras, como lançamentos de receitas e despesas, e o armazenamento de notas fiscais
  * @author luizp
  */
 public class GestaoFinanceira {
@@ -28,7 +30,7 @@ public class GestaoFinanceira {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * 
+     * Construtor padrão
      */
     public GestaoFinanceira() {
         this.lancamentos = new ArrayList<>();
@@ -38,7 +40,7 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Carrega os dados financeiros a partir de um arquivo JSON
      * @return 
      */
     public static GestaoFinanceira carregarDoArquivo() {
@@ -56,7 +58,7 @@ public class GestaoFinanceira {
     }
 
     /**
-     * 
+     * Salva o estado atual do objeto GestaoFinanceira em um arquivo JSON
      */
     private void salvarNoArquivo() {
         try {
@@ -67,14 +69,14 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Metodo publico para salvar alterações
      */
     public void salvar(){
         salvarNoArquivo();
     }
     
     /**
-     * 
+     * Adiciona um novo lançamento financeiro à lista e salva o estado atual
      * @param lancamento 
      */
     public void adicionarLancamento(Lancamento lancamento){
@@ -83,7 +85,7 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Adiciona uma nova nota fiscal à lista e salva o estado atual
      * @param nota 
      */
     public void adicionarNotaFiscal(NotaFiscal nota) {
@@ -92,7 +94,24 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Método que permite a um gerente adicionar uma despesa
+     * @param descricao
+     * @param valor
+     * @param categoria
+     * @param funcionario 
+     */
+    public void adicionarDespesa(String descricao, double valor, CategoriaDespesa categoria, Funcionario funcionario){
+        if(funcionario.getCargo() == Cargo.Gerente){
+            Lancamento despesa = new Lancamento(descricao, valor, LocalDate.now(), TipoLancamento.Despesa, categoria);
+            adicionarLancamento(despesa);
+            System.out.println("Despesa registrada");
+        } else {
+            System.out.println("Usuario sem permissão");
+        }
+    }
+    
+    /**
+     * Calcula e exibe no console um balanço financeiro para um determinado mês e ano
      * @param mes
      * @param ano 
      * @param funcionario 
@@ -129,7 +148,7 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Busca todas as notas fiscais associadas a um ID de cliente
      * @param idCliente
      * @return 
      */
@@ -147,7 +166,7 @@ public class GestaoFinanceira {
     }
     
     /**
-     * 
+     * Imprime no console todas as notas fiscais de um cliente
      * @param idCliente 
      */
     public void imprimirNotasPorCliente(int idCliente) {
@@ -194,6 +213,10 @@ public class GestaoFinanceira {
         this.notasFiscais = notasFiscais;
     }
 
+    /**
+     * Retorna uma representação textual da gestão financeira
+     * @return 
+     */
     @Override
     public String toString() {
         return "GestaoFinanceira{" + "lancamentos=" + lancamentos + '}';

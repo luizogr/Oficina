@@ -68,7 +68,7 @@ public class SistemaOficina {
     }
     
     /**
-     * 
+     * Realiza o login de um funcionario
      * @param login
      * @param senha
      * @return 
@@ -83,12 +83,18 @@ public class SistemaOficina {
         return false;
     }
     
+    /**
+     * Função que chama o metodo de bater ponto da gestão de funcionarios
+     */
     public void baterPonto(){
         if(funcionarioLogado != null){
             gestaoFuncionarios.baterPonto(funcionarioLogado.getIdFuncionario());
         }
     }
     
+    /**
+     * Função que chama o metodo de encerrar expediente da gestão de funcionarios
+     */
     public void encerrarExpediente(){
         if(funcionarioLogado != null){
             gestaoFuncionarios.encerrarExpediente(funcionarioLogado.getIdFuncionario());
@@ -96,13 +102,15 @@ public class SistemaOficina {
     }
     
     /**
-     * 
+     * Encerra a seção de um funcionario
      */
     public void logout(){
         funcionarioLogado = null;
         System.out.println("Logout realizado");
     }
-    
+    /**
+     * Menu principal do sistema
+     */
     public void menuPrincipal() {
         Scanner scanner = new Scanner(System.in);
 
@@ -181,68 +189,130 @@ public class SistemaOficina {
         scanner.close();
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Funcionario getFuncionarioLogado() {
         return funcionarioLogado;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public FuncionarioService getGestaoFuncionarios() {
         return gestaoFuncionarios;
     }
 
+    /**
+     * 
+     * @param gestaoFuncionarios 
+     */
     public void setGestaoFuncionarios(FuncionarioService gestaoFuncionarios) {
         this.gestaoFuncionarios = gestaoFuncionarios;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoClientes getGestaoClientes() {
         return gestaoClientes;
     }
 
+    /**
+     * 
+     * @param gestaoClientes 
+     */
     public void setGestaoClientes(GestaoClientes gestaoClientes) {
         this.gestaoClientes = gestaoClientes;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Agenda getAgenda() {
         return agenda;
     }
 
+    /**
+     * 
+     * @param agenda 
+     */
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoDeVeiculos getGestaoVeiculos() {
         return gestaoVeiculos;
     }
 
+    /**
+     * 
+     * @param gestaoVeiculos 
+     */
     public void setGestaoVeiculos(GestaoDeVeiculos gestaoVeiculos) {
         this.gestaoVeiculos = gestaoVeiculos;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoFinanceira getGestaoFinanceira() {
         return gestaoFinanceira;
     }
 
+    /**
+     * 
+     * @param gestaoFinanceira 
+     */
     public void setGestaoFinanceira(GestaoFinanceira gestaoFinanceira) {
         this.gestaoFinanceira = gestaoFinanceira;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Estoque getEstoque() {
         return estoque;
     }
 
+    /**
+     * 
+     * @param estoque 
+     */
     public void setEstoque(Estoque estoque) {
         this.estoque = estoque;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public GestaoDeOrdemDeServico getGestaoOS() {
         return gestaoOS;
     }
 
+    /**
+     * 
+     * @param gestaoOS 
+     */
     public void setGestaoOS(GestaoDeOrdemDeServico gestaoOS) {
         this.gestaoOS = gestaoOS;
     }
     
-    
-
+    /**
+     * Retoena uma representação textual do sistema
+     * @return 
+     */
     @Override
     public String toString() {
         return "SistemaOficina{" + "funcionarioLogado=" + funcionarioLogado + '}';

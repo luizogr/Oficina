@@ -1,7 +1,6 @@
 Dominio\LotePeca.class
 Servicos\GestaoFinanceira.class
 Servicos\GestaoDeVeiculos.class
-com\mycompany\oficina\Interface.class
 Servicos\Agenda.class
 Servicos\SistemaOficina.class
 Dominio\Servicos.class

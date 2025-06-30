@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
- *
+ * Gerencia os clientes da oficina
  * @author luizp
  */
 public class GestaoClientes {
@@ -67,6 +67,9 @@ public class GestaoClientes {
         }
     }
     
+    /**
+     * Metodo public para salvar alterações
+     */
     public void salvar(){
         salvarNoArquivo();
     }
@@ -189,6 +192,12 @@ public class GestaoClientes {
         return false;
     }
     
+    /**
+     * Metodo para buscar um cliente
+     * @param clienteBusca
+     * @param comparator
+     * @return 
+     */
     public Cliente find(Cliente clienteBusca, Comparator<Cliente> comparator){
         Iterator<Cliente> iterator = clientes.iterator();
         
@@ -209,7 +218,6 @@ public class GestaoClientes {
         return clientes;
     }
 
-    //Não sei se precisa ter esse set para clientes
     /**
      * Faz o set de clientes
      * @param clientes 
@@ -218,6 +226,10 @@ public class GestaoClientes {
         this.clientes = clientes;
     }
 
+    /**
+     * Retorna uma representação textual da gerencia de clientes
+     * @return 
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

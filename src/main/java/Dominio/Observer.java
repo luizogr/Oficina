@@ -5,9 +5,13 @@
 package Dominio;
 
 /**
- *
+ * Define o contrato para objetos que desejam ser notificados
  * @author luizp
  */
 public interface Observer {
+    /**
+     * Metodo para receber uma notificação
+     * @param mensagem 
+     */
     void atualizar(String mensagem);
 }

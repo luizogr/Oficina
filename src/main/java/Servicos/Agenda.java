@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Gerencia o agendamento de serviços nos elevadores da oficina
  * @author luizp
  */
 public class Agenda {
@@ -30,6 +30,9 @@ public class Agenda {
     private static final String CAMINHO_ARQUIVO = "agenda.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Construtor padrão
+     */
     public Agenda() {
         this.dataElevadorAgendamento = new HashMap<>();
         this.todosAgendamentos = new ArrayList<>();
@@ -37,6 +40,9 @@ public class Agenda {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     
+    /**
+     * Salva o estado atual da lista de agendamentos em um arquivo JSON
+     */
     private void salvarNoArquivo() {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CAMINHO_ARQUIVO), this);
@@ -46,6 +52,10 @@ public class Agenda {
         }
     }
     
+    /**
+     * Carrega a agenda a partir do arquivo JSON
+     * @return 
+     */
     public static Agenda carregarDoArquivo() {
         try {
             File arquivo = new File(CAMINHO_ARQUIVO);
@@ -54,6 +64,14 @@ public class Agenda {
                 localMapper.registerModule(new JavaTimeModule());
                 Agenda agenda = localMapper.readValue(arquivo, Agenda.class);
                 agenda.reconstruirMapaDeConflitos(); //Reconstrói o mapa de conflitos após carregar
+                
+                int maxIdAgendamento = 0;
+                if (agenda.getTodosAgendamentos() != null) {
+                    for(Agendamento a : agenda.getTodosAgendamentos()){
+                        if(a.getIdAgendamento() > maxIdAgendamento){ maxIdAgendamento = a.getIdAgendamento(); }
+                    }
+                }
+                Agendamento.setContadorId(maxIdAgendamento);
                 return agenda;
             }
         } catch (IOException e) {
@@ -62,6 +80,9 @@ public class Agenda {
         return new Agenda();
     }
     
+    /**
+     * Reconstrói o mapa de verificação de conflitos a partir da lista principal de agendamentos
+     */
     private void reconstruirMapaDeConflitos() {
         this.dataElevadorAgendamento.clear();
         for (Agendamento ag : this.todosAgendamentos) {
@@ -71,14 +92,28 @@ public class Agenda {
         }
     }
     
+    /**
+     * Metodo para salvar publico
+     */
     public void salvar(){
         salvarNoArquivo();
     }
     
+    /**
+     * Verifica se já existe um agendamento para uma data e elevador
+     * @param data
+     * @param idElevador
+     * @return 
+     */
     public boolean existeAgendamento(LocalDateTime data, int idElevador){
         return (dataElevadorAgendamento.containsKey(data) && dataElevadorAgendamento.get(data).containsKey(idElevador));
     }
     
+    /**
+     * Busca um agendamento na lista principal pelo seu ID
+     * @param id
+     * @return 
+     */
     public Agendamento buscarAgendamentoPorId(int id) {
         for (Agendamento agendamento : todosAgendamentos) {
             if (agendamento.getIdAgendamento() == id) {
@@ -88,6 +123,11 @@ public class Agenda {
         return null;
     }
     
+    /**
+     * Tenta adicionar um novo agendamento à agenda
+     * @param a
+     * @return 
+     */
     public boolean agendar(Agendamento a){
         LocalDateTime data = a.getData();
         int idElevador = a.getIdElevador();
@@ -100,6 +140,11 @@ public class Agenda {
         return false;
     }
     
+    /**
+     * Cancela um agendamento existente
+     * @param idAgendamento
+     * @return 
+     */
     public boolean cancelarAgendamento(int idAgendamento){
         Agendamento a = buscarAgendamentoPorId(idAgendamento);
         
@@ -122,6 +167,12 @@ public class Agenda {
         }
     }
     
+    /**
+     * Inicia o serviço de um agendamento
+     * @param idAgendamento
+     * @param idMecanico
+     * @return 
+     */
     public OrdemDeServico IniciarServico(int idAgendamento, int idMecanico){
         Agendamento a = buscarAgendamentoPorId(idAgendamento);
 
@@ -139,6 +190,9 @@ public class Agenda {
         return os;
     }
     
+    /**
+     * Imprime todos os agendamentos contidos na lista
+     */
     public void imprimirAgenda() {
         System.out.println("--- Lista de Todos os Agendamentos ---");
         if (todosAgendamentos.isEmpty()) {
@@ -151,22 +205,42 @@ public class Agenda {
         System.out.println("--------------------------------------");
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<LocalDateTime, Map<Integer, Agendamento>> getDataElevadorAgendamento() {
         return dataElevadorAgendamento;
     }
 
+    /**
+     * 
+     * @param dataElevadorAgendamento 
+     */
     public void setDataElevadorAgendamento(Map<LocalDateTime, Map<Integer, Agendamento>> dataElevadorAgendamento) {
         this.dataElevadorAgendamento = dataElevadorAgendamento;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Agendamento> getTodosAgendamentos() {
         return todosAgendamentos;
     }
 
+    /**
+     * 
+     * @param todosAgendamentos 
+     */
     public void setTodosAgendamentos(ArrayList<Agendamento> todosAgendamentos) {
         this.todosAgendamentos = todosAgendamentos;
     }
 
+    /**
+     * Retorna uma representação textual da agenda
+     * @return 
+     */
     @Override
     public String toString() {
         return "Agenda{" + "dataElevadorAgendamento=" + dataElevadorAgendamento + ", todosAgendamentos=" + todosAgendamentos + '}';

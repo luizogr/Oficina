@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Faz a gestão dos funcionários
  * @author luizp
  */
 public class FuncionarioService {
@@ -39,7 +39,7 @@ public class FuncionarioService {
     }
     
     /**
-     * 
+     * Carrega a agenda a partir do arquivo JSON
      * @return 
      */
     public static FuncionarioService carregarDoArquivo() {
@@ -70,7 +70,7 @@ public class FuncionarioService {
     }
     
     /**
-     * 
+     * Salva o estado atual da lista de agendamentos em um arquivo JSON
      */
     private void salvarNoArquivo() {
         try {
@@ -80,12 +80,15 @@ public class FuncionarioService {
         }
     }
     
+    /**
+     * Função publica para salvar alterações feitas nos funcionarios
+     */
     public void salvarFuncionarios(){
         salvarNoArquivo();
     }
     
     /**
-     * 
+     * Tenta adicionar um funcionario a lista de funcionarios
      * @param funcionario 
      */
     public void adicionarFuncionario(Funcionario funcionario){
@@ -105,7 +108,7 @@ public class FuncionarioService {
     }
     
     /**
-     * 
+     * Registra o inicio do expediente de um funcionário
      * @param idFuncionario
      * @return 
      */
@@ -124,7 +127,7 @@ public class FuncionarioService {
     }
     
     /**
-     * 
+     * Finaliza o expediente e armazena a data e horario na lista de pontos
      * @param idFuncionario
      * @return 
      */
@@ -146,7 +149,7 @@ public class FuncionarioService {
     }
     
     /**
-     * 
+     * Lista o controle de pontos
      * @param idFuncionario 
      */
     public void listarPontos(int idFuncionario) {
@@ -249,6 +252,12 @@ public class FuncionarioService {
         return false;
     }
     
+    /**
+     * Função para editar especialidade de um funcionario
+     * @param id
+     * @param especialidade
+     * @return 
+     */
     public boolean editarEspecialidade(int id, String especialidade){
         Funcionario f = buscaFuncionario(id);
         if(f != null && f.getCargo() == Cargo.Mecanico){
@@ -289,6 +298,12 @@ public class FuncionarioService {
         return false;
     }
     
+    /**
+     * Edita o salário de um funcionario
+     * @param id
+     * @param salario
+     * @return 
+     */
     public boolean editarSalario(int id, double salario){
         Funcionario f = buscaFuncionario(id);
         if (f != null) {
@@ -298,6 +313,10 @@ public class FuncionarioService {
         return false;
     }
     
+    /**
+     * Imprime a lista de funcionários
+     * @param service 
+     */
     public static void imprimirFuncionarios(FuncionarioService service) {
         ArrayList<Funcionario> funcionarios = service.getFuncionarios();
 
@@ -318,10 +337,18 @@ public class FuncionarioService {
         return funcionarios;
     }
     
+    /**
+     * 
+     * @param funcionarios 
+     */
     public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
 
+    /**
+     * Retorna uma representação textual dos funcionarios
+     * @return 
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
