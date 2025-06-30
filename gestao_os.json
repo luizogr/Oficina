@@ -406,6 +406,298 @@
         "1" : 2
       },
       "servicosRealizados" : [ ]
+    },
+    "32" : {
+      "idOS" : 32,
+      "placaVeiculo" : "ABC-1111",
+      "idCliente" : 42,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 2,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 233334900 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "22" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "33" : {
+      "idOS" : 33,
+      "placaVeiculo" : "DEF-2222",
+      "idCliente" : 43,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 3,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 293612800 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "22" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "34" : {
+      "idOS" : 34,
+      "placaVeiculo" : "GHI-3333",
+      "idCliente" : 43,
+      "descricao" : "Alinhamento",
+      "idElevador" : 1,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 328978800 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : { },
+      "servicosRealizados" : [ "ALINHAMENTO" ]
+    },
+    "35" : {
+      "idOS" : 35,
+      "placaVeiculo" : "JKL-4444",
+      "idCliente" : 44,
+      "descricao" : "Alinhamento",
+      "idElevador" : 1,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 359421900 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "22" : 1
+      },
+      "servicosRealizados" : [ "ALINHAMENTO" ]
+    },
+    "36" : {
+      "idOS" : 36,
+      "placaVeiculo" : "MNO-5555",
+      "idCliente" : 46,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 2,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 407419800 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : { },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "37" : {
+      "idOS" : 37,
+      "placaVeiculo" : "PQR-6666",
+      "idCliente" : 47,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 3,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 210331400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 431417400 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "22" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "38" : {
+      "idOS" : 38,
+      "placaVeiculo" : "",
+      "idCliente" : 48,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 449563000 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 454567100 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "23" : 1
+      },
+      "servicosRealizados" : [ ]
+    },
+    "39" : {
+      "idOS" : 39,
+      "placaVeiculo" : "",
+      "idCliente" : 49,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 495862200 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 499863900 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "24" : 1
+      },
+      "servicosRealizados" : [ ]
+    },
+    "40" : {
+      "idOS" : 40,
+      "placaVeiculo" : "",
+      "idCliente" : 50,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 509860700 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 514864500 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "24" : 4
+      },
+      "servicosRealizados" : [ ]
+    },
+    "41" : {
+      "idOS" : 41,
+      "placaVeiculo" : "",
+      "idCliente" : 51,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 33, 35, 525861100 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 33, 35, 530860400 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "24" : 2
+      },
+      "servicosRealizados" : [ ]
+    },
+    "42" : {
+      "idOS" : 42,
+      "placaVeiculo" : "ABC-1111",
+      "idCliente" : 52,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 2,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 146101900 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "25" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "43" : {
+      "idOS" : 43,
+      "placaVeiculo" : "DEF-2222",
+      "idCliente" : 53,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 3,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 171121500 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "25" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "44" : {
+      "idOS" : 44,
+      "placaVeiculo" : "GHI-3333",
+      "idCliente" : 53,
+      "descricao" : "Alinhamento",
+      "idElevador" : 1,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 181099500 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : { },
+      "servicosRealizados" : [ "ALINHAMENTO" ]
+    },
+    "45" : {
+      "idOS" : 45,
+      "placaVeiculo" : "JKL-4444",
+      "idCliente" : 54,
+      "descricao" : "Alinhamento",
+      "idElevador" : 1,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 200297800 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "25" : 1
+      },
+      "servicosRealizados" : [ "ALINHAMENTO" ]
+    },
+    "46" : {
+      "idOS" : 46,
+      "placaVeiculo" : "MNO-5555",
+      "idCliente" : 56,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 2,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 209305600 ],
+      "idMecanico" : 17,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : { },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "47" : {
+      "idOS" : 47,
+      "placaVeiculo" : "PQR-6666",
+      "idCliente" : 57,
+      "descricao" : "Troca de óleo",
+      "idElevador" : 3,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 138101400 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 215300500 ],
+      "idMecanico" : 16,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "25" : 1
+      },
+      "servicosRealizados" : [ "TROCA_DE_OLEO" ]
+    },
+    "48" : {
+      "idOS" : 48,
+      "placaVeiculo" : "",
+      "idCliente" : 58,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 225680500 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 228683900 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "26" : 1
+      },
+      "servicosRealizados" : [ ]
+    },
+    "49" : {
+      "idOS" : 49,
+      "placaVeiculo" : "",
+      "idCliente" : 59,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 237077500 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 241077400 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "27" : 1
+      },
+      "servicosRealizados" : [ ]
+    },
+    "50" : {
+      "idOS" : 50,
+      "placaVeiculo" : "",
+      "idCliente" : 60,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 247264200 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 250261200 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "27" : 4
+      },
+      "servicosRealizados" : [ ]
+    },
+    "51" : {
+      "idOS" : 51,
+      "placaVeiculo" : "",
+      "idCliente" : 61,
+      "descricao" : "Venda de Balcão",
+      "idElevador" : 0,
+      "dataInicio" : [ 2025, 6, 30, 0, 36, 22, 256469600 ],
+      "dataTermino" : [ 2025, 6, 30, 0, 36, 22, 258473400 ],
+      "idMecanico" : 0,
+      "statusOS" : "ENTREGUE",
+      "pecasUtilizadas" : {
+        "27" : 2
+      },
+      "servicosRealizados" : [ ]
     }
   },
   "idOSPorIdCliente" : {
@@ -437,6 +729,26 @@
     "27" : 1,
     "28" : 2,
     "29" : 1,
-    "31" : 4
+    "31" : 4,
+    "32" : 42,
+    "33" : 43,
+    "34" : 43,
+    "35" : 44,
+    "36" : 46,
+    "37" : 47,
+    "38" : 48,
+    "39" : 49,
+    "40" : 50,
+    "41" : 51,
+    "42" : 52,
+    "43" : 53,
+    "44" : 53,
+    "45" : 54,
+    "46" : 56,
+    "47" : 57,
+    "48" : 58,
+    "49" : 59,
+    "50" : 60,
+    "51" : 61
   }
 }

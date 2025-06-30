@@ -4,9 +4,45 @@
       "modelo" : "Fiat Uno",
       "placa" : "AAA-1111",
       "ano" : 2010
+    },
+    "ABC-1111" : {
+      "modelo" : "Fiat Uno",
+      "placa" : "ABC-1111",
+      "ano" : 2010
+    },
+    "DEF-2222" : {
+      "modelo" : "VW Gol",
+      "placa" : "DEF-2222",
+      "ano" : 2015
+    },
+    "GHI-3333" : {
+      "modelo" : "Chevrolet Onix",
+      "placa" : "GHI-3333",
+      "ano" : 2018
+    },
+    "JKL-4444" : {
+      "modelo" : "Ford Ka",
+      "placa" : "JKL-4444",
+      "ano" : 2020
+    },
+    "MNO-5555" : {
+      "modelo" : "Hyundai HB20",
+      "placa" : "MNO-5555",
+      "ano" : 2019
+    },
+    "PQR-6666" : {
+      "modelo" : "Toyota Corolla",
+      "placa" : "PQR-6666",
+      "ano" : 2021
     }
   },
   "placasPorCliente" : {
-    "AAA-1111" : 1
+    "AAA-1111" : 1,
+    "ABC-1111" : 12,
+    "DEF-2222" : 13,
+    "GHI-3333" : 13,
+    "JKL-4444" : 14,
+    "MNO-5555" : 16,
+    "PQR-6666" : 18
   }
 }
