@@ -11,7 +11,7 @@ package Dominio;
 public interface Observer {
     /**
      * Metodo para receber uma notificação
-     * @param mensagem 
+     * @param mensagem
      */
     void atualizar(String mensagem);
 }

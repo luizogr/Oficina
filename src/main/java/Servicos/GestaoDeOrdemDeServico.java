@@ -157,7 +157,7 @@ public class GestaoDeOrdemDeServico {
             return null;
         }
 
-        os.setStatusOS(StatusOS.ENTREGUE);
+        os.setStatusOS(StatusOS.PRONTO_PARA_ENTREGA);
         os.setDataTermino(LocalDateTime.now());
         
         NotaFiscal nota = new NotaFiscal(os.getIdOS(), os.getIdCliente());
@@ -292,7 +292,7 @@ public class GestaoDeOrdemDeServico {
         OrdemDeServico oS = buscarOSPorId(idOS);
         if(oS == null){
             throw new RuntimeException("Ordem de Serviço não encontrada");
-        } else if(estoque.quantidadeSuficiente(idPeca, quantidade)){
+        } else if(oS.getPecasUtilizadas().containsKey(oS)){
             oS.removerPeca(idPeca, quantidade);
             Peca peca = estoque.buscarPecaPorId(idPeca);
             int idFornecedorDevolucao = 0;

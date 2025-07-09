@@ -30,6 +30,7 @@ import Dominio.ComparaClientePorNome;
 import Dominio.Fornecedor;
 import Dominio.Lancamento;
 import Dominio.NotaFiscal;
+import Dominio.Observer;
 import Dominio.Servicos;
 import Dominio.StatusAgendamento;
 import Dominio.TipoElevador;
